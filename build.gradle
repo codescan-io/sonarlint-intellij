@@ -19,8 +19,8 @@ apply plugin: 'java'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'idea'
 
-group = 'org.sonarsource.sonarlint.intellij'
-description = 'SonarLint for IntelliJ IDEA'
+group = 'com.villagechief.sonarlint.intellij'
+description = 'CodeScan for IntelliJ IDEA'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -31,7 +31,7 @@ intellij {
   } else {
     version '2016.3.2'
   }
-  pluginName 'SonarLint'
+  pluginName 'CodeScan'
   updateSinceUntilBuild false
   type 'IC'
 }
@@ -79,10 +79,7 @@ dependencies {
   testCompile 'org.assertj:assertj-core:3.6.2'
   testCompile 'org.mockito:mockito-core:2.7.6'
   sqplugins (
-    'org.sonarsource.java:sonar-java-plugin:5.0.1.12818',
     'org.sonarsource.javascript:sonar-javascript-plugin:4.0.0.5862',
-    'org.sonarsource.php:sonar-php-plugin:2.12.0.2871',
-    'org.sonarsource.python:sonar-python-plugin:1.8.0.1496'
   )
 }
 
@@ -106,7 +103,7 @@ release {
 
 sonarqube {
   properties {
-    property 'sonar.projectName', 'SonarLint for IntelliJ IDEA'
+    property 'sonar.projectName', 'CodeScan for IntelliJ IDEA'
   }
 }
 
@@ -141,7 +138,7 @@ artifactory {
       properties = [
         'vcs.revision': (System.getenv('GIT_COMMIT') ?: System.getenv('TRAVIS_COMMIT')),
         'vcs.branch': (System.getenv('GIT_BRANCH') ?: System.getenv('TRAVIS_BRANCH')),
-        'build.name': 'sonarlint-intellij',
+        'build.name': 'codescan-intellij',
         'build.number': (System.getenv('BUILD_ID') ?: System.getenv('TRAVIS_BUILD_NUMBER'))
       ]
       publishConfigs('archives')

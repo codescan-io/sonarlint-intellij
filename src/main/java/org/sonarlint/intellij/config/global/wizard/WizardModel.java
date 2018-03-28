@@ -27,7 +27,7 @@ import org.sonarlint.intellij.util.SonarLintUtils;
 import org.sonarsource.sonarlint.core.client.api.connected.RemoteOrganization;
 
 public class WizardModel {
-  private static final String SONARCLOUD_URL = "https://sonarcloud.io";
+  private static final String SONARCLOUD_URL = "https://app.codescan.io";
   private ServerType serverType;
   private String serverUrl;
   private String token;

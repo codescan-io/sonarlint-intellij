@@ -68,8 +68,7 @@ public class SonarLintUtils {
   static final int CONNECTION_TIMEOUT_MS = 30_000;
   static final int READ_TIMEOUT_MS = 2 * 60_000;
   static final String PATH_SEPARATOR_PATTERN = Pattern.quote(File.separator);
-  private static final String[] SONARCLOUD_ALIAS = {"https://sonarqube.com", "https://www.sonarqube.com",
-    "https://www.sonarcloud.io", "https://sonarcloud.io"};
+  private static final String[] SONARCLOUD_ALIAS = {"https://app.codescan.io"};
 
   private SonarLintUtils() {
     // Utility class
