@@ -17,8 +17,8 @@ apply plugin: 'com.jfrog.artifactory'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'idea'
 
-group = 'org.sonarsource.sonarlint.intellij'
-description = 'SonarLint for IntelliJ IDEA'
+group = 'com.villagechief.sonarlint.intellij'
+description = 'CodeScan for IntelliJ IDEA'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -29,7 +29,7 @@ if (!project.hasProperty("ijVersion")) {
 
 intellij {
   version ijVersion
-  pluginName 'sonarlint-intellij'
+  pluginName 'CodeScan'
   updateSinceUntilBuild false
   type 'IC'
   if (!ijVersion.startsWith("2017") && !ijVersion.startsWith("2018")) {
@@ -82,13 +82,6 @@ dependencies {
   testImplementation 'org.assertj:assertj-core:3.6.2'
   testImplementation 'org.mockito:mockito-core:2.19.0'
   sqplugins (
-    'org.sonarsource.java:sonar-java-plugin:6.3.0.21585@jar',
-    'org.sonarsource.javascript:sonar-javascript-plugin:6.2.1.12157@jar',
-    'org.sonarsource.php:sonar-php-plugin:3.3.0.5166@jar',
-    'org.sonarsource.python:sonar-python-plugin:2.9.0.6410@jar',
-    'org.sonarsource.slang:sonar-kotlin-plugin:1.5.0.315@jar',
-    'org.sonarsource.slang:sonar-ruby-plugin:1.5.0.315@jar',
-    'org.sonarsource.html:sonar-html-plugin:3.2.0.2082@jar'
   )
   typescript "typescript:typescript:${typescriptVersion}@tgz"
 }
@@ -122,7 +115,7 @@ classes.dependsOn downloadSQPlugins
 
 sonarqube {
   properties {
-    property 'sonar.projectName', 'SonarLint for IntelliJ IDEA'
+    property 'sonar.projectName', 'CodeScan for IntelliJ IDEA'
   }
 }
 
@@ -159,7 +152,7 @@ artifactory {
       properties = [
         'vcs.revision': System.getenv('BUILD_SOURCEVERSION'),
         'vcs.branch': (System.getenv('SYSTEM_PULLREQUEST_TARGETBRANCH') ?: System.getenv('BUILD_SOURCEBRANCHNAME')),
-        'build.name': 'sonarlint-intellij',
+        'build.name': 'codescan-intellij',
         'build.number': System.getenv('BUILD_BUILDID')
       ]
       publishConfigs('archives')
