@@ -35,7 +35,7 @@ import org.sonarlint.intellij.tasks.GetOrganizationsTask;
 import org.sonarsource.sonarlint.core.serverapi.organization.ServerOrganization;
 
 public class WizardModel {
-  private static final String SONARCLOUD_URL = "https://sonarcloud.io";
+  private static final String SONARCLOUD_URL = "https://app.codescan.io";
   private ServerType serverType;
   private String serverUrl;
   private String token;

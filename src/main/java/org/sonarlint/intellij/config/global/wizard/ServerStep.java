@@ -81,7 +81,7 @@ public class ServerStep extends AbstractWizardStepEx {
 
     nameField.setToolTipText("Name of this configuration (mandatory field)");
 
-    String cloudText = "Connect to <a href=\"https://sonarcloud.io\">the online service</a>";
+    String cloudText = "Connect to <a href=\"https://app.codescan.io\">the online service</a>";
     sonarcloudText.setText(cloudText);
     sonarcloudText.addHyperlinkListener(new BrowserHyperlinkListener());
 
@@ -209,7 +209,7 @@ public class ServerStep extends AbstractWizardStepEx {
   private void save() {
     if (radioSonarCloud.isSelected()) {
       model.setServerType(WizardModel.ServerType.SONARCLOUD);
-      model.setServerUrl("https://sonarcloud.io");
+      model.setServerUrl("https://app.codescan.io");
     } else {
       model.setServerType(WizardModel.ServerType.SONARQUBE);
       model.setServerUrl(urlText.getText().trim());

@@ -37,8 +37,8 @@ buildscript {
     }
 }
 
-group = "org.sonarsource.sonarlint.intellij"
-description = "SonarLint for IntelliJ IDEA"
+group = "com.villagechief.sonarlint.intellij"
+description = "CodeScan for IntelliJ IDEA"
 
 val sonarlintCoreVersion: String by project
 val protobufVersion: String by project
@@ -97,7 +97,7 @@ allprojects {
 
 intellij {
     version.set(intellijBuildVersion)
-    pluginName.set("sonarlint-intellij")
+    pluginName.set("CodeScan")
     updateSinceUntilBuild.set(false)
     plugins.set(listOf("java"))
 }
@@ -184,19 +184,11 @@ dependencies {
     testImplementation("org.eclipse.jetty:jetty-server:$jettyVersion")
     testImplementation("org.eclipse.jetty:jetty-servlet:$jettyVersion")
     testImplementation("org.eclipse.jetty:jetty-proxy:$jettyVersion")
-    "sqplugins"("org.sonarsource.java:sonar-java-plugin:7.3.0.27589@jar")
-    "sqplugins"("org.sonarsource.javascript:sonar-javascript-plugin:8.4.0.16431@jar")
-    "sqplugins"("org.sonarsource.php:sonar-php-plugin:3.21.0.8193@jar")
-    "sqplugins"("org.sonarsource.python:sonar-python-plugin:3.6.0.8488@jar")
-    "sqplugins"("org.sonarsource.kotlin:sonar-kotlin-plugin:2.3.0.609@jar")
-    "sqplugins"("org.sonarsource.slang:sonar-ruby-plugin:1.8.3.2219@jar")
-    "sqplugins"("org.sonarsource.html:sonar-html-plugin:3.4.0.2754@jar")
     "sqplugins"("org.sonarsource.sonarlint.omnisharp:sonarlint-omnisharp-plugin:1.0.0.34628@jar")
     if (artifactoryUsername.isNotEmpty() && artifactoryPassword.isNotEmpty()) {
         "sqplugins"("com.sonarsource.cpp:sonar-cfamily-plugin:6.27.0.38122@jar")
         "sqplugins"("com.sonarsource.secrets:sonar-secrets-plugin:1.1.0.36766@jar")
     }
-    "typescript"("typescript:typescript:$typescriptVersion@tgz")
 }
 
 tasks {
@@ -342,7 +334,7 @@ tasks {
 
 sonarqube {
     properties {
-        property("sonar.projectName", "SonarLint for IntelliJ IDEA")
+        property("sonar.projectName", "CodeScan for IntelliJ IDEA")
     }
 }
 
@@ -378,7 +370,7 @@ artifactory {
                 "vcs.revision" to System.getenv("BUILD_SOURCEVERSION"),
                 "vcs.branch" to (System.getenv("SYSTEM_PULLREQUEST_TARGETBRANCH")
                     ?: System.getenv("BUILD_SOURCEBRANCHNAME")),
-                "build.name" to "sonarlint-intellij",
+                "build.name" to "codescan-intellij",
                 "build.number" to System.getenv("BUILD_BUILDID")
             )
             )
