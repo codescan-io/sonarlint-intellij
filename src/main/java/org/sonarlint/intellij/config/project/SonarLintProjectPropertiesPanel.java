@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -49,7 +49,7 @@ public class SonarLintProjectPropertiesPanel {
     tableModel = new PropertiesTableModel();
     // Unfortunately TableModel's listener does not work properly, it doesn't receive events related to changed cells.
     final JBTable table = new JBTable(tableModel);
-    table.getEmptyText().setText("No SonarLint properties configured for this project");
+    table.getEmptyText().setText("No CodeScan properties configured for this project");
 
     JPanel tablePanel = ToolbarDecorator.createDecorator(table)
       .disableUpAction()

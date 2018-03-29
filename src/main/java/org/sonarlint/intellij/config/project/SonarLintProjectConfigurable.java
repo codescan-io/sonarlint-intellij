@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -72,7 +72,7 @@ public class SonarLintProjectConfigurable implements Configurable, Configurable.
   @Nls
   @Override
   public String getDisplayName() {
-    return "SonarLint";
+    return "CodeScan";
   }
 
   @Nullable

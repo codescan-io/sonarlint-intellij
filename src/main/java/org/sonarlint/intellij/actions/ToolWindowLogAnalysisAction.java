@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -29,7 +29,7 @@ import org.sonarlint.intellij.util.SonarLintUtils;
 
 public class ToolWindowLogAnalysisAction extends ToggleAction implements DumbAware {
   public ToolWindowLogAnalysisAction() {
-    super("Analysis logs", "Enable logging of SonarLint analysis", AllIcons.General.Progress);
+    super("Analysis logs", "Enable logging of CodeScan analysis", AllIcons.General.Progress);
   }
 
   @Override

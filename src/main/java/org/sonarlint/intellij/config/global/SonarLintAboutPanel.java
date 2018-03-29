@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -57,9 +57,9 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
 
   private JComponent createSonarLintPanel() {
     JBLabel sonarlintIcon = new JBLabel(SonarLintIcons.SONARLINT_32);
-    JBLabel title = new JBLabel("<html><b>SonarLint IntelliJ " + application.getVersion() + "</b></html>");
+    JBLabel title = new JBLabel("<html><b>CodeScan IntelliJ " + application.getVersion() + "</b></html>");
     HyperlinkLabel linkLabel = new HyperlinkLabel("intellij.sonarlint.org");
-    linkLabel.addHyperlinkListener(e -> BrowserUtil.browse("http://intellij.sonarlint.org"));
+    linkLabel.addHyperlinkListener(e -> BrowserUtil.browse("http://www.code-scan.com/tutorials/intellij"));
     JBLabel copyrightLabel = new JBLabel("<html>&copy; " + LocalDate.now().getYear() + " SonarSource</html>");
 
     JPanel infoPanel = new JPanel(new GridBagLayout());
@@ -99,7 +99,7 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
           + "    \"days_since_installation\": 120,\n"
           + "    \"days_of_use\": 40,\n"
           + "    \"sonarlint_version\": \"2.9\",\n"
-          + "    \"sonarlint_product\": \"SonarLint IntelliJ\",\n"
+          + "    \"sonarlint_product\": \"CodeScan IntelliJ\",\n"
           + "    \"connected_mode_used\": true\n"
           + "}</pre><html>");
         label.setBorder(HintUtil.createHintBorder());
@@ -110,12 +110,12 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
     });
 
     // info
-    JBLabel info = new JBLabel("<html>By sharing anonymous SonarLint usage statistics, you help us understand how SonarLint is used so "
+    JBLabel info = new JBLabel("<html>By sharing anonymous CodeScan usage statistics, you help us understand how CodeScan is used so "
       + "we can improve the plugin to work even better for you. We don't collect source code, IP addresses, or any personally identifying "
       + "information. And we don't share the data with anyone else.</html>");
 
     // checkbox
-    enableCheckBox = new JCheckBox("Share anonymous SonarLint statistics");
+    enableCheckBox = new JCheckBox("Share anonymous CodeScan statistics");
     enableCheckBox.setFocusable(false);
     JPanel tickOptions = new JPanel(new VerticalFlowLayout());
     tickOptions.setBorder(BorderFactory.createEmptyBorder(0, 0, 4, 0));

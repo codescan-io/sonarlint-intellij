@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -26,7 +26,7 @@ import org.sonarlint.intellij.analysis.SonarLintJob;
  * Notifies about analysis tasks starting and ending. It will be called for any analysis task, regardless of the trigger, if it is brackground or not, etc.
  */
 public interface TaskListener {
-  Topic<TaskListener> SONARLINT_TASK_TOPIC = Topic.create("SonarLint task start and finish", TaskListener.class);
+  Topic<TaskListener> SONARLINT_TASK_TOPIC = Topic.create("CodeScan task start and finish", TaskListener.class);
 
   void started(SonarLintJob job);
 

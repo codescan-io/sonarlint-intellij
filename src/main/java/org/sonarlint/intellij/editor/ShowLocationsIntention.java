@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -46,7 +46,7 @@ public class ShowLocationsIntention implements IntentionAction {
   }
 
   @Nls @NotNull @Override public String getFamilyName() {
-    return "SonarLint locations";
+    return "CodeScan locations";
   }
 
   @Override public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {

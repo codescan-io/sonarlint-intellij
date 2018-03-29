@@ -1,4 +1,4 @@
-# SonarLint IntelliJ Plugin
+# CodeScan IntelliJ Plugin
 
 [![Build Status](https://travis-ci.org/SonarSource/sonarlint-intellij.svg?branch=master)](https://travis-ci.org/SonarSource/sonarlint-intellij)
 
@@ -41,7 +41,7 @@ Deploy on Jetbrains plugin repository (todo try to use publish task).
 
 ## More information
 
-**[SonarLint for IntelliJ](http://www.sonarlint.org/intellij/)**
+**[CodeScan for IntelliJ](http://www.sonarlint.org/intellij/)**
 
 ### License
 

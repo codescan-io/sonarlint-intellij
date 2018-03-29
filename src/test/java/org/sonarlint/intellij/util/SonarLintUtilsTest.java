@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -94,7 +94,7 @@ public class SonarLintUtilsTest extends SonarTest {
     assertThat(config.getPassword()).isNull();
     assertThat(config.getConnectTimeoutMs()).isEqualTo(SonarLintUtils.CONNECTION_TIMEOUT_MS);
     assertThat(config.getReadTimeoutMs()).isEqualTo(SonarLintUtils.READ_TIMEOUT_MS);
-    assertThat(config.getUserAgent()).contains("SonarLint");
+    assertThat(config.getUserAgent()).contains("CodeScan");
     assertThat(config.getUrl()).isEqualTo(server.getHostUrl());
     assertThat(config.getOrganizationKey()).isNull();
   }

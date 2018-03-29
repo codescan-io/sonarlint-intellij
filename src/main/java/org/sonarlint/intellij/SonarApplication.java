@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -44,7 +44,7 @@ public class SonarApplication implements ApplicationComponent {
 
   @Override
   public void initComponent() {
-    plugin = PluginManager.getPlugin(PluginId.getId("org.sonarlint.idea"));
+    plugin = PluginManager.getPlugin(PluginId.getId("com.code-scan.intellij"));
     Language.getRegisteredLanguages().forEach(this::registerExternalAnnotatorFor);
     registerNotifications();
     cleanOldWorkDir();

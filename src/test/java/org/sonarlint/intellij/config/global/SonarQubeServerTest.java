@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -47,7 +47,7 @@ public class SonarQubeServerTest {
   @Test
   public void testSonarCloud() {
     SonarQubeServer server1 = SonarQubeServer.newBuilder()
-      .setHostUrl("https://sonarqube.com")
+      .setHostUrl("https://app.codescan.io")
       .setPassword("pass")
       .setToken("token")
       .setName("name")

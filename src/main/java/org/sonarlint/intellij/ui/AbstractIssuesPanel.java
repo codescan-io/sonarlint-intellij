@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -63,7 +63,7 @@ import org.sonarlint.intellij.ui.tree.IssueTree;
 import org.sonarlint.intellij.ui.tree.IssueTreeModelBuilder;
 
 abstract class AbstractIssuesPanel extends SimpleToolWindowPanel implements OccurenceNavigator {
-  private static final String ID = "SonarLint";
+  private static final String ID = "CodeScan";
   protected final Project project;
   protected final SonarLintHighlighting highlighting;
   protected SonarLintRulePanel rulePanel;

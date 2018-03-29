@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -57,7 +57,7 @@ public class SonarLintGlobalConfigurable implements Configurable, Configurable.N
   }
 
   @Nls @Override public String getDisplayName() {
-    return "SonarLint General Settings";
+    return "CodeScan General Settings";
   }
 
   @Nullable @Override public String getHelpTopic() {
@@ -136,9 +136,9 @@ public class SonarLintGlobalConfigurable implements Configurable, Configurable.N
 
       rootPanel = new JPanel(new BorderLayout());
       JBTabbedPane tabs = new JBTabbedPane();
-      tabs.insertTab("Settings", null, settingsPanel, "Configure SonarLint for all projects", 0);
+      tabs.insertTab("Settings", null, settingsPanel, "Configure CodeScan for all projects", 0);
       tabs.insertTab("File Exclusions", null, exclusions.getComponent(), "Configure which files should be excluded from analysis", 1);
-      tabs.insertTab("About", null, about.getComponent(), "About SonarLint", 2);
+      tabs.insertTab("About", null, about.getComponent(), "About CodeScan", 2);
       rootPanel.add(tabs, BorderLayout.CENTER);
     }
 

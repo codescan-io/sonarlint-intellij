@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -39,7 +39,7 @@ public class SonarLintGlobalSettingsTest extends SonarTest {
     assertThat(settings.isAutoTrigger()).isTrue();
 
     assertThat(settings.getComponentName()).isEqualTo("SonarLintGlobalSettings");
-    assertThat(settings.getPresentableName()).isEqualTo("SonarLint settings");
+    assertThat(settings.getPresentableName()).isEqualTo("CodeScan settings");
 
     assertThat(settings.getState()).isEqualTo(settings);
     assertThat(settings.getExportFiles()).isNotEmpty();

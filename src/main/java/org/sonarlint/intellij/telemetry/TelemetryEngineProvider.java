@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -33,7 +33,7 @@ import org.sonarsource.sonarlint.core.telemetry.TelemetryPathManager;
 
 public class TelemetryEngineProvider {
   private static final String TELEMETRY_PRODUCT_KEY = "idea";
-  private static final String PRODUCT = "SonarLint IntelliJ";
+  private static final String PRODUCT = "CodeScan IntelliJ";
 
   private static final String OLD_STORAGE_FILENAME = "sonarlint_usage";
 
@@ -52,7 +52,7 @@ public class TelemetryEngineProvider {
   private static TelemetryClientConfig getTelemetryClientConfig() {
     CertificateManager certificateManager = SonarLintUtils.get(CertificateManager.class);
     TelemetryClientConfig.Builder clientConfigBuilder = new TelemetryClientConfig.Builder()
-      .userAgent("SonarLint")
+      .userAgent("CodeScan")
       .sslSocketFactory(certificateManager.getSslContext().getSocketFactory())
       .sslTrustManager(certificateManager.getCustomTrustManager());
 

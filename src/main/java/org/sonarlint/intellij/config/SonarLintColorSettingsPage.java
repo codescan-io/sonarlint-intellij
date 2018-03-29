@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -101,7 +101,7 @@ public class SonarLintColorSettingsPage implements ColorSettingsPage {
   }
 
   @NotNull @Override public String getDisplayName() {
-    return "SonarLint";
+    return "CodeScan";
   }
 
 }

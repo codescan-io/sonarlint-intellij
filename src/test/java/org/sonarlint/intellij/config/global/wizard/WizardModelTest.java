@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -84,19 +84,4 @@ public class WizardModelTest {
     assertThat(server.getOrganizationKey()).isEqualTo("org");
   }
 
-  @Test
-  public void testMigrationSonarCloud() {
-    SonarQubeServer server = SonarQubeServer.newBuilder()
-      .setName("name")
-      .setToken("token")
-      .setOrganizationKey("org")
-      .setEnableProxy(true)
-      .setHostUrl("https://www.sonarqube.com")
-      .build();
-    WizardModel model = new WizardModel(server);
-
-    server = model.createServer();
-    assertThat(server.enableProxy()).isTrue();
-    assertThat(server.getHostUrl()).isEqualTo("https://app.codescan.io");
-  }
 }

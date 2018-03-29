@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -35,10 +35,10 @@ import org.sonarlint.intellij.config.project.SonarLintProjectConfigurable;
 import org.sonarsource.sonarlint.core.client.api.connected.ConnectedSonarLintEngine;
 
 public class SonarLintProjectNotifications extends AbstractProjectComponent {
-  public static final String GROUP_UPDATE_NOTIFICATION = "SonarLint: Configuration update";
-  public static final String GROUP_BINDING_PROBLEM = "SonarLint: Server Binding Errors";
-  private static final String UPDATE_SERVER_MSG = "\n<br>Please update the SonarQube server in the <a href='#'>SonarLint General Settings</a>";
-  private static final String UPDATE_BINDING_MSG = "\n<br>Please check the <a href='#'>SonarLint project configuration</a>";
+  public static final String GROUP_UPDATE_NOTIFICATION = "CodeScan: Configuration update";
+  public static final String GROUP_BINDING_PROBLEM = "CodeScan: Server Binding Errors";
+  private static final String UPDATE_SERVER_MSG = "\n<br>Please update the SonarQube server in the <a href='#'>CodeScan General Settings</a>";
+  private static final String UPDATE_BINDING_MSG = "\n<br>Please check the <a href='#'>CodeScan project configuration</a>";
   private volatile boolean shown = false;
 
   protected SonarLintProjectNotifications(Project project) {
@@ -58,7 +58,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Project bound to invalid SonarQube server</b>",
+      "<b>CodeScan - Project bound to invalid SonarQube server</b>",
       UPDATE_BINDING_MSG,
       NotificationType.WARNING, new OpenProjectSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -71,7 +71,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Project bound to an invalid remote module</b>",
+      "<b>CodeScan - Project bound to an invalid remote module</b>",
       UPDATE_BINDING_MSG,
       NotificationType.WARNING, new OpenProjectSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -84,7 +84,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Project's binding data is invalid</b>",
+      "<b>CodeScan - Project's binding data is invalid</b>",
       UPDATE_BINDING_MSG,
       NotificationType.WARNING, new OpenProjectSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -97,7 +97,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - No data for SonarQube server</b>",
+      "<b>CodeScan - No data for SonarQube server</b>",
       UPDATE_SERVER_MSG,
       NotificationType.WARNING, new OpenGeneralSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -110,7 +110,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Binding for server '" + serverId + "' outdated</b>",
+      "<b>CodeScan - Binding for server '" + serverId + "' outdated</b>",
       UPDATE_SERVER_MSG,
       NotificationType.WARNING, new OpenGeneralSettingsNotificationListener(myProject));
     notification.setImportant(true);

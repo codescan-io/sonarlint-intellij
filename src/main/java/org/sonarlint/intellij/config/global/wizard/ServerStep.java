@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -123,7 +123,7 @@ public class ServerStep extends AbstractWizardStepEx {
 
   private void load(boolean editing) {
     Icon sqIcon = SonarLintIcons.icon("SonarQube");
-    Icon clIcon = SonarLintIcons.icon("SonarCloud");
+    Icon clIcon = SonarLintIcons.icon("CodeScan");
 
     if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || model.getServerType() == null) {
       radioSonarCloud.setSelected(true);
@@ -233,7 +233,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void createUIComponents() {
-    sonarcloudIcon = new JLabel(SonarLintIcons.icon("SonarCloud"));
+    sonarcloudIcon = new JLabel(SonarLintIcons.icon("CodeScan"));
     sonarqubeIcon = new JLabel(SonarLintIcons.icon("SonarQube"));
     sonarcloudText = SwingHelper.createHtmlViewer(false, null, null, null);
     sonarqubeText = SwingHelper.createHtmlViewer(false, null, null, null);

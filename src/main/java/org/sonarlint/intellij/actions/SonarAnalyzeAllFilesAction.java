@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -91,8 +91,8 @@ public class SonarAnalyzeAllFilesAction extends AbstractSonarAction {
 
   private static boolean showWarning() {
     int result = Messages.showYesNoDialog("Analysing all files may take a considerable amount of time to complete. "
-        + "To get the best from SonarLint, you should preferably use the automatic analysis of the file you're working on.",
-      "SonarLint - Analyze All Files",
+        + "To get the best from CodeScan, you should preferably use the automatic analysis of the file you're working on.",
+      "CodeScan - Analyze All Files",
       "Proceed", "Cancel", Messages.getWarningIcon());
     return result == Messages.OK;
   }

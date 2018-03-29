@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -65,8 +65,8 @@ public class SonarLintIssuesPanel extends AbstractIssuesPanel implements DataPro
     SonarLintActions sonarLintActions = SonarLintActions.getInstance();
     List<AnAction> list = new ArrayList<>();
     list.add(sonarLintActions.analyzeCurrentFile());
-    list.add(ActionManager.getInstance().getAction("SonarLint.toolwindow.Cancel"));
-    list.add(ActionManager.getInstance().getAction("SonarLint.toolwindow.Configure"));
+    list.add(ActionManager.getInstance().getAction("CodeScan.toolwindow.Cancel"));
+    list.add(ActionManager.getInstance().getAction("CodeScan.toolwindow.Configure"));
     list.add(sonarLintActions.clearIssues());
 
     return list;

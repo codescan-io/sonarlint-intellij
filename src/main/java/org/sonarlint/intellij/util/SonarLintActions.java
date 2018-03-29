@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -33,7 +33,7 @@ import org.sonarlint.intellij.actions.SonarClearAnalysisResults;
 import org.sonarlint.intellij.actions.SonarClearIssues;
 
 /**
- * Creates and keeps a single instance of actions used by SonarLint.
+ * Creates and keeps a single instance of actions used by CodeScan.
  * Some actions are created programmatically instead of being declared in plugin.xml so that they are not registered in
  * ActionManager, becoming accessible from the action search.
  */
@@ -49,29 +49,29 @@ public class SonarLintActions implements ApplicationComponent {
   private AnAction showAnalyzersAction;
 
   private void init() {
-    cancelAction = ActionManager.getInstance().getAction("SonarLint.toolwindow.Cancel");
-    configureAction = ActionManager.getInstance().getAction("SonarLint.toolwindow.Configure");
+    cancelAction = ActionManager.getInstance().getAction("CodeScan.toolwindow.Cancel");
+    configureAction = ActionManager.getInstance().getAction("CodeScan.toolwindow.Configure");
 
     clearResultsAction = new SonarClearAnalysisResults("Clear Project Files Issues",
       "Clear analysis results",
       SonarLintIcons.CLEAN);
-    clearIssuesAction = new SonarClearIssues("Clear SonarLint Issues",
-      "Clear SonarLint issues",
+    clearIssuesAction = new SonarClearIssues("Clear CodeScan Issues",
+      "Clear CodeScan issues",
       SonarLintIcons.CLEAN);
-    cleanConsoleAction = new SonarCleanConsole("Clear SonarLint Console",
-      "Clear SonarLint console",
+    cleanConsoleAction = new SonarCleanConsole("Clear CodeScan Console",
+      "Clear CodeScan console",
       SonarLintIcons.CLEAN);
     analyzeAllFilesAction = new SonarAnalyzeAllFilesAction("Analyze All Project Files",
-      "Run a SonarLint analysis on all project files",
+      "Run a CodeScan analysis on all project files",
       SonarLintIcons.PLAY);
     analyzeCurrentFileAction = new SonarAnalyzeFilesAction("Analyze Currently Selected File",
-      "Run a SonarLint analysis on the file that is currently selected in the editor",
+      "Run a CodeScan analysis on the file that is currently selected in the editor",
       SonarLintIcons.PLAY);
     analyzeChangedFilesAction = new SonarAnalyzeChangedFilesAction("Analyze VCS Changed Files",
-      "Run a SonarLint analysis on VCS changed files",
+      "Run a CodeScan analysis on VCS changed files",
       SonarLintIcons.PLAY);
 
-    showAnalyzersAction = ActionManager.getInstance().getAction("SonarLint.toolwindow.Analyzers");
+    showAnalyzersAction = ActionManager.getInstance().getAction("CodeScan.toolwindow.Analyzers");
   }
 
   public static SonarLintActions getInstance() {
