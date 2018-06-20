@@ -35,6 +35,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
+
+import org.sonarlint.intellij.config.global.SonarQubeServer;
 import org.sonarlint.intellij.core.ProjectBindingManager;
 import org.sonarlint.intellij.core.SonarLintFacade;
 import org.sonarlint.intellij.ui.SonarLintConsole;
@@ -43,6 +45,8 @@ import org.sonarsource.sonarlint.core.client.api.common.ProgressMonitor;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.AnalysisResults;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.ClientInputFile;
 import org.sonarsource.sonarlint.core.client.api.common.analysis.IssueListener;
+import org.sonarsource.sonarlint.core.client.api.connected.ConnectedSonarLintEngine;
+import org.sonarsource.sonarlint.core.client.api.connected.ServerConfiguration;
 
 public class SonarLintAnalyzer {
   private static final Logger LOG = Logger.getInstance(SonarLintAnalyzer.class);
@@ -82,6 +86,20 @@ public class SonarLintAnalyzer {
     long start = System.currentTimeMillis();
 
     SonarLintFacade facade = projectBindingManager.getFacade(true);
+
+    SonarQubeServer server;
+    if ( (server = projectBindingManager.getSonarQubeServerSkipChecks() ) != null ){
+      //pass sonar host credentials in so that we can resolve license.
+      pluginProps.put("sonar.host.url", server.getHostUrl());
+      pluginProps.put("sonar.organization", server.getOrganizationKey());
+      if ( server.getToken() != null ){
+        pluginProps.put("sonar.login", server.getToken());
+        console.info(server.getToken());
+      }else{
+        pluginProps.put("sonar.login", server.getLogin());
+        pluginProps.put("sonar.password", server.getPassword());
+      }
+    }
 
     String what;
     if (filesToAnalyze.size() == 1) {
