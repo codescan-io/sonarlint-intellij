@@ -149,13 +149,13 @@ public class SonarQubeServerMgmtPanel implements Disposable, ConfigurationPanel<
     serverList.setCellRenderer(new ColoredListCellRenderer<SonarQubeServer>() {
       @Override
       protected void customizeCellRenderer(JList list, SonarQubeServer server, int index, boolean selected, boolean hasFocus) {
-        if (server.isSonarCloud()) {
+        if (server.isCodeScanCloud()) {
           setIcon(SonarLintIcons.ICON_SONARCLOUD_16);
         } else {
           setIcon(SonarLintIcons.ICON_SONARQUBE_16);
         }
         append(server.getName(), SimpleTextAttributes.REGULAR_ATTRIBUTES);
-        if (!server.isSonarCloud()) {
+        if (!server.isCodeScanCloud()) {
           append("    (" + server.getHostUrl() + ")", SimpleTextAttributes.GRAYED_ATTRIBUTES, false);
         }
       }

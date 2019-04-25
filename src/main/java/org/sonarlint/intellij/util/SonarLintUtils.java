@@ -89,7 +89,7 @@ public class SonarLintUtils {
     return t;
   }
 
-  public static boolean isSonarCloudAlias(@Nullable String url) {
+  public static boolean isCodeScanCloudAlias(@Nullable String url) {
     return Arrays.asList(SONARCLOUD_ALIAS).contains(url);
   }
 

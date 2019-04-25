@@ -42,7 +42,7 @@ import org.sonarsource.sonarlint.core.client.api.notifications.SonarQubeNotifica
 import org.sonarsource.sonarlint.core.notifications.SonarQubeNotifications;
 
 public class SonarQubeEventNotifications extends AbstractProjectComponent {
-  public static final String GROUP_SONARQUBE_EVENT = "SonarLint: SonarQube Events";
+  public static final String GROUP_SONARQUBE_EVENT = "CodeScan: CodeScan Events";
 
   private final ProjectBindingManager bindingManager;
   private final SonarLintProjectState projectState;

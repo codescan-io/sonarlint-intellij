@@ -57,9 +57,9 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
 
   private JComponent createSonarLintPanel() {
     JBLabel sonarlintIcon = new JBLabel(SonarLintIcons.SONARLINT_32);
-    JBLabel title = new JBLabel("<html><b>SonarLint IntelliJ " + application.getVersion() + "</b></html>");
-    HyperlinkLabel linkLabel = new HyperlinkLabel("intellij.sonarlint.org");
-    linkLabel.addHyperlinkListener(e -> BrowserUtil.browse("http://intellij.sonarlint.org"));
+    JBLabel title = new JBLabel("<html><b>CodeScan IntelliJ " + application.getVersion() + "</b></html>");
+    HyperlinkLabel linkLabel = new HyperlinkLabel("codescan.io");
+    linkLabel.addHyperlinkListener(e -> BrowserUtil.browse("https://www.codescan.io/ide/intellij/"));
     JBLabel copyrightLabel = new JBLabel("<html>&copy; " + LocalDate.now().getYear() + " SonarSource</html>");
 
     JPanel infoPanel = new JPanel(new GridBagLayout());
@@ -99,7 +99,7 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
           + "    \"days_since_installation\": 120,\n"
           + "    \"days_of_use\": 40,\n"
           + "    \"sonarlint_version\": \"2.9\",\n"
-          + "    \"sonarlint_product\": \"SonarLint IntelliJ\",\n"
+          + "    \"sonarlint_product\": \"CodeScan IntelliJ\",\n"
           + "    \"ide_version\": \"IntelliJ IDEA 2020.1\",\n"
           + "    \"os\": \"Linux\",\n"
           + "    \"jre\": \"11.0.6\",\n"

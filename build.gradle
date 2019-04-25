@@ -83,7 +83,6 @@ dependencies {
   testImplementation 'org.mockito:mockito-core:2.19.0'
   sqplugins (
   )
-  typescript "typescript:typescript:${typescriptVersion}@tgz"
 }
 
 task cleanSQPlugins(type: Delete) {

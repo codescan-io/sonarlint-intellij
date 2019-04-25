@@ -53,14 +53,14 @@ public class TelemetryManagerProvider {
 
   public TelemetryManager get() {
     TelemetryClientConfig clientConfig = getTelemetryClientConfig();
-    TelemetryClient client = new TelemetryClient(clientConfig, PRODUCT, application.getVersion(), SonarLintUtils.getIdeVersionForTelemetry());
-    return new TelemetryManager(getStorageFilePath(), client, this::isAnyProjectConnected, this::isAnyProjectConnectedToSonarCloud);
+    TelemetryClient client = new TelemetryClient(clientConfig, PRODUCT, application.getVersion());
+    return new TelemetryManager(getStorageFilePath(), client, this::isAnyProjectConnected, this::isAnyProjectConnectedToCodeScanCloud);
   }
 
   private static TelemetryClientConfig getTelemetryClientConfig() {
     CertificateManager certificateManager = CertificateManager.getInstance();
     TelemetryClientConfig.Builder clientConfigBuilder = new TelemetryClientConfig.Builder()
-      .userAgent("SonarLint")
+      .userAgent("CodeScan")
       .sslSocketFactory(certificateManager.getSslContext().getSocketFactory())
       .sslTrustManager(certificateManager.getCustomTrustManager());
 
@@ -84,12 +84,12 @@ public class TelemetryManagerProvider {
     return Arrays.stream(openProjects).anyMatch(p -> SonarLintUtils.get(p, SonarLintProjectSettings.class).isBindingEnabled());
   }
 
-  private boolean isAnyProjectConnectedToSonarCloud() {
+  private boolean isAnyProjectConnectedToCodeScanCloud() {
     Project[] openProjects = projectManager.getOpenProjects();
     return Arrays.stream(openProjects).anyMatch(p -> {
       try {
         ProjectBindingManager bindingManager = SonarLintUtils.get(p, ProjectBindingManager.class);
-        return bindingManager.getSonarQubeServer().isSonarCloud();
+        return bindingManager.getSonarQubeServer().isCodeScanCloud();
       } catch (InvalidBindingException e) {
         return false;
       }

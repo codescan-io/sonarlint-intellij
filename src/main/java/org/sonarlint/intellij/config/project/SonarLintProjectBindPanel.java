@@ -320,8 +320,8 @@ public class SonarLintProjectBindPanel {
       }
 
       append(value.getName(), attrs, true);
-      setToolTipText("Bind project using this connection");
-      if (value.isSonarCloud()) {
+      setToolTipText("Connect to this CodeScan server");
+      if (value.isCodeScanCloud()) {
         setIcon(SonarLintIcons.ICON_SONARCLOUD_16);
       } else {
         setIcon(SonarLintIcons.ICON_SONARQUBE_16);

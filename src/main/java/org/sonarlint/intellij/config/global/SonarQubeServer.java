@@ -126,8 +126,8 @@ public class SonarQubeServer {
     }
   }
 
-  public boolean isSonarCloud() {
-    return SonarLintUtils.isSonarCloudAlias(hostUrl);
+  public boolean isCodeScanCloud() {
+    return SonarLintUtils.isCodeScanCloudAlias(hostUrl);
   }
 
   public boolean enableProxy() {

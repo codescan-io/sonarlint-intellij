@@ -228,7 +228,7 @@ public class RuleConfigurationPanel implements ConfigurationPanel<SonarLintGloba
 
     GridBagConstraints gbc = new GridBagConstraints(0, 0, 1, 1, 1, 0,
       GridBagConstraints.FIRST_LINE_START, GridBagConstraints.HORIZONTAL, JBUI.insets(5, 5, 5, 5), 0, 0);
-    JBLabel label = new JBLabel("<html><b>Note: </b>When a project is connected to a SonarQube server or SonarCloud, configuration from the server applies.</html>");
+    JBLabel label = new JBLabel("<html><b>Note: </b>When a project is connected to a CodeScan server or CodeScanCloud, configuration from the server applies.</html>");
     panel.add(label, gbc);
 
     // filters
