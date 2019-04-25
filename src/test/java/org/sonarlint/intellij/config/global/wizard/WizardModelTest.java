@@ -67,7 +67,7 @@ public class WizardModelTest {
   }
 
   @Test
-  public void testExportSonarCloud() {
+  public void testExportCodeScanCloud() {
     WizardModel model = new WizardModel();
     model.setName("name");
     model.setOrganizationKey("org");

@@ -42,11 +42,11 @@ public class ServerConnectionTest {
     assertThat(server.getHostUrl()).isEqualTo("host");
 
     assertThat(server.toString()).isEqualTo(server.getName());
-    assertThat(server.isSonarCloud()).isFalse();
+    assertThat(server.isCodeScanCloud()).isFalse();
   }
 
   @Test
-  public void testSonarCloud() {
+  public void testCodeScanCloud() {
     ServerConnection server1 = ServerConnection.newBuilder()
       .setHostUrl("https://sonarqube.com")
       .setPassword("pass")
@@ -54,7 +54,7 @@ public class ServerConnectionTest {
       .setName("name")
       .setLogin("login")
       .build();
-    assertThat(server1.isSonarCloud()).isTrue();
+    assertThat(server1.isCodeScanCloud()).isTrue();
   }
 
   @Test

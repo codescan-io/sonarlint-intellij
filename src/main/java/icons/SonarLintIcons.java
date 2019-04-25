@@ -28,9 +28,11 @@ import javax.swing.Icon;
 public class SonarLintIcons {
   public static final Icon ICON_SONARQUBE = IconLoader.getIcon("/images/SonarQube.png");
   public static final Icon ICON_SONARCLOUD = IconLoader.getIcon("/images/SonarCloud.png");
+  public static final Icon ICON_CODESCAN = IconLoader.getIcon("/images/CodeScan.png");
 
   public static final Icon ICON_SONARQUBE_16 = IconLoader.getIcon("/images/onde-sonar-16.png");
   public static final Icon ICON_SONARCLOUD_16 = IconLoader.getIcon("/images/sonarcloud-16.png");
+  public static final Icon ICON_CODESCAN_16 = IconLoader.getIcon("/images/codescan-16.png");
 
   public static final Icon SONARLINT_TOOLWINDOW = IconLoader.getIcon("/images/sonarlintToolWindow.svg");
   public static final Icon SONARLINT_ACTION = IconLoader.getIcon("/images/sonarlintAction.svg");
