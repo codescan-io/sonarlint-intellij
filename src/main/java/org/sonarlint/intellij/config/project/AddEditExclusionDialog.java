@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -66,20 +66,20 @@ public class AddEditExclusionDialog extends DialogWrapper {
   public AddEditExclusionDialog(Project project) {
     super(project, false);
     this.project = project;
-    setTitle("Add SonarLint File Exclusion");
+    setTitle("Add CodeScan File Exclusion");
     init();
 
     FileChooserDescriptor fileChooser = new FileChooserDescriptor(true, false, false,
       true, false, false);
     fileChooser.setRoots(ProjectRootManager.getInstance(project).getContentRoots());
     fileTextField.addBrowseFolderListener("Select File to Exclude",
-      "Select the file which will be excluded from SonarLint analysis",
+      "Select the file which will be excluded from CodeScan analysis",
       project, fileChooser);
 
     FileChooserDescriptor directoryChooser = FileChooserDescriptorFactory.createSingleFolderDescriptor();
     directoryChooser.setRoots(ProjectRootManager.getInstance(project).getContentRoots());
     directoryTextField.addBrowseFolderListener("Select Directory to Exclude",
-      "Select the directory which will be excluded from SonarLint analysis",
+      "Select the directory which will be excluded from CodeScan analysis",
       project, directoryChooser);
 
     DocumentListener docListener = new DocumentAdapter() {
@@ -140,7 +140,7 @@ public class AddEditExclusionDialog extends DialogWrapper {
   }
 
   public void setExclusion(@Nullable ExclusionItem item) {
-    setTitle("Edit SonarLint File Exclusion");
+    setTitle("Edit CodeScan File Exclusion");
 
     if (item != null) {
       switch (item.type()) {

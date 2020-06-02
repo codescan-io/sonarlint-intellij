@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -26,7 +26,7 @@ import org.sonarlint.intellij.analysis.AnalysisRequest;
  * Notifies about analysis tasks starting. It will be called for any analysis task, regardless of the trigger, if it is background or not, etc.
  */
 public interface AnalysisListener {
-  Topic<AnalysisListener> TOPIC = Topic.create("SonarLint analysis start", AnalysisListener.class);
+  Topic<AnalysisListener> TOPIC = Topic.create("CodeScan analysis start", AnalysisListener.class);
 
   void started(AnalysisRequest analysisRequest);
 

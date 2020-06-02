@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -108,7 +108,7 @@ public class ProjectBindingManager {
   public ConnectedSonarLintEngine getConnectedEngine() throws InvalidBindingException {
     SonarLintProjectSettings projectSettings = getSettingsFor(myProject);
     if (!projectSettings.isBindingEnabled()) {
-      throw new IllegalStateException("Project is not bound to a SonarQube project");
+      throw new IllegalStateException("Project is not bound to a CodeScan project");
     }
     SonarLintProjectNotifications notifications = getService(myProject, SonarLintProjectNotifications.class);
     String connectionName = projectSettings.getConnectionName();

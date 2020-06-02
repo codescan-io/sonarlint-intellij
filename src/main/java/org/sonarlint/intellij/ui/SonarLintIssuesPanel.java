@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -73,9 +73,9 @@ public class SonarLintIssuesPanel extends AbstractIssuesPanel implements Disposa
   private static Collection<AnAction> actions() {
     SonarLintActions sonarLintActions = SonarLintActions.getInstance();
     List<AnAction> list = new ArrayList<>();
-    list.add(ActionManager.getInstance().getAction("SonarLint.AnalyzeFiles"));
-    list.add(ActionManager.getInstance().getAction("SonarLint.toolwindow.Cancel"));
-    list.add(ActionManager.getInstance().getAction("SonarLint.toolwindow.Configure"));
+    list.add(ActionManager.getInstance().getAction("CodeScan.AnalyzeFiles"));
+    list.add(ActionManager.getInstance().getAction("CodeScan.toolwindow.Cancel"));
+    list.add(ActionManager.getInstance().getAction("CodeScan.toolwindow.Configure"));
     list.add(sonarLintActions.clearIssues());
 
     return list;

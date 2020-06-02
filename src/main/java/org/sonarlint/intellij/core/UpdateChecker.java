@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -62,7 +62,7 @@ public class UpdateChecker implements Disposable {
 
   private void checkForUpdate() {
     ProgressManager.getInstance()
-      .run(new Task.Backgroundable(myProject, "Checking SonarLint Binding Updates") {
+      .run(new Task.Backgroundable(myProject, "Checking CodeScan Binding Updates") {
         public void run(@NotNull ProgressIndicator progressIndicator) {
           UpdateChecker.this.checkForUpdate(progressIndicator);
         }

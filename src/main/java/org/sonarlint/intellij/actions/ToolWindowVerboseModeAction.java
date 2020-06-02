@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -29,7 +29,7 @@ import static org.sonarlint.intellij.config.Settings.getSettingsFor;
 
 public class ToolWindowVerboseModeAction extends ToggleAction implements DumbAware {
   public ToolWindowVerboseModeAction() {
-    super("Verbose output", "Enable verbose output for SonarLint analysis",
+    super("Verbose output", "Enable verbose output for CodeScan analysis",
       AllIcons.Actions.StartDebugger);
   }
 

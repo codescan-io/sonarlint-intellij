@@ -1,4 +1,4 @@
-Please review our [contribution guidelines](https://github.com/SonarSource/sonarlint-intellij/blob/master/contributing.md).
+Please review our [contribution guidelines](https://github.com/SonarSource/codescan-intellij/blob/master/contributing.md).
 
 And please ensure your pull request adheres to the following guidelines: 
 

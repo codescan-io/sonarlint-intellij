@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -36,7 +36,7 @@ public class DisableRuleAction extends AnAction {
   public static final DataKey<LiveIssue> ISSUE_DATA_KEY = DataKey.create("sonarlint_issue");
 
   public DisableRuleAction() {
-    super("Disable Rule", "Disable the SonarLint rule that activated this rule", AllIcons.Actions.Cancel);
+    super("Disable Rule", "Disable the CodeScan rule that activated this rule", AllIcons.Actions.Cancel);
   }
 
   @Override public void actionPerformed(AnActionEvent e) {

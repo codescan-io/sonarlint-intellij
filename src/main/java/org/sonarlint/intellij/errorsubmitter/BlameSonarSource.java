@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -51,7 +51,7 @@ public class BlameSonarSource extends ErrorReportSubmitter {
   private static final String COMMUNITY_ROOT_URL = "https://community.sonarsource.com/";
   private static final String COMMUNITY_FAULT_CATEGORY_URL = COMMUNITY_ROOT_URL + "tags/c/" + BUG_FAULT_CATEGORY_ID + "/" + INTELLIJ_TAG;
   private static final String COMMUNITY_NEW_TOPIC_URL = COMMUNITY_ROOT_URL + "new-topic"
-    + "?title=Error+in+SonarLint+for+IntelliJ"
+    + "?title=Error+in+CodeScan+for+IntelliJ"
     + "&category_id=" + BUG_FAULT_CATEGORY_ID
     + "&tags=sonarlint," + INTELLIJ_TAG;
 
@@ -89,7 +89,7 @@ public class BlameSonarSource extends ErrorReportSubmitter {
     body.append("* Java: ").append(System.getProperty("java.vendor")).append(" ").append(System.getProperty("java.version")).append("\n");
     body.append("* OS: ").append(System.getProperty("os.name")).append(" ").append(System.getProperty("os.arch")).append("\n");
     body.append("* IDE: ").append(ApplicationInfo.getInstance().getFullApplicationName()).append("\n");
-    body.append("* SonarLint: ").append(SonarLintUtils.getService(SonarLintPlugin.class).getVersion()).append("\n");
+    body.append("* CodeScan: ").append(SonarLintUtils.getService(SonarLintPlugin.class).getVersion()).append("\n");
     body.append("\n");
     if (additionalInfo != null) {
       body.append(additionalInfo);

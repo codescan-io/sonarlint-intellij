@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -126,7 +126,7 @@ public class ServerStep extends AbstractWizardStepEx {
         sqIcon = SonarLintIcons.toDisabled(sqIcon);
       }
     } else {
-      radioSonarQube.setSelected(true);
+      radioCodeScan.setSelected(true);
       urlText.setText(model.getServerUrl());
       if (editing) {
         clIcon = SonarLintIcons.toDisabled(clIcon);
@@ -146,7 +146,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void selectionChanged() {
-    boolean sq = radioSonarQube.isSelected();
+    boolean sq = radioCodeScan.isSelected();
 
     urlText.setEnabled(sq);
     urlLabel.setEnabled(sq);
@@ -194,7 +194,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void validateUrl() throws CommitStepException {
-    if (radioSonarQube.isSelected()) {
+    if (radioCodeScan.isSelected()) {
       try {
         URL url = new URL(urlText.getText());
         if (SonarLintUtils.isBlank(url.getHost())) {
@@ -229,7 +229,7 @@ public class ServerStep extends AbstractWizardStepEx {
 
   private void createUIComponents() {
     codescanCloudIcon = new JLabel(SonarLintIcons.ICON_CODESCAN);
-    sonarqubeIcon = new JLabel(SonarLintIcons.ICON_SONARQUBE);
+    sonarqubeIcon = new JLabel(SonarLintIcons.ICON_CODESCAN);
     sonarcloudText = SwingHelper.createHtmlViewer(false, null, null, null);
     sonarqubeText = SwingHelper.createHtmlViewer(false, null, null, null);
 
