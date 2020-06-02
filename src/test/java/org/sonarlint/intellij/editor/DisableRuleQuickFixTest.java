@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -51,13 +51,13 @@ public class DisableRuleQuickFixTest extends SonarTest {
 
   @Test
   public void text_should_mention_rule_key() {
-    assertThat(quickFix.getText()).isEqualTo("Disable SonarLint rule 'rule'");
+    assertThat(quickFix.getText()).isEqualTo("Disable CodeScan rule 'rule'");
   }
 
   @Test
   public void check_getters() {
     assertThat(quickFix.getIcon(0)).isEqualTo(AllIcons.Actions.Cancel);
-    assertThat(quickFix.getFamilyName()).isEqualTo("SonarLint disable rule");
+    assertThat(quickFix.getFamilyName()).isEqualTo("CodeScan disable rule");
     assertThat(quickFix.startInWriteAction()).isFalse();
   }
 

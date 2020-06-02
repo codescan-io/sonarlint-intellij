@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -71,7 +71,7 @@ public class ServerUpdateTask {
   }
 
   public Task.Modal asModal() {
-    return new Task.Modal(null, "Updating SonarQube server '" + server.getName() + "'", true) {
+    return new Task.Modal(null, "Updating CodeScan server '" + server.getName() + "'", true) {
       @Override public void run(@NotNull ProgressIndicator indicator) {
         ServerUpdateTask.this.run(indicator);
       }
@@ -79,7 +79,7 @@ public class ServerUpdateTask {
   }
 
   public Task.Backgroundable asBackground() {
-    return new Task.Backgroundable(null, "Updating SonarQube server '" + server.getName() + "'", true, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
+    return new Task.Backgroundable(null, "Updating CodeScan server '" + server.getName() + "'", true, PerformInBackgroundOption.ALWAYS_BACKGROUND) {
       @Override public void run(@NotNull ProgressIndicator indicator) {
         ServerUpdateTask.this.run(indicator);
       }
@@ -123,7 +123,7 @@ public class ServerUpdateTask {
   }
 
   private static String buildMinimumVersionFailMessage(Collection<SonarAnalyzer> failingAnalyzers) {
-    String msg = "The following plugins do not meet the required minimum versions, please upgrade them in SonarQube: ";
+    String msg = "The following plugins do not meet the required minimum versions, please upgrade them in CodeScan: ";
 
     return msg + failingAnalyzers.stream()
       .map(ServerUpdateTask::analyzerToString)

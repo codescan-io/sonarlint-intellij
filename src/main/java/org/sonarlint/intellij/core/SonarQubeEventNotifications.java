@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -140,7 +140,7 @@ public class SonarQubeEventNotifications extends AbstractProjectComponent {
   private class EventListener implements SonarQubeNotificationListener {
     @Override public void handle(SonarQubeNotification notification) {
       Notification notif = new Notification(GROUP_SONARQUBE_EVENT,
-        "<b>SonarQube event</b>",
+        "<b>CodeScan event</b>",
         createMessage(notification),
         NotificationType.INFORMATION,
         new NotificationListener.UrlOpeningListener(true));

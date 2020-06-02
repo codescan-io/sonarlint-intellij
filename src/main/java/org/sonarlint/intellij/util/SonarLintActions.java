@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -33,7 +33,7 @@ import org.sonarlint.intellij.actions.SonarClearAnalysisResultsAction;
 import org.sonarlint.intellij.actions.SonarClearIssuesAction;
 
 /**
- * Creates and keeps a single instance of actions used by SonarLint.
+ * Creates and keeps a single instance of actions used by CodeScan.
  * Some actions are created programmatically instead of being declared in plugin.xml so that they are not registered in
  * ActionManager, becoming accessible from the action search.
  */
@@ -56,29 +56,29 @@ public class SonarLintActions implements ApplicationComponent {
     AnAction analyzeMenu = actionManager.getAction("AnalyzeMenu");
     // some flavors of IDEA don't have the analyze menu
     if (analyzeMenu instanceof DefaultActionGroup) {
-      AnAction sonarLintAnalyzeMenu = actionManager.getAction("SonarLint.AnalyzeMenu");
+      AnAction sonarLintAnalyzeMenu = actionManager.getAction("CodeScan.AnalyzeMenu");
       DefaultActionGroup analyzeMenuGroup = (DefaultActionGroup) analyzeMenu;
       analyzeMenuGroup.add(sonarLintAnalyzeMenu);
     }
 
-    cancelAction = actionManager.getAction("SonarLint.toolwindow.Cancel");
-    configureAction = actionManager.getAction("SonarLint.toolwindow.Configure");
-    showAnalyzersAction = actionManager.getAction("SonarLint.toolwindow.Analyzers");
+    cancelAction = actionManager.getAction("CodeScan.toolwindow.Cancel");
+    configureAction = actionManager.getAction("CodeScan.toolwindow.Configure");
+    showAnalyzersAction = actionManager.getAction("CodeScan.toolwindow.Analyzers");
 
     clearResultsAction = new SonarClearAnalysisResultsAction("Clear Project Files Issues",
       "Clear analysis results",
       SonarLintIcons.CLEAN);
-    clearIssuesAction = new SonarClearIssuesAction("Clear SonarLint Issues",
-      "Clear SonarLint issues",
+    clearIssuesAction = new SonarClearIssuesAction("Clear CodeScan Issues",
+      "Clear CodeScan issues",
       SonarLintIcons.CLEAN);
-    cleanConsoleAction = new SonarCleanConsoleAction("Clear SonarLint Console",
-      "Clear SonarLint console",
+    cleanConsoleAction = new SonarCleanConsoleAction("Clear CodeScan Console",
+      "Clear CodeScan console",
       SonarLintIcons.CLEAN);
     analyzeAllFilesAction = new SonarAnalyzeAllFilesAction("Analyze All Project Files",
-      "Run a SonarLint analysis on all project files",
+      "Run a CodeScan analysis on all project files",
       SonarLintIcons.PROJECT);
     analyzeChangedFilesAction = new SonarAnalyzeChangedFilesAction("Analyze VCS Changed Files",
-      "Run a SonarLint analysis on VCS changed files",
+      "Run a CodeScan analysis on VCS changed files",
       SonarLintIcons.SCM);
   }
 

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -43,7 +43,7 @@ import org.sonarlint.intellij.trigger.TriggerType;
 import org.sonarlint.intellij.util.SonarLintUtils;
 
 public class SonarAnalyzeAllFilesAction extends AbstractSonarAction {
-  private static final String HIDE_WARNING_PROPERTY = "SonarLint.analyzeAllFiles.hideWarning";
+  private static final String HIDE_WARNING_PROPERTY = "CodeScan.analyzeAllFiles.hideWarning";
 
   public SonarAnalyzeAllFilesAction() {
     super();
@@ -90,8 +90,8 @@ public class SonarAnalyzeAllFilesAction extends AbstractSonarAction {
   static boolean showWarning() {
     if (!ApplicationManager.getApplication().isUnitTestMode() && !PropertiesComponent.getInstance().getBoolean(HIDE_WARNING_PROPERTY, false)) {
       int result = Messages.showYesNoDialog("Analysing all files may take a considerable amount of time to complete.\n"
-          + "To get the best from SonarLint, you should preferably use the automatic analysis of the file you're working on.",
-        "SonarLint - Analyze All Files",
+          + "To get the best from CodeScan, you should preferably use the automatic analysis of the file you're working on.",
+        "CodeScan - Analyze All Files",
         "Proceed", "Cancel", Messages.getWarningIcon(), new DoNotShowAgain());
       return result == Messages.OK;
     }

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -25,7 +25,7 @@ import javax.swing.Icon;
 
 public class SonarLintIcons {
   public static final Icon ICON_SONARQUBE_16 = IconLoader.getIcon("/images/onde-sonar-16.png");
-  public static final Icon ICON_SONARCLOUD_16 = IconLoader.getIcon("/images/sonarcloud-16.png");
+  public static final Icon ICON_SONARCLOUD_16 = IconLoader.getIcon("/images/codescan-16.png");
   public static final Icon ICON_SONARLINT_13 = IconLoader.getIcon("/images/ico-sonarlint-13.png");
 
   public static final Icon SONARLINT = IconLoader.getIcon("/images/sonarlint.png");

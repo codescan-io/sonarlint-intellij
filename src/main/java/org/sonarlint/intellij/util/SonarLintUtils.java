@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -211,7 +211,7 @@ public class SonarLintUtils {
     CertificateManager certificateManager = CertificateManager.getInstance();
     SonarApplication sonarlint = get(SonarApplication.class);
     ServerConfiguration.Builder serverConfigBuilder = ServerConfiguration.builder()
-      .userAgent("SonarLint IntelliJ " + sonarlint.getVersion())
+      .userAgent("CodeScan IntelliJ " + sonarlint.getVersion())
       .connectTimeoutMilliseconds(connectTimeout)
       .readTimeoutMilliseconds(readTimeout)
       .sslSocketFactory(certificateManager.getSslContext().getSocketFactory())

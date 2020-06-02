@@ -1,6 +1,6 @@
 <!--
 
-    SonarLint for IntelliJ IDEA
+    CodeScan for IntelliJ IDEA
     Copyright (C) 2015-2020 SonarSource
     sonarlint@sonarsource.com
 
@@ -20,30 +20,30 @@
 
 -->
 <idea-plugin url="http://www.sonarlint.org">
-    <id>org.sonarlint.idea</id>
-    <name>SonarLint</name>
+    <id>com.code-scan.intellij</id>
+    <name>CodeScan</name>
     <version>${project.version}</version>
-    <vendor url="http://www.sonarsource.com">SonarSource</vendor>
+    <vendor email="support@code-scan.com" url="http://www.code-scan.com">CodeScan</vendor>
 
     <description><![CDATA[
         <html>
             <p>
-                SonarLint is a free IDE extension that lets you fix bugs and vulnerabilities as you write code!
-                Like a spell checker, SonarLint highlights coding issues on the fly, with clear remediation
+                CodeScan is a free IDE extension that lets you fix bugs and vulnerabilities as you write code!
+                Like a spell checker, CodeScan highlights coding issues on the fly, with clear remediation
                 guidance so you can fix them before the code is even committed. Across popular IDEs (Eclipse,
-                IntelliJ, Visual Studio, VS Code) and popular programming languages, SonarLint helps all developers
+                IntelliJ, Visual Studio, VS Code) and popular programming languages, CodeScan helps all developers
                 write better and safer code!
             </p>
             <br/>
             <p>
-                SonarLint supports all JetBrains IDE, including IntelliJ, WebStorm, PhpStorm, PyCharm and RubyMine.
+                CodeScan supports all JetBrains IDE, including IntelliJ, WebStorm, PhpStorm, PyCharm and RubyMine.
                 It can analyze code written in Java, JavaScript, TypeScript, Python, Kotlin, Ruby, HTML & PHP.
             </p>
             <br/>
             <p>
-                If your project is analyzed on SonarQube or on SonarCloud, SonarLint can connect to 
+                If your project is analyzed on CodeScan or on CodeScanCloud, CodeScan can connect to 
                 the server to retrieve the appropriate quality profiles and settings for that project. Java 8 
-                is required to run SonarLint; analysis of JavaScript and TypeScript requires Node.js >= 8.
+                is required to run CodeScan; analysis of JavaScript and TypeScript requires Node.js >= 8.
             </p>
         </html>
       ]]></description>
@@ -61,18 +61,18 @@
         <li>4.1 - Enable analysis of HTML. Add support of XML in connected mode. 10 new Java rules.</li>
         <li>4.0.2 - Fix error on startup registering actions affecting all IDEs other than IntelliJ</li>
         <li>4.0.1 - Fix duplicated highlighting in WebStorm and connection to a server with more than 10k rules</li>
-        <li>4.0 - Improved matching of issues with SonarQube</li>
+        <li>4.0 - Improved matching of issues with CodeScan</li>
         <li>3.5.1 - Fixed error with read access and repeated annotations</li>
-        <li>3.5 - Manage rules when not connected to SonarQube or SonarCloud</li>
-        <li>3.4.2 - Fix a regression in the SonarQube server configuration wizard</li>
-        <li>3.4.1 - Fix of several bugs: binding to SonarCloud organizations, support of Java 10, rendering of rule descriptions</li>
+        <li>3.5 - Manage rules when not connected to CodeScan or CodeScanCloud</li>
+        <li>3.4.2 - Fix a regression in the CodeScan server configuration wizard</li>
+        <li>3.4.1 - Fix of several bugs: binding to CodeScanCloud organizations, support of Java 10, rendering of rule descriptions</li>
         <li>3.4 - Update of embedded code analyzers. Fix analysis of files located outside of the project base directory</li>
         <li>3.3 - Numerous improvements and UX enhancements.</li>
         <li>3.2.1 - Bug fix for concurrent modification when all files of a module are excluded by server configuration</li>
         <li>3.2 - Support excluding files from the automatic analysis</li>
         <li>3.1 - Various minor improvements and bug fixes. Updated code analyzers.</li>
         <li>3.0 - Avoid saving files when possible. Improve support of cancellation</li>
-        <li>2.10 - Support of SonarQube organizations</li>
+        <li>2.10 - Support of CodeScan organizations</li>
         <li>2.9 - New code analyzers included in standalone mode. Collection of usage statistics</li>
         <li>2.8 - Analyze all files in project. New icons for issue types</li>
         <li>2.7 - Display of secondary locations of issues</li>
@@ -81,22 +81,22 @@
         <li>2.4.3 - Bug fix for multi-module projects on Windows</li>
         <li>2.4.2 - Fix resolved issues on windows and authentication</li>
         <li>2.4.1 - Bug fix of Javascript in standalone mode.</li>
-        <li>2.4 - Hide issues that are resolved in SonarQube. Numerous bug fixes.</li>
+        <li>2.4 - Hide issues that are resolved in CodeScan. Numerous bug fixes.</li>
         <li>2.3.2 - Fix configuration of automatic trigger of analysis</li>
         <li>2.3.1 - Bug fix for analysis configuration and performance improvements</li>
-        <li>2.3 - Support of exclusions in connected mode; Numerous bug fixes. Java 8 is now required to run SonarLint.</li>
-        <li>2.2 - Support of SonarQube LTS (4.5) and commercial plugins</li>
+        <li>2.3 - Support of exclusions in connected mode; Numerous bug fixes. Java 8 is now required to run CodeScan.</li>
+        <li>2.2 - Support of CodeScan LTS (4.5) and commercial plugins</li>
         <li>2.1.1 - Bug fix for PHPStorm</li>
         <li>2.1 - Various improvements and bug fixes</li>
         <li>2.0.2 - Bug fix SLI-73</li>
         <li>2.0.1 - Bug fixes</li>
-        <li>2.0 - Connect to a SonarQube server;</li>
-        <li>1.5 - Display SonarLint markers age;</li>
+        <li>2.0 - Connect to a CodeScan server;</li>
+        <li>1.5 - Display CodeScan markers age;</li>
         <li>1.4 - No internet required; Several bug fixes;</li>
         <li>1.3 - Issues views; UI improvements;</li>
         <li>1.2 - Automatic trigger of analysis; "NO SONAR" quick fix; configurable highlighting of issues;</li>
-        <li>1.1 - More precise issue location; trigger of analysis changed to on demand only; improved SonarLint console;</li>
-        <li>1.0 - On the fly SonarLint inspection</li>
+        <li>1.1 - More precise issue location; trigger of analysis changed to on demand only; improved CodeScan console;</li>
+        <li>1.0 - On the fly CodeScan inspection</li>
       </ul>
       ]]>
     </change-notes>
@@ -226,10 +226,10 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <codeInsight.linkHandler prefix="#sonarissue/" handlerClass="org.sonarlint.intellij.editor.SonarLinkHandler"/>
-        <toolWindow id="SonarLint" anchor="bottom" icon="/images/ico-sonarlint-13.png" factoryClass="org.sonarlint.intellij.ui.SonarLintToolWindowFactory"/>
-        <applicationConfigurable groupId="tools" id="sonarlint" displayName="SonarLint" instance="org.sonarlint.intellij.config.global.SonarLintGlobalConfigurable"/>
+        <toolWindow id="CodeScan" anchor="bottom" icon="/images/ico-sonarlint-13.png" factoryClass="org.sonarlint.intellij.ui.SonarLintToolWindowFactory"/>
+        <applicationConfigurable groupId="tools" id="sonarlint" displayName="CodeScan" instance="org.sonarlint.intellij.config.global.SonarLintGlobalConfigurable"/>
         <projectConfigurable parentId="sonarlint" displayName="Project Settings" instance="org.sonarlint.intellij.config.project.SonarLintProjectConfigurable" nonDefaultProject="true"/>
-        <moduleConfigurable id="SonarLint" displayName="SonarLint" instance="org.sonarlint.intellij.config.module.SonarLintModuleConfigurable"/>
+        <moduleConfigurable id="CodeScan" displayName="CodeScan" instance="org.sonarlint.intellij.config.module.SonarLintModuleConfigurable"/>
         <colorSettingsPage implementation="org.sonarlint.intellij.config.SonarLintColorSettingsPage"/>
         <checkinHandlerFactory implementation="org.sonarlint.intellij.trigger.SonarLintCheckinHandlerFactory"/>
         <additionalTextAttributes scheme="Default" file="colorSchemes/SonarLintDefault.xml"/>
@@ -246,56 +246,56 @@
 
     <actions>
         <!-- Some actions are defined in SonarLintActions so that they aren't registered in ActionManager -->
-        <group id="SonarLint.AnalyzeMenu" text="SonarLint" popup="false" icon="/images/ico-sonarlint-13.png">
+        <group id="CodeScan.AnalyzeMenu" text="CodeScan" popup="false" icon="/images/ico-sonarlint-13.png">
             <separator/>
             <!-- This group is programmatically added to AnalyzeMenu if it exists -->
         </group>
 
-        <action id="SonarLint.AnalyzeFiles"
+        <action id="CodeScan.AnalyzeFiles"
                 class="org.sonarlint.intellij.actions.SonarAnalyzeFilesAction"
-                text="Analyze with SonarLint"
-                description="Run SonarLint analysis on selected file(s)"
+                text="Analyze with CodeScan"
+                description="Run CodeScan analysis on selected file(s)"
                 icon="SonarLintIcons.SONARLINT">
             <keyboard-shortcut first-keystroke="shift ctrl S" keymap="$default"/>
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <add-to-group group-id="SonarLint.AnalyzeMenu"/>
+            <add-to-group group-id="CodeScan.AnalyzeMenu"/>
         </action>
 
-        <group id="SonarLint.ProjectViewPopupMenu" text="SonarLint" popup="true" icon="/images/ico-sonarlint-13.png">
-            <reference ref="SonarLint.AnalyzeFiles"/>
-            <action id="SonarLint.Exclude"
+        <group id="CodeScan.ProjectViewPopupMenu" text="CodeScan" popup="true" icon="/images/ico-sonarlint-13.png">
+            <reference ref="CodeScan.AnalyzeFiles"/>
+            <action id="CodeScan.Exclude"
                     class="org.sonarlint.intellij.actions.ExcludeFileAction"
-                    text="Exclude from SonarLint analysis"
-                    description="Adds resources to the list exclusions in the SonarLint project settings"
+                    text="Exclude from CodeScan analysis"
+                    description="Adds resources to the list exclusions in the CodeScan project settings"
                     icon="SonarLintIcons.SONARLINT">
             </action>
             <add-to-group group-id="ProjectViewPopupMenu"/>
         </group>
 
-        <action id="SonarLint.AnalyzeChangedFiles"
+        <action id="CodeScan.AnalyzeChangedFiles"
                 class="org.sonarlint.intellij.actions.SonarAnalyzeChangedFilesAction"
-                text="Analyze VCS Changed Files with SonarLint"
-                description="Run a SonarLint analysis on VCS changed files"
+                text="Analyze VCS Changed Files with CodeScan"
+                description="Run a CodeScan analysis on VCS changed files"
                 icon="SonarLintIcons.SONARLINT">
-            <add-to-group group-id="SonarLint.AnalyzeMenu"/>
+            <add-to-group group-id="CodeScan.AnalyzeMenu"/>
         </action>
 
-        <action id="SonarLint.AnalyzeAllFiles"
+        <action id="CodeScan.AnalyzeAllFiles"
                 class="org.sonarlint.intellij.actions.SonarAnalyzeAllFilesAction"
-                text="Analyze All Files with SonarLint"
-                description="Run a SonarLint analysis on all files in the project"
+                text="Analyze All Files with CodeScan"
+                description="Run a CodeScan analysis on all files in the project"
                 icon="SonarLintIcons.SONARLINT">
-            <add-to-group group-id="SonarLint.AnalyzeMenu"/>
+            <add-to-group group-id="CodeScan.AnalyzeMenu"/>
         </action>
 
-        <action id="SonarLint.toolwindow.Cancel"
+        <action id="CodeScan.toolwindow.Cancel"
                 class="org.sonarlint.intellij.actions.SonarCancelAction"
-                text="Cancel SonarLint Analysis"
-                description="Cancel the SonarLint analysis running"
+                text="Cancel CodeScan Analysis"
+                description="Cancel the CodeScan analysis running"
                 icon="SonarLintIcons.SUSPEND">
         </action>
 
-        <action id="SonarLint.toolwindow.Analyzers"
+        <action id="CodeScan.toolwindow.Analyzers"
                 class="org.sonarlint.intellij.actions.SonarShowCodeAnalyzers"
                 text="Show more information"
                 description="Show more information"
@@ -303,10 +303,10 @@
         </action>
 
 
-        <action id="SonarLint.toolwindow.Configure"
+        <action id="CodeScan.toolwindow.Configure"
                 class="org.sonarlint.intellij.actions.SonarConfigureProject"
-                text="Configure SonarLint"
-                description="Configure SonarLint"
+                text="Configure CodeScan"
+                description="Configure CodeScan"
                 icon="SonarLintIcons.TOOLS">
         </action>
 

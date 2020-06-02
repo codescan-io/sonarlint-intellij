@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -51,7 +51,7 @@ public class SonarApplication extends ApplicationComponent.Adapter {
 
   @Override
   public void initComponent() {
-    plugin = PluginManager.getPlugin(PluginId.getId("org.sonarlint.idea"));
+    plugin = PluginManager.getPlugin(PluginId.getId("com.code-scan.intellij"));
     annotatorsByLanguage = new ConcurrentHashMap<>();
     registerExternalAnnotator();
     registerNotifications();

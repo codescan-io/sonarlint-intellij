@@ -1,4 +1,4 @@
-sonarlint-intellij
+codescan-intellij
 Copyright (C) 2015-2020 SonarSource SA
 mailto:info AT sonarsource DOT com
 

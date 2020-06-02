@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -177,7 +177,7 @@ public class SonarExternalAnnotator extends ExternalAnnotator<SonarExternalAnnot
       + "href=\"#sonarissue/" + issue.getRuleKey() + "\""
       + (isDark() ? " color=\"7AB4C9\" " : "")
       + ">more...</a> " + shortcut;
-    return XmlStringUtil.wrapInHtml(XmlStringUtil.escapeString("SonarLint: " + issue.getMessage()) + flows + link);
+    return XmlStringUtil.wrapInHtml(XmlStringUtil.escapeString("CodeScan: " + issue.getMessage()) + flows + link);
   }
 
   private boolean isDark() {

@@ -81,8 +81,8 @@ dependencies {
   testImplementation 'junit:junit:4.12'
   testImplementation 'org.assertj:assertj-core:3.6.2'
   testImplementation 'org.mockito:mockito-core:2.19.0'
-  sqplugins (
-  )
+  //sqplugins (
+  //)
 }
 
 task cleanSQPlugins(type: Delete) {
@@ -93,21 +93,6 @@ task downloadSQPlugins(type: Copy, dependsOn: cleanSQPlugins) {
   outputs.upToDateWhen { false }
   from configurations.sqplugins
   into 'src/main/resources/plugins'
-}
-
-prepareSandbox {
-  doLast {
-    def tsBundlePath = project.configurations.typescript[0]
-    copy {
-      from tarTree(tsBundlePath)
-      excludes = [
-              '**/loc/**',
-              '**/lib/*/diagnosticMessages.generated.json'
-      ]
-      into file("$destinationDir/$pluginName")
-    }
-    file("$destinationDir/$pluginName/package").renameTo("$destinationDir/$pluginName/typescript")
-  }
 }
 
 classes.dependsOn downloadSQPlugins
@@ -135,11 +120,11 @@ jacocoTestReport {
 }
 
 artifactory {
-  clientConfig.info.setBuildName('sonarlint-intellij')
+  clientConfig.info.setBuildName('codescan-intellij')
   clientConfig.info.setBuildNumber(System.getenv('BUILD_BUILDID'))
   clientConfig.setIncludeEnvVars(true)
   clientConfig.setEnvVarsExcludePatterns('*password*,*PASSWORD*,*secret*,*MAVEN_CMD_LINE_ARGS*,sun.java.command,*token*,*TOKEN*,*LOGIN*,*login*')
-  clientConfig.info.addEnvironmentProperty('ARTIFACTS_TO_DOWNLOAD', 'org.sonarsource.sonarlint.intellij:sonarlint-intellij:zip')
+  clientConfig.info.addEnvironmentProperty('ARTIFACTS_TO_DOWNLOAD', 'org.sonarsource.sonarlint.intellij:codescan-intellij:zip')
   contextUrl = System.getenv('ARTIFACTORY_URL')
   publish {    
     repository {

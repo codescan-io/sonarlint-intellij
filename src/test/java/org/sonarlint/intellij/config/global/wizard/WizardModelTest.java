@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -85,7 +85,7 @@ public class WizardModelTest {
   }
 
   @Test
-  public void testMigrationSonarCloud() {
+  public void testMigrationCodeScanCloud() {
     SonarQubeServer server = SonarQubeServer.newBuilder()
       .setName("name")
       .setToken("token")

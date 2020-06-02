@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -46,11 +46,11 @@ public class DisableRuleQuickFix implements IntentionAction, LowPriorityAction, 
   }
 
   @Nls @NotNull @Override public String getText() {
-    return "Disable SonarLint rule '" + ruleKey + "'";
+    return "Disable CodeScan rule '" + ruleKey + "'";
   }
 
   @Nls @NotNull @Override public String getFamilyName() {
-    return "SonarLint disable rule";
+    return "CodeScan disable rule";
   }
 
   @Override public boolean isAvailable(@NotNull Project project, Editor editor, PsiFile file) {

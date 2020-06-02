@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -82,7 +82,7 @@ public class ProjectBindingManager extends AbstractProjectComponent {
 
   public synchronized ConnectedSonarLintEngine getConnectedEngine() throws InvalidBindingException {
     if (!projectSettings.isBindingEnabled()) {
-      throw new IllegalStateException("Project is not bound to a SonarQube project");
+      throw new IllegalStateException("Project is not bound to a CodeScan project");
     }
 
     String serverId = projectSettings.getServerId();
@@ -97,7 +97,7 @@ public class ProjectBindingManager extends AbstractProjectComponent {
     List<SonarQubeServer> servers = globalSettings.getSonarQubeServers();
 
     Optional<SonarQubeServer> server = servers.stream().filter(s -> s.getName().equals(serverId)).findAny();
-    return server.orElseThrow(() -> new InvalidBindingException("SonarQube server configuration does not exist for server id: " + serverId));
+    return server.orElseThrow(() -> new InvalidBindingException("CodeScan server configuration does not exist for server id: " + serverId));
   }
 
   public synchronized SonarQubeServer getSonarQubeServerSkipChecks() throws InvalidBindingException {

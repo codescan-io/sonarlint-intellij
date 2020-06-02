@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -46,7 +46,7 @@ public class SQServerWizard {
     List<AbstractWizardStepEx> steps = createSteps(model, editing, existingNames);
     String title = editing ? "Edit " : "New ";
     title = title + "Connection";
-    wizard = new SonarQubeWizard(steps, title);
+    wizard = new CodeScanWizard(steps, title);
   }
 
   private static List<AbstractWizardStepEx> createSteps(WizardModel model, boolean editing, Set<String> existingNames) {
@@ -66,8 +66,8 @@ public class SQServerWizard {
     return model.createServer();
   }
 
-  private static class SonarQubeWizard extends AbstractWizardEx {
-    public SonarQubeWizard(List<AbstractWizardStepEx> steps, String title) {
+  private static class CodeScanWizard extends AbstractWizardEx {
+    public CodeScanWizard(List<AbstractWizardStepEx> steps, String title) {
       super(title, null, steps);
       this.setHorizontalStretch(1.25f);
       this.setVerticalStretch(1.25f);

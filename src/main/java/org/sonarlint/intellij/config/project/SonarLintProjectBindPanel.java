@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -86,7 +86,7 @@ public class SonarLintProjectBindPanel {
   public JPanel create(Project project) {
     this.project = project;
     rootPanel = new JPanel(new BorderLayout());
-    bindEnable = new JBCheckBox("Bind project to SonarQube / SonarCloud", true);
+    bindEnable = new JBCheckBox("Bind project to CodeScan / CodeScanCloud", true);
     bindEnable.addItemListener(new BindItemListener());
     createBindPanel();
 
@@ -295,7 +295,7 @@ public class SonarLintProjectBindPanel {
   }
 
   /**
-   * Render SonarQube server in combo box
+   * Render CodeScan server in combo box
    */
   private class ServerComboBoxRenderer extends ColoredListCellRenderer<SonarQubeServer> {
     @Override protected void customizeCellRenderer(JList list, @Nullable SonarQubeServer value, int index, boolean selected, boolean hasFocus) {

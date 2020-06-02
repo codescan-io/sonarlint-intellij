@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -128,7 +128,7 @@ public class SonarLintHighlighting {
       .textAttributes(SonarLintTextAttributes.SELECTED);
 
     if (message != null && !message.isEmpty() && !"...".equals(message)) {
-      builder.descriptionAndTooltip("SonarLint: " + message);
+      builder.descriptionAndTooltip("CodeScan: " + message);
     }
     return builder.create();
   }

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -83,7 +83,7 @@ import org.sonarsource.sonarlint.core.client.api.connected.StateListener;
 import org.sonarsource.sonarlint.core.client.api.util.DateUtils;
 
 public class SonarQubeServerMgmtPanel implements Disposable, ConfigurationPanel<SonarLintGlobalSettings> {
-  private static final String LABEL_NO_SERVERS = "Add a connection to SonarQube or SonarCloud";
+  private static final String LABEL_NO_SERVERS = "Add a connection to CodeScan or CodeScanCloud";
 
   // UI
   private JPanel panel;
@@ -141,7 +141,7 @@ public class SonarQubeServerMgmtPanel implements Disposable, ConfigurationPanel<
     emptyPanel = new JPanel(new BorderLayout());
     emptyPanel.add(emptyLabel, BorderLayout.CENTER);
 
-    Border b = IdeBorderFactory.createTitledBorder("SonarQube / SonarCloud connections");
+    Border b = IdeBorderFactory.createTitledBorder("CodeScan / CodeScanCloud connections");
     panel = new JPanel(new BorderLayout());
     panel.setBorder(b);
     panel.add(splitter);

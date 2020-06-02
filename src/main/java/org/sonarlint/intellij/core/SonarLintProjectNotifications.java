@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -35,10 +35,10 @@ import org.sonarlint.intellij.config.project.SonarLintProjectConfigurable;
 import org.sonarsource.sonarlint.core.client.api.connected.ConnectedSonarLintEngine;
 
 public class SonarLintProjectNotifications extends AbstractProjectComponent {
-  public static final String GROUP_UPDATE_NOTIFICATION = "SonarLint: Configuration update";
-  public static final String GROUP_BINDING_PROBLEM = "SonarLint: Server Binding Errors";
-  private static final String UPDATE_SERVER_MSG = "\n<br>Please update the binding in the <a href='#'>SonarLint Settings</a>";
-  private static final String UPDATE_BINDING_MSG = "\n<br>Please check the <a href='#'>SonarLint project configuration</a>";
+  public static final String GROUP_UPDATE_NOTIFICATION = "CodeScan: Configuration update";
+  public static final String GROUP_BINDING_PROBLEM = "CodeScan: Server Binding Errors";
+  private static final String UPDATE_SERVER_MSG = "\n<br>Please update the binding in the <a href='#'>CodeScan Settings</a>";
+  private static final String UPDATE_BINDING_MSG = "\n<br>Please check the <a href='#'>CodeScan project configuration</a>";
   private volatile boolean shown = false;
 
   protected SonarLintProjectNotifications(Project project) {
@@ -58,7 +58,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Invalid binding</b>",
+      "<b>CodeScan - Invalid binding</b>",
       "Project bound to an invalid connection" + UPDATE_BINDING_MSG,
       NotificationType.WARNING, new OpenProjectSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -71,7 +71,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Invalid binding</b>",
+      "<b>CodeScan - Invalid binding</b>",
       "Project bound to an invalid remote project" + UPDATE_BINDING_MSG,
       NotificationType.WARNING, new OpenProjectSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -84,7 +84,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Invalid binding</b>",
+      "<b>CodeScan - Invalid binding</b>",
       "Local storage is outdated" + UPDATE_BINDING_MSG,
       NotificationType.WARNING, new OpenProjectSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -97,7 +97,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Invalid binding</b>",
+      "<b>CodeScan - Invalid binding</b>",
       "Missing local storage for connection '" + serverId + "'" + UPDATE_SERVER_MSG,
       NotificationType.WARNING, new OpenGeneralSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -110,7 +110,7 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
       return;
     }
     Notification notification = new Notification(GROUP_BINDING_PROBLEM,
-      "<b>SonarLint - Invalid binding</b>",
+      "<b>CodeScan - Invalid binding</b>",
       "Local storage for connection '" + serverId + "' must be updated" + UPDATE_SERVER_MSG,
       NotificationType.WARNING, new OpenGeneralSettingsNotificationListener(myProject));
     notification.setImportant(true);
@@ -120,8 +120,8 @@ public class SonarLintProjectNotifications extends AbstractProjectComponent {
 
   void notifyServerHasUpdates(String serverId, ConnectedSonarLintEngine engine, SonarQubeServer server, boolean onlyProjects) {
     Notification notification = new Notification(GROUP_UPDATE_NOTIFICATION,
-      "SonarLint - Binding update available",
-      "Change detected for " + (server.isSonarCloud() ? "SonarCloud" : "SonarQube") + " connection '" + serverId + "'. <a href=\"#update\">Update binding now</a>",
+      "CodeScan - Binding update available",
+      "Change detected for " + (server.isCodeScanCloud() ? "CodeScanCloud" : "CodeScan") + " connection '" + serverId + "'. <a href=\"#update\">Update binding now</a>",
       NotificationType.INFORMATION, new NotificationListener.Adapter() {
       @Override
       public void hyperlinkActivated(@NotNull Notification notification, @NotNull HyperlinkEvent event) {

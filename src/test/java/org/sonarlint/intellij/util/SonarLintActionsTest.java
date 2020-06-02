@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -41,7 +41,7 @@ public class SonarLintActionsTest extends SonarTest {
   public void prepare() {
     super.register(app, ActionManager.class, actionManager);
     instance = new SonarLintActions(actionManager);
-    when(actionManager.getAction("SonarLint.AnalyzeMenu")).thenReturn(sonarlintAnalyzeMenuGroup);
+    when(actionManager.getAction("CodeScan.AnalyzeMenu")).thenReturn(sonarlintAnalyzeMenuGroup);
   }
 
   @Test

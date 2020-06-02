@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -38,12 +38,12 @@ public class AnalysisRequirementNotifications {
     // NOP
   }
 
-  public static final String GROUP_ANALYSIS_PROBLEM = "SonarLint: Analysis Requirement";
+  public static final String GROUP_ANALYSIS_PROBLEM = "CodeScan: Analysis Requirement";
 
   public static void notifyNodeCommandException(Project project) {
     Notification notification = new Notification(GROUP_ANALYSIS_PROBLEM,
-      "<b>SonarLint - Node.js Required</b>",
-      "Node.js >= 8.x is required to perform JavaScript or TypeScript analysis. Check the <a href='#'>SonarLint Log</a> for details.",
+      "<b>CodeScan - Node.js Required</b>",
+      "Node.js >= 8.x is required to perform JavaScript or TypeScript analysis. Check the <a href='#'>CodeScan Log</a> for details.",
       NotificationType.WARNING, new ShowSonarLintLogListener(project));
     notification.setImportant(true);
     notification.notify(project);

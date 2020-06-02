@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -29,11 +29,11 @@ import org.sonarlint.intellij.issue.IssueManager;
 import org.sonarlint.intellij.util.SonarLintUtils;
 
 /**
- * Factory of SonarLint tool window.
+ * Factory of CodeScan tool window.
  * Nothing can be injected as it runs in the root pico container.
  */
 public class SonarLintToolWindowFactory implements ToolWindowFactory {
-  public static final String TOOL_WINDOW_ID = "SonarLint";
+  public static final String TOOL_WINDOW_ID = "CodeScan";
   public static final String TAB_LOGS = "Log";
   public static final String TAB_CURRENT_FILE = "Current file";
   public static final String TAB_ANALYSIS_RESULTS = "Report";

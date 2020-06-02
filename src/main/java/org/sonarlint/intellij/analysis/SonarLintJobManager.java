@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -60,7 +60,7 @@ public class SonarLintJobManager extends AbstractProjectComponent {
   }
 
   /**
-   * Runs SonarLint analysis asynchronously, as a background task, in the application's thread pool.
+   * Runs CodeScan analysis asynchronously, as a background task, in the application's thread pool.
    * It might queue the submission of the job in the thread pool.
    * It won't block the current thread (in most cases, the event dispatch thread), but the contents of the file being analyzed
    * might be changed with the editor at the same time, resulting in a bad or failed placement of the issues in the editor.
@@ -75,7 +75,7 @@ public class SonarLintJobManager extends AbstractProjectComponent {
   }
 
   /**
-   * Runs SonarLint analysis synchronously, if no manual (foreground) analysis is already on going.
+   * Runs CodeScan analysis synchronously, if no manual (foreground) analysis is already on going.
    * If a foreground analysis is already on going, this method simply returns an empty AnalysisResult.
    * Once it starts, it will display a ProgressWindow with the EDT and run the analysis in a pooled thread.
    *

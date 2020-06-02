@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -126,10 +126,10 @@ public class LocalFileExclusions {
       return Result.excluded("Could not create a relative path");
     }
     if (globalExclusions.test(relativePath)) {
-      return Result.excluded("file matches exclusions defined in the SonarLint Global Settings");
+      return Result.excluded("file matches exclusions defined in the CodeScan Global Settings");
     }
     if (projectExclusions.test(relativePath)) {
-      return Result.excluded("file matches exclusions defined in the SonarLint Project Settings");
+      return Result.excluded("file matches exclusions defined in the CodeScan Project Settings");
     }
 
     return Result.notExcluded();

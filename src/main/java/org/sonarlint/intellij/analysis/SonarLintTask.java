@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -68,7 +68,7 @@ public class SonarLintTask extends Task.Backgroundable {
    * @param background Whether it should start in the foreground or background.
    */
   protected SonarLintTask(IssueProcessor processor, SonarLintJob job, boolean modal, boolean background, SonarApplication sonarApplication) {
-    super(job.project(), "SonarLint Analysis", true);
+    super(job.project(), "CodeScan Analysis", true);
     this.processor = processor;
     this.job = job;
     this.modal = modal;
@@ -111,7 +111,7 @@ public class SonarLintTask extends Task.Backgroundable {
         //last chance to cancel (to avoid the possibility of having interrupt flag set)
         checkCanceled(indicator, myProject);
 
-        LOGGER.info("SonarLint analysis done");
+        LOGGER.info("CodeScan analysis done");
 
         indicator.setIndeterminate(false);
         indicator.setFraction(.9);
@@ -123,7 +123,7 @@ public class SonarLintTask extends Task.Backgroundable {
         allFailedAnalysisFiles = Collections.emptyList();
       }
       List<Issue> issues = listener.getIssues();
-      indicator.setText("Updating SonarLint issues: " + issues.size());
+      indicator.setText("Updating CodeScan issues: " + issues.size());
 
       processor.process(job, indicator, issues, allFailedAnalysisFiles);
     } catch (CanceledException e1) {
@@ -138,14 +138,14 @@ public class SonarLintTask extends Task.Backgroundable {
   private void handleError(Throwable e, ProgressIndicator indicator) {
     // if cancelled, ignore any errors since they were most likely caused by the interrupt
     if (!indicator.isCanceled()) {
-      String msg = "Error running SonarLint analysis";
+      String msg = "Error running CodeScan analysis";
       console.error(msg, e);
       LOGGER.warn(msg, e);
 
       if (indicator.isShowing()) {
-        String dialogMsg = "SonarLint analysis failed: " + e.getMessage();
+        String dialogMsg = "CodeScan analysis failed: " + e.getMessage();
         ApplicationManager.getApplication().invokeAndWait(
-          () -> Messages.showErrorDialog(dialogMsg, "Error Running SonarLint Analysis"), ModalityState.defaultModalityState());
+          () -> Messages.showErrorDialog(dialogMsg, "Error Running CodeScan Analysis"), ModalityState.defaultModalityState());
       }
 
       AnalysisCallback callback = job.callback();
@@ -173,9 +173,9 @@ public class SonarLintTask extends Task.Backgroundable {
 
     long numFiles = job.allFiles().count();
     if (numFiles > 1) {
-      indicator.setText("Running SonarLint Analysis for " + numFiles + " files" + suffix);
+      indicator.setText("Running CodeScan Analysis for " + numFiles + " files" + suffix);
     } else {
-      indicator.setText("Running SonarLint Analysis for '" + getFileName(job.allFiles().findFirst().get()) + "'");
+      indicator.setText("Running CodeScan Analysis for '" + getFileName(job.allFiles().findFirst().get()) + "'");
     }
 
     LOGGER.info(indicator.getText());

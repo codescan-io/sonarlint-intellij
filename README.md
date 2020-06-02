@@ -1,16 +1,16 @@
-SonarLint IntelliJ Plugin
+CodeScan IntelliJ Plugin
 =========================
 
-[![Build Status](https://dev.azure.com/sonarsource/DotNetTeam%20Project/_apis/build/status/sonarlint/SonarLint%20IntelliJ?branchName=master)](https://dev.azure.com/sonarsource/DotNetTeam%20Project/_build/latest?definitionId=76&branchName=master) [![Quality Gate](https://next.sonarqube.com/sonarqube/api/project_badges/measure?project=org.sonarsource.sonarlint.intellij%3Asonarlint-intellij&metric=alert_status
-)](https://next.sonarqube.com/sonarqube/dashboard?id=org.sonarsource.sonarlint.intellij%3Asonarlint-intellij)
+[![Build Status](https://dev.azure.com/sonarsource/DotNetTeam%20Project/_apis/build/status/sonarlint/CodeScan%20IntelliJ?branchName=master)](https://dev.azure.com/sonarsource/DotNetTeam%20Project/_build/latest?definitionId=76&branchName=master) [![Quality Gate](https://next.sonarqube.com/sonarqube/api/project_badges/measure?project=org.sonarsource.sonarlint.intellij%3Acodescan-intellij&metric=alert_status
+)](https://next.sonarqube.com/sonarqube/dashboard?id=org.sonarsource.sonarlint.intellij%3Acodescan-intellij)
 
-SonarLint is an IDE extension that helps you detect and fix quality issues as you write code.
-Like a spell checker, SonarLint squiggles flaws so they can be fixed before committing code.
+CodeScan is an IDE extension that helps you detect and fix quality issues as you write code.
+Like a spell checker, CodeScan squiggles flaws so they can be fixed before committing code.
 
 Useful links
 ------------
 
-- [SonarLint website](https://www.sonarlint.org)
+- [CodeScan website](https://www.sonarlint.org)
 - [Features](https://www.sonarlint.org/features/)
 - List of static code analysis rules per language:
     - [Java](https://rules.sonarsource.com/java)
@@ -21,19 +21,19 @@ Useful links
     - [Ruby](https://rules.sonarsource.com/ruby)
     - [PHP](https://rules.sonarsource.com/php)
     - [HTML](https://rules.sonarsource.com/html)
-- [SonarLint community](https://community.sonarsource.com/c/help/sl)
+- [CodeScan community](https://community.sonarsource.com/c/help/sl)
 
 How to install
 --------------
 
-You can install SonarLint from the [JetBrains Plugin Repository](https://plugins.jetbrains.com/plugin/7973-sonarlint), directly available in the IDE preferences.
+You can install CodeScan from the [JetBrains Plugin Repository](https://plugins.jetbrains.com/plugin/7973-sonarlint), directly available in the IDE preferences.
 
 Node.js >= 8.x is required to perform JavaScript or TypeScript analysis.
 
 Have Question or Feedback?
 --------------------------
 
-For SonarLint support questions ("How do I?", "I got this error, why?", ...), please first read the [FAQ](https://community.sonarsource.com/t/frequently-asked-questions/7204) and then head to the [SonarSource forum](https://community.sonarsource.com/c/help/sl). There are chances that a question similar to yours has already been answered. 
+For CodeScan support questions ("How do I?", "I got this error, why?", ...), please first read the [FAQ](https://community.sonarsource.com/t/frequently-asked-questions/7204) and then head to the [SonarSource forum](https://community.sonarsource.com/c/help/sl). There are chances that a question similar to yours has already been answered. 
 
 Be aware that this forum is a community, so the standard pleasantries ("Hi", "Thanks", ...) are expected. And if you don't get an answer to your thread, you should sit on your hands for at least three days before bumping it. Operators are not standing by. :-)
 

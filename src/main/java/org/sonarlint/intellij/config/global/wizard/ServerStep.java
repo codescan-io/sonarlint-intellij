@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -122,7 +122,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void load(boolean editing) {
-    Icon sqIcon = SonarLintIcons.icon("SonarQube");
+    Icon sqIcon = SonarLintIcons.icon("CodeScan");
     Icon clIcon = SonarLintIcons.icon("CodeScan");
 
     if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || model.getServerType() == null) {
@@ -131,7 +131,7 @@ public class ServerStep extends AbstractWizardStepEx {
         sqIcon = SonarLintIcons.toDisabled(sqIcon);
       }
     } else {
-      radioSonarQube.setSelected(true);
+      radioCodeScan.setSelected(true);
       urlText.setText(model.getServerUrl());
       if (editing) {
         clIcon = SonarLintIcons.toDisabled(clIcon);
@@ -151,7 +151,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void selectionChanged() {
-    boolean sq = radioSonarQube.isSelected();
+    boolean sq = radioCodeScan.isSelected();
 
     urlText.setEnabled(sq);
     urlLabel.setEnabled(sq);
@@ -199,7 +199,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void validateUrl() throws CommitStepException {
-    if (radioSonarQube.isSelected()) {
+    if (radioCodeScan.isSelected()) {
       try {
         URL url = new URL(urlText.getText());
         if (SonarLintUtils.isBlank(url.getHost())) {
@@ -233,8 +233,8 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void createUIComponents() {
-    sonarcloudIcon = new JLabel(SonarLintIcons.icon("SonarCloud"));
-    sonarqubeIcon = new JLabel(SonarLintIcons.icon("SonarQube"));
+    sonarcloudIcon = new JLabel(SonarLintIcons.icon("CodeScanCloud"));
+    sonarqubeIcon = new JLabel(SonarLintIcons.icon("CodeScan"));
     sonarcloudText = SwingHelper.createHtmlViewer(false, null, null, null);
     sonarqubeText = SwingHelper.createHtmlViewer(false, null, null, null);
 

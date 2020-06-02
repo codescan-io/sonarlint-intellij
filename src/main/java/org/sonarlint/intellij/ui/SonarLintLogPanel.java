@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -39,7 +39,7 @@ import org.sonarlint.intellij.util.SonarLintActions;
 import org.sonarlint.intellij.util.SonarLintUtils;
 
 public class SonarLintLogPanel extends SimpleToolWindowPanel {
-  private static final String ID = "SonarLint";
+  private static final String ID = "CodeScan";
 
   private final ToolWindow toolWindow;
   private final Project project;

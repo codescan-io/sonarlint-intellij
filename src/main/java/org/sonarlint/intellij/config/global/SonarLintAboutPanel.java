@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -117,12 +117,12 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
     });
 
     // info
-    JBLabel info = new JBLabel("<html>By sharing anonymous SonarLint usage statistics, you help us understand how SonarLint is used so "
+    JBLabel info = new JBLabel("<html>By sharing anonymous CodeScan usage statistics, you help us understand how CodeScan is used so "
       + "we can improve the plugin to work even better for you. We don't collect source code, IP addresses, or any personally identifying "
       + "information. And we don't share the data with anyone else.</html>");
 
     // checkbox
-    enableTelemetryCheckBox = new JCheckBox("Share anonymous SonarLint statistics");
+    enableTelemetryCheckBox = new JCheckBox("Share anonymous CodeScan statistics");
     enableTelemetryCheckBox.setFocusable(false);
     JPanel tickOptions = new JPanel(new VerticalFlowLayout());
     tickOptions.setBorder(BorderFactory.createEmptyBorder(0, 0, 4, 0));

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2020 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -29,7 +29,7 @@ public class CodeAnalyzersDialog extends DialogWrapper {
 
   public CodeAnalyzersDialog(@Nullable Project project) {
     super(project);
-    super.setTitle("SonarLint Additional Information");
+    super.setTitle("CodeScan Additional Information");
     this.project = project;
     super.init();
   }
