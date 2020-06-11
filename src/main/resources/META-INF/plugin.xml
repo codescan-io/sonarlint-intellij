@@ -30,8 +30,7 @@
             <p>
                 CodeScan is a free IDE extension that lets you fix bugs and vulnerabilities as you write code!
                 Like a spell checker, CodeScan highlights coding issues on the fly, with clear remediation
-                guidance so you can fix them before the code is even committed. Across popular IDEs (Eclipse,
-                IntelliJ, Visual Studio, VS Code) and popular programming languages, CodeScan helps all developers
+                guidance so you can fix them before the code is even committed. Across popular IDEs (IntelliJ, VS Code) and popular programming languages, CodeScan helps all developers
                 write better and safer code!
             </p>
             <br/>
