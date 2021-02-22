@@ -23,7 +23,7 @@
     <id>com.code-scan.intellij</id>
     <name>CodeScan</name>
     <version>${project.version}</version>
-    <vendor email="support@code-scan.com" url="http://www.code-scan.com">CodeScan</vendor>
+    <vendor email="support@codescan.io" url="https://codescan.io">CodeScan</vendor>
 
     <description><![CDATA[
         <html>
@@ -49,6 +49,8 @@
 
     <change-notes><![CDATA[
       <ul>
+        <li>4.7.3 - Updated plugin logo image.</li>
+        <li>4.7.2 - Fix issue of parsing codescanlang analysis results.</li>
         <li>4.7 - 2 new rules and performance improvements for Java. 2 new rules for Python.</li>
         <li>4.6 - Enable analysis of TypeScript. 27 new rules for Python. Support for Python 3.8.</li>
         <li>4.5.1 - Fix two regressions causing exception during analysis.</li>
