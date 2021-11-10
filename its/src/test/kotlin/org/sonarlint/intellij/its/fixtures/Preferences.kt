@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA ITs
+ * CodeScan for IntelliJ IDEA ITs
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
