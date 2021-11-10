@@ -23,21 +23,19 @@
     <id>com.code-scan.intellij</id>
     <name>CodeScan</name>
     <version>${project.version}</version>
-    <vendor email="support@code-scan.com" url="http://www.code-scan.com">CodeScan</vendor>
+    <vendor email="support@codescan.io" url="https://codescan.io">CodeScan</vendor>
 
     <description><![CDATA[
         <html>
             <p>
                 CodeScan is a free IDE extension that lets you fix bugs and vulnerabilities as you write code!
                 Like a spell checker, CodeScan highlights coding issues on the fly, with clear remediation
-                guidance so you can fix them before the code is even committed. Across popular IDEs (Eclipse,
-                IntelliJ, Visual Studio, VS Code) and popular programming languages, CodeScan helps all developers
-                write better and safer code!
+                guidance so you can fix them before the code is even committed. Across popular IDEs (IntelliJ,
+                VS Code) and popular programming languages, CodeScan helps all developers write better and safer code!
             </p>
             <br/>
             <p>
                 CodeScan supports all JetBrains IDE, including IntelliJ, WebStorm, PhpStorm, PyCharm and RubyMine.
-
             </p>
             <br/>
             <p>
@@ -72,6 +70,8 @@
         <li>4.10 - Fix duplicated annotations for PHP files. Display rule severity defined in the quality profile in connected mode. Fix analysis failure with JSP files. Bug fixes and improvements for JS files. 4 new rules (3 security related), bug fixes and improvements for PHP files.</li>
         <li>4.9 - Many new rules about JUnit and AssertJ for Java test files. 10 new rules for PHP. 22 new rules for Python and support of Typeshed packages. Preparatory changes for dynamic plugin installation.</li>
         <li>4.8 - Configure rule parameters in IDE settings. Performance improvement and fewer false positives for PHP. 4 new vulnerability detection rules for Python.</li>
+        <li>4.7.3 - Updated plugin logo image.</li>
+        <li>4.7.2 - Fix issue of parsing codescanlang analysis results.</li>
         <li>4.7 - 2 new rules and performance improvements for Java. 2 new rules for Python.</li>
         <li>4.6 - Enable analysis of TypeScript. 27 new rules for Python. Support for Python 3.8.</li>
         <li>4.5.1 - Fix two regressions causing exception during analysis.</li>
