@@ -144,11 +144,11 @@ public class ServerConnection {
   }
 
   public String getProductName() {
-    return isSonarCloud() ? "SonarCloud" : "SonarQube";
+    return isCodeScanCloud() ? "SonarCloud" : "SonarQube";
   }
 
   public Icon getProductIcon() {
-    return isSonarCloud() ? ICON_SONARCLOUD_16 : ICON_SONARQUBE_16;
+    return isCodeScanCloud() ? ICON_SONARCLOUD_16 : ICON_SONARQUBE_16;
   }
 
   public boolean enableProxy() {
@@ -172,7 +172,7 @@ public class ServerConnection {
   }
 
   public EndpointParams getEndpointParams() {
-    return new EndpointParams(getHostUrl(), isSonarCloud(), getOrganizationKey());
+    return new EndpointParams(getHostUrl(), isCodeScanCloud(), getOrganizationKey());
   }
 
   public HttpClient getHttpClient() {

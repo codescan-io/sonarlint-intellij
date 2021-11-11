@@ -57,7 +57,7 @@ public class ServerStep extends AbstractWizardStepEx {
   private JTextField urlText;
   private JLabel urlLabel;
   private JTextField nameField;
-  private JLabel codescanCloudIcon;
+  private JLabel sonarcloudIcon;
   private JLabel sonarqubeIcon;
   private JEditorPane sonarcloudText;
   private JEditorPane sonarqubeText;
@@ -95,7 +95,7 @@ public class ServerStep extends AbstractWizardStepEx {
           radioCodeScan.setSelected(true);
         }
       });
-      codescanCloudIcon.addMouseListener(new MouseInputAdapter() {
+      sonarcloudIcon.addMouseListener(new MouseInputAdapter() {
         @Override public void mouseClicked(MouseEvent e) {
           super.mouseClicked(e);
           radioCodeScanCloud.setSelected(true);
@@ -142,7 +142,7 @@ public class ServerStep extends AbstractWizardStepEx {
     }
 
     sonarqubeIcon.setIcon(sqIcon);
-    codescanCloudIcon.setIcon(clIcon);
+    sonarcloudIcon.setIcon(clIcon);
   }
 
   private void selectionChanged() {
@@ -228,7 +228,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void createUIComponents() {
-    codescanCloudIcon = new JLabel(SonarLintIcons.ICON_CODESCAN);
+    sonarcloudIcon = new JLabel(SonarLintIcons.ICON_CODESCAN);
     sonarqubeIcon = new JLabel(SonarLintIcons.ICON_CODESCAN);
     sonarcloudText = SwingHelper.createHtmlViewer(false, null, null, null);
     sonarqubeText = SwingHelper.createHtmlViewer(false, null, null, null);

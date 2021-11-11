@@ -98,7 +98,7 @@ public class WizardModel {
 
   public void queryIfNotificationsSupported() throws Exception {
     final ServerConnection partialConnection = createConnectionWithoutOrganization();
-    if (partialConnection.isSonarCloud()) {
+    if (partialConnection.isCodeScanCloud()) {
       setNotificationsSupported(true);
     } else {
       CheckNotificationsSupportedTask task = new CheckNotificationsSupportedTask(partialConnection);
@@ -112,7 +112,7 @@ public class WizardModel {
 
   public void queryOrganizations() throws Exception {
     final ServerConnection partialConnection = createConnectionWithoutOrganization();
-    if (partialConnection.isSonarCloud()) {
+    if (partialConnection.isCodeScanCloud()) {
       GetOrganizationsTask task = new GetOrganizationsTask(partialConnection);
       ProgressManager.getInstance().run(task);
       if (task.getException() != null) {

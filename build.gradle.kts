@@ -211,19 +211,6 @@ tasks {
         overwrite(false)
     }
 
-    fun copyTypeScript(destinationDir: File, pluginName: Property<String>) {
-        val tsBundlePath = project.configurations.get("typescript").iterator().next()
-        copy {
-            from(tarTree(tsBundlePath))
-            exclude(
-                "**/loc/**",
-                "**/lib/*/diagnosticMessages.generated.json"
-            )
-            into(file("$destinationDir/${pluginName.get()}"))
-        }
-        file("$destinationDir/${pluginName.get()}/package").renameTo(file("$destinationDir/${pluginName.get()}/typescript"))
-    }
-
     fun copyPlugins(destinationDir: File, pluginName: Property<String>) {
         copy {
             from(project.configurations.get("sqplugins"))
@@ -270,7 +257,6 @@ tasks {
         dependsOn(downloadOmnisharpLinuxZipFile, downloadOmnisharpOsxZipFile, downloadOmnisharpWindowsZipFile)
         doLast {
             copyPlugins(destinationDir, pluginName)
-            copyTypeScript(destinationDir, pluginName)
             copyOmnisharp(destinationDir, pluginName)
         }
     }
@@ -279,7 +265,6 @@ tasks {
         dependsOn(downloadOmnisharpLinuxZipFile, downloadOmnisharpOsxZipFile, downloadOmnisharpWindowsZipFile)
         doLast {
             copyPlugins(destinationDir, pluginName)
-            copyTypeScript(destinationDir, pluginName)
             copyOmnisharp(destinationDir, pluginName)
         }
     }
@@ -349,13 +334,13 @@ license {
 }
 
 artifactory {
-    clientConfig.info.setBuildName("sonarlint-intellij")
+    clientConfig.info.setBuildName("codescan-intellij")
     clientConfig.info.setBuildNumber(System.getenv("BUILD_BUILDID"))
     clientConfig.setIncludeEnvVars(true)
     clientConfig.setEnvVarsExcludePatterns("*password*,*PASSWORD*,*secret*,*MAVEN_CMD_LINE_ARGS*,sun.java.command,*token*,*TOKEN*,*LOGIN*,*login*,*key*,*KEY*,*PASSPHRASE*,*signing*")
     clientConfig.info.addEnvironmentProperty(
         "ARTIFACTS_TO_DOWNLOAD",
-        "org.sonarsource.sonarlint.intellij:sonarlint-intellij:zip"
+        "org.sonarsource.sonarlint.intellij:codescan-intellij:zip"
     )
     setContextUrl(System.getenv("ARTIFACTORY_URL"))
     publish(delegateClosureOf<PublisherConfig> {

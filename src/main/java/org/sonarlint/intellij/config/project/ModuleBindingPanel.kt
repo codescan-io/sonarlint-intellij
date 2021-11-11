@@ -147,7 +147,7 @@ class ModuleBindingPanel(private val project: Project, currentConnectionSupplier
                     rootPanel,
                     projectKeyTextField.text,
                     map,
-                    selectedConnection.isSonarCloud
+                    selectedConnection.isCodeScanCloud
                 )
                 if (dialog.showAndGet() && dialog.selectedProjectKey != null) {
                     projectKeyTextField.text = dialog.selectedProjectKey

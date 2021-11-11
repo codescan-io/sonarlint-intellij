@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.sonarsource.sonarlint.intellij.its"
-description = "ITs for SonarLint IntelliJ"
+description = "ITs for CodeScan IntelliJ"
 
 java {
     toolchain {

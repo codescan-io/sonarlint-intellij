@@ -250,7 +250,7 @@ public class SonarLintProjectBindPanel {
         }
         Map<String, ServerProject> map = downloadProjectList(selectedConnection);
         if (map != null) {
-          SearchProjectKeyDialog dialog = new SearchProjectKeyDialog(rootPanel, projectKeyTextField.getText(), map, selectedConnection.isSonarCloud());
+          SearchProjectKeyDialog dialog = new SearchProjectKeyDialog(rootPanel, projectKeyTextField.getText(), map, selectedConnection.isCodeScanCloud());
           if (dialog.showAndGet()) {
             projectKeyTextField.setText(dialog.getSelectedProjectKey() != null ? dialog.getSelectedProjectKey() : "");
           }
