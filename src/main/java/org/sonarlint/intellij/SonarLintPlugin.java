@@ -39,7 +39,7 @@ public class SonarLintPlugin implements Disposable {
 
   private IdeaPluginDescriptor getPlugin() {
     if (plugin == null) {
-      plugin = PluginManager.getPlugin(PluginId.getId("org.sonarlint.idea"));
+      plugin = PluginManager.getPlugin(PluginId.getId("com.code-scan.intellij"));
     }
     return plugin;
   }

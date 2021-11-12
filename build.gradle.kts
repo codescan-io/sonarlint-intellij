@@ -31,6 +31,7 @@ plugins {
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         "classpath"(group = "org.jetbrains.intellij", name = "blockmap", version = "1.0.5")
@@ -63,15 +64,16 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven("https://repox.jfrog.io/repox/sonarsource") {
-            content { excludeGroup("typescript") }
-            if (artifactoryUsername.isNotEmpty() && artifactoryPassword.isNotEmpty()) {
-                credentials {
-                    username = artifactoryUsername
-                    password = artifactoryPassword
-                }
-            }
-        }
+        mavenLocal()
+//        maven("https://repox.jfrog.io/repox/sonarsource") {
+//            content { excludeGroup("typescript") }
+//            if (artifactoryUsername.isNotEmpty() && artifactoryPassword.isNotEmpty()) {
+//                credentials {
+//                    username = artifactoryUsername
+//                    password = artifactoryPassword
+//                }
+//            }
+//        }
         ivy("https://repox.jfrog.io/repox/api/npm/npm") {
             patternLayout {
                 artifact("[organization]/-/[module]-[revision].[ext]")
