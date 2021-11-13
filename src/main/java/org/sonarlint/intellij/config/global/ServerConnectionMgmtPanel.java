@@ -25,6 +25,7 @@ import com.intellij.icons.AllIcons;
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -53,12 +54,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
@@ -149,7 +147,7 @@ public class ServerConnectionMgmtPanel implements Disposable, ConfigurationPanel
     panel.setBorder(b);
     panel.add(splitter);
 
-    connectionList.setCellRenderer(new ColoredListCellRenderer<ServerConnection>() {
+    connectionList.setCellRenderer(new ColoredListCellRenderer<>() {
       @Override
       protected void customizeCellRenderer(JList list, ServerConnection server, int index, boolean selected, boolean hasFocus) {
         if (server.isCodeScanCloud()) {
@@ -179,7 +177,7 @@ public class ServerConnectionMgmtPanel implements Disposable, ConfigurationPanel
       @Override
       protected void hyperlinkActivated(HyperlinkEvent e) {
         final JLabel label = new JLabel("<html>Click to fetch data from the selected connection, such as the list of projects,<br>"
-          + " rules, quality profiles, etc. This needs to be done before being able to select a project.");
+          + " rules, quality profiles, etc. This needs to be done before being able to select a project.</html>");
         label.setBorder(HintUtil.createHintBorder());
         label.setBackground(HintUtil.getInformationColor());
         label.setOpaque(true);
@@ -285,11 +283,14 @@ public class ServerConnectionMgmtPanel implements Disposable, ConfigurationPanel
     }
 
     if (server != null) {
-      SonarLintEngineManager serverManager = getService(SonarLintEngineManager.class);
-      engine = serverManager.getConnectedEngine(server.getName());
       engineListener = newState -> updateBindingStatusLabelAsync();
-      updateBindingStatusLabelAsync();
-      engine.addStateListener(engineListener);
+      var serverManager = getService(SonarLintEngineManager.class);
+      // Initial loading of the connected engine can be long, sent to pooled thread
+      ApplicationManager.getApplication().executeOnPooledThread(() -> {
+        engine = serverManager.getConnectedEngine(server.getName());
+        engine.addStateListener(engineListener);
+        updateBindingStatusLabelAsync();
+      });
     } else {
       serverStatus.setText("[ no connection selected ]");
       updateServerButton.setEnabled(false);
@@ -297,18 +298,18 @@ public class ServerConnectionMgmtPanel implements Disposable, ConfigurationPanel
   }
 
   private void updateBindingStatusLabelAsync() {
-    serverStatus.setText("checking...");
+    if (engine == null) {
+      serverStatus.setText("checking...");
+      return;
+    }
     ApplicationManager.getApplication().executeOnPooledThread(() -> {
-      if (engine == null) {
-        // label will already be updated from switchTo
-        return;
-      }
       ConnectedSonarLintEngine.State state = engine.getState();
       String statusText = getStatusText(state);
       ApplicationManager.getApplication().invokeLater(() -> {
         serverStatus.setText(statusText);
         updateServerButton.setEnabled(state != ConnectedSonarLintEngine.State.UPDATING);
-      });
+        // Using ModalityState#any() since we are only updating light UI stuff
+      }, ModalityState.any());
     });
   }
 
