@@ -91,7 +91,7 @@ public class WizardModelTest {
       .setToken("token")
       .setOrganizationKey("org")
       .setEnableProxy(true)
-      .setHostUrl("https://www.sonarqube.com")
+      .setHostUrl("https://app.codescan.io")
       .build();
     WizardModel model = new WizardModel(server);
 

@@ -85,7 +85,7 @@ class SonarLintHttpServerTest : AbstractSonarLintLightTests() {
     fun trusted_origin_test() {
         Settings.getGlobalSettings().addServerConnection(ServerConnection.newBuilder().setHostUrl("https://my.sonar.com/sonar").build())
         assertThat(ServerHandler.isTrustedOrigin("http://foo")).isFalse()
-        assertThat(ServerHandler.isTrustedOrigin("https://sonarcloud.io")).isTrue()
+        assertThat(ServerHandler.isTrustedOrigin("https://app.codescan.io")).isTrue()
         assertThat(ServerHandler.isTrustedOrigin("https://my.sonar.com")).isTrue()
         assertThat(ServerHandler.isTrustedOrigin("http://my.sonar.com")).isFalse()
         assertThat(ServerHandler.isTrustedOrigin("https://sonar.com")).isFalse()

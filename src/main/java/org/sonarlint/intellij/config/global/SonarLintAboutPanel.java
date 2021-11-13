@@ -60,9 +60,9 @@ public class SonarLintAboutPanel implements ConfigurationPanel<SonarLintTelemetr
     JBLabel sonarlintIcon = new JBLabel(SonarLintIcons.SONARLINT_32);
     SonarLintPlugin plugin = SonarLintUtils.getService(SonarLintPlugin.class);
     JBLabel title = new JBLabel("<html><b>CodeScan IntelliJ " + plugin.getVersion() + "</b></html>");
-    HyperlinkLabel linkLabel = new HyperlinkLabel("https://www.codescan.io");
-    linkLabel.addHyperlinkListener(e -> BrowserUtil.browse("https://www.codescan.io/ide/intellij/"));
-    JBLabel copyrightLabel = new JBLabel("<html>&copy; " + LocalDate.now().getYear() + " SonarSource</html>");
+    HyperlinkLabel linkLabel = new HyperlinkLabel("codescan.io");
+    linkLabel.addHyperlinkListener(e -> BrowserUtil.browse("https://www.codescan.io"));
+    JBLabel copyrightLabel = new JBLabel("<html>&copy; " + LocalDate.now().getYear() + " CodeScan</html>");
 
     JPanel infoPanel = new JPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();

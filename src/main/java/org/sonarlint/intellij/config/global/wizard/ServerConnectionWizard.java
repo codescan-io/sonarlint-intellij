@@ -93,7 +93,7 @@ public class ServerConnectionWizard {
 
     @Override
     protected void helpAction() {
-      BrowserUtil.browse("https://github.com/SonarSource/sonarlint-intellij/wiki/Bind-to-SonarQube-or-SonarCloud");
+      BrowserUtil.browse("https://docs.codescan.io/hc/en-us/articles/360011899112-Installing-CodeScan-for-IntelliJ");
     }
 
     @Override

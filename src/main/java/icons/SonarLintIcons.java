@@ -26,18 +26,16 @@ import java.util.Map;
 import javax.swing.Icon;
 
 public class SonarLintIcons {
-  public static final Icon ICON_SONARQUBE = IconLoader.getIcon("/images/SonarQube.png");
-  public static final Icon ICON_SONARCLOUD = IconLoader.getIcon("/images/SonarCloud.png");
   public static final Icon ICON_CODESCAN = IconLoader.getIcon("/images/CodeScan.png");
 
-  public static final Icon ICON_SONARQUBE_16 = IconLoader.getIcon("/images/onde-sonar-16.png");
+  public static final Icon ICON_SONARQUBE_16 = IconLoader.getIcon("/images/codescan-16.png");
   public static final Icon ICON_SONARCLOUD_16 = IconLoader.getIcon("/images/codescan-16.png");
 
-  public static final Icon SONARLINT_TOOLWINDOW = IconLoader.getIcon("/images/sonarlintToolWindow.svg");
-  public static final Icon SONARLINT_ACTION = IconLoader.getIcon("/images/sonarlintAction.svg");
+  public static final Icon SONARLINT_TOOLWINDOW = IconLoader.getIcon("/images/CodeScanToolWindow.svg");
+  public static final Icon SONARLINT_ACTION = IconLoader.getIcon("/images/CodeScanAction.svg");
 
-  public static final Icon SONARLINT = IconLoader.getIcon("/images/sonarlint.png");
-  public static final Icon SONARLINT_32 = IconLoader.getIcon("/images/sonarlint@2x.png");
+  public static final Icon SONARLINT = IconLoader.getIcon("/images/codescan-round.png");
+  public static final Icon SONARLINT_32 = IconLoader.getIcon("/images/codescan@2x.png");
   public static final Icon PLAY = IconLoader.getIcon("/images/execute.png");
   public static final Icon CLEAN = IconLoader.getIcon("/images/clean.png");
   public static final Icon TOOLS = IconLoader.getIcon("/images/externalToolsSmall.png");

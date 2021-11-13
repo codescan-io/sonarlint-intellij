@@ -121,7 +121,7 @@ class ApacheHttpClient private constructor(
                 .build())
             .build()
         )
-        .setUserAgent("SonarLint IntelliJ " + getService(SonarLintPlugin::class.java).version)
+        .setUserAgent("CodeScan IntelliJ " + getService(SonarLintPlugin::class.java).version)
 
         // proxy settings
         .setRoutePlanner(SystemDefaultRoutePlanner(CommonProxy.getInstance()))

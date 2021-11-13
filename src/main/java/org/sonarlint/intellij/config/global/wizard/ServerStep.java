@@ -117,7 +117,7 @@ public class ServerStep extends AbstractWizardStepEx {
   }
 
   private void load(boolean editing) {
-    Icon sqIcon = SonarLintIcons.ICON_SONARQUBE;
+    Icon sqIcon = SonarLintIcons.ICON_CODESCAN;
     Icon clIcon = SonarLintIcons.ICON_CODESCAN;
 
     if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || model.getServerType() == null) {
