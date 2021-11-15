@@ -19,30 +19,41 @@
  */
 package org.sonarlint.intellij.errorsubmitter;
 
+import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.ErrorReportSubmitter;
 import com.intellij.openapi.diagnostic.IdeaLoggingEvent;
 import com.intellij.openapi.diagnostic.SubmittedReportInfo;
 import com.intellij.util.Consumer;
-import java.awt.*;
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
 import java.util.stream.Collectors;
+
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.sonarlint.intellij.SonarLintPlugin;
 import org.sonarlint.intellij.common.util.SonarLintUtils;
-import org.sonarlint.intellij.http.ApacheHttpClient;
-import org.sonarsource.sonarlint.core.serverapi.HttpClient;
 
 // Inspired from https://github.com/openclover/clover/blob/master/clover-idea/src/com/atlassian/clover/idea/util/BlameClover.java
 public class BlameSonarSource extends ErrorReportSubmitter {
-  private static final String COMMUNITY_ROOT_URL = "http://localhost/";//"https://app.codescan.io/";
-  private static final String CODESCAN_SUPPORT_URL = COMMUNITY_ROOT_URL + "_codescan/errors/intellij";
+  static final int MAX_URI_LENGTH = 2000;
+  private static final int BUG_FAULT_CATEGORY_ID = 6;
+  private static final String INTELLIJ_TAG = "intellij";
+  private static final String COMMUNITY_ROOT_URL = "https://community.sonarsource.com/";
+  private static final String COMMUNITY_FAULT_CATEGORY_URL = COMMUNITY_ROOT_URL + "tags/c/" + BUG_FAULT_CATEGORY_ID + "/" + INTELLIJ_TAG;
+  private static final String COMMUNITY_NEW_TOPIC_URL = COMMUNITY_ROOT_URL + "new-topic"
+    + "?title=Error+in+CodeScan+for+IntelliJ"
+    + "&category_id=" + BUG_FAULT_CATEGORY_ID
+    + "&tags=sonarlint," + INTELLIJ_TAG;
 
   private static final Map<String, String> packageAbbreviation;
   static {
@@ -57,7 +68,7 @@ public class BlameSonarSource extends ErrorReportSubmitter {
 
   @Override
   public String getReportActionText() {
-    return "Report to CodeScan Support";
+    return "Report to SonarSource";
   }
 
   @Override
@@ -66,35 +77,34 @@ public class BlameSonarSource extends ErrorReportSubmitter {
     @NotNull Component parentComponent,
     @NotNull Consumer<SubmittedReportInfo> consumer) {
     String body = buildBody(events, additionalInfo);
-    ApacheHttpClient.getDefault().post(CODESCAN_SUPPORT_URL, "text/html", body);
-    consumer.consume(new SubmittedReportInfo(SubmittedReportInfo.SubmissionStatus.NEW_ISSUE));
+    BrowserUtil.browse(getReportWithBodyUrl(body));
+    consumer.consume(new SubmittedReportInfo(COMMUNITY_FAULT_CATEGORY_URL, "community support thread", SubmittedReportInfo.SubmissionStatus.NEW_ISSUE));
     return true;
   }
 
   @NotNull
   static String buildBody(@NotNull IdeaLoggingEvent @NotNull [] events, @Nullable String additionalInfo) {
     StringBuilder body = new StringBuilder();
-    body.append("<h4>Environment:</h4>");
-    body.append("<ul style=\"list-style-type:disc;\">");
-    body.append("<li> Java: ").append(System.getProperty("java.vendor")).append(" ").append(System.getProperty("java.version")).append("</li>");
-    body.append("<li> OS: ").append(System.getProperty("os.name")).append(" ").append(System.getProperty("os.arch")).append("</li>");
-    body.append("<li> IDE: ").append(ApplicationInfo.getInstance().getFullApplicationName()).append("</li>");
-    body.append("<li> CodeScan: ").append(SonarLintUtils.getService(SonarLintPlugin.class).getVersion()).append("</li>");
-    body.append("</ul>");
+    body.append("Environment:\n");
+    body.append("* Java: ").append(System.getProperty("java.vendor")).append(" ").append(System.getProperty("java.version")).append("\n");
+    body.append("* OS: ").append(System.getProperty("os.name")).append(" ").append(System.getProperty("os.arch")).append("\n");
+    body.append("* IDE: ").append(ApplicationInfo.getInstance().getFullApplicationName()).append("\n");
+    body.append("* CodeScan: ").append(SonarLintUtils.getService(SonarLintPlugin.class).getVersion()).append("\n");
+    body.append("\n");
     if (additionalInfo != null) {
       body.append(additionalInfo);
-      body.append("<br/>\n");
+      body.append("\n");
     }
     for (IdeaLoggingEvent ideaLoggingEvent : events) {
       final String message = ideaLoggingEvent.getMessage();
       if (StringUtils.isNotBlank(message)) {
-        body.append(message).append("<br/>\n");
+        body.append(message).append("\n");
       }
       final String throwableText = ideaLoggingEvent.getThrowableText();
       if (StringUtils.isNotBlank(throwableText)) {
-        body.append("<br/>\n");
+        body.append("\n```\n");
         body.append(abbreviate(throwableText));
-        body.append("<br/>\n");
+        body.append("\n```\n\n");
       }
     }
     return body.toString();
@@ -108,6 +118,33 @@ public class BlameSonarSource extends ErrorReportSubmitter {
           abbreviated = StringUtils.replace(abbreviated, entry.getKey(), entry.getValue());
         }
         return abbreviated;
-      }).collect(Collectors.joining("<br/>\n"));
+      }).collect(Collectors.joining("\n"));
+
+  }
+
+  String getReportWithBodyUrl(String description) {
+    final String urlStart = COMMUNITY_NEW_TOPIC_URL + "&body=";
+    final int charsLeft = MAX_URI_LENGTH - urlStart.length();
+
+    return urlStart + getBoundedEncodedString(description, charsLeft);
+  }
+
+  String getBoundedEncodedString(String description, int maxLen) {
+    try {
+      String encoded = URLEncoder.encode(description, "UTF-8");
+      while (encoded.length() > maxLen) {
+        int lastNewline = description.lastIndexOf('\n');
+        if (lastNewline == -1) {
+          return "";
+        }
+        description = description.substring(0, lastNewline);
+        encoded = URLEncoder.encode(description, "UTF-8");
+      }
+
+      return encoded;
+    } catch (UnsupportedEncodingException e) {
+      return "";
+    }
+
   }
 }
