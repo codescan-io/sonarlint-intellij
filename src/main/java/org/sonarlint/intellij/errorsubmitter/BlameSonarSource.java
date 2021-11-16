@@ -23,6 +23,7 @@ import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.diagnostic.ErrorReportSubmitter;
 import com.intellij.openapi.diagnostic.IdeaLoggingEvent;
 import com.intellij.openapi.diagnostic.SubmittedReportInfo;
+import com.intellij.openapi.diagnostic.SubmittedReportInfo.SubmissionStatus;
 import com.intellij.util.Consumer;
 import java.awt.*;
 import java.io.BufferedReader;
@@ -41,10 +42,11 @@ import org.sonarsource.sonarlint.core.serverapi.HttpClient;
 
 // Inspired from https://github.com/openclover/clover/blob/master/clover-idea/src/com/atlassian/clover/idea/util/BlameClover.java
 public class BlameSonarSource extends ErrorReportSubmitter {
-  private static final String COMMUNITY_ROOT_URL = "http://localhost/";//"https://app.codescan.io/";
+  private static final String COMMUNITY_ROOT_URL = "https://app.codescan.io/";
   private static final String CODESCAN_SUPPORT_URL = COMMUNITY_ROOT_URL + "_codescan/errors/intellij";
 
   private static final Map<String, String> packageAbbreviation;
+
   static {
     Map<String, String> aMap = new LinkedHashMap<>();
     aMap.put("com.intellij.openapi.", "c.ij.oa.");
@@ -66,9 +68,10 @@ public class BlameSonarSource extends ErrorReportSubmitter {
     @NotNull Component parentComponent,
     @NotNull Consumer<SubmittedReportInfo> consumer) {
     String body = buildBody(events, additionalInfo);
-    ApacheHttpClient.getDefault().post(CODESCAN_SUPPORT_URL, "text/html", body);
-    consumer.consume(new SubmittedReportInfo(SubmittedReportInfo.SubmissionStatus.NEW_ISSUE));
-    return true;
+    HttpClient.Response response = ApacheHttpClient.getDefault().post(CODESCAN_SUPPORT_URL, "text/html", body);
+    SubmissionStatus status = response.isSuccessful() ? SubmissionStatus.NEW_ISSUE : SubmissionStatus.FAILED;
+    consumer.consume(new SubmittedReportInfo(status));
+    return response.isSuccessful();
   }
 
   @NotNull

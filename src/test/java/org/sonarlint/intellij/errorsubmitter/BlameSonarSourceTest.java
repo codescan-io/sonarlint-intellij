@@ -19,7 +19,6 @@
  */
 package org.sonarlint.intellij.errorsubmitter;
 
-import com.intellij.openapi.util.text.StringUtil;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
