@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -42,7 +42,7 @@ class TelemetryClientAttributeProviderImpl : TelemetryClientAttributesProvider {
     }
 
     override fun useSonarCloud(): Boolean {
-        return isAnyProjectConnectedToSonarCloud()
+        return isAnyProjectConnectedToCodeScanCloud()
     }
 
     override fun nodeVersion(): Optional<String> {
@@ -85,10 +85,10 @@ class TelemetryClientAttributeProviderImpl : TelemetryClientAttributesProvider {
         private fun isAnyProjectConnected(): Boolean =
             isAnyOpenProjectMatch { p: Project -> Settings.getSettingsFor(p).isBindingEnabled }
 
-        private fun isAnyProjectConnectedToSonarCloud(): Boolean = isAnyOpenProjectMatch { p: Project ->
+        private fun isAnyProjectConnectedToCodeScanCloud(): Boolean = isAnyOpenProjectMatch { p: Project ->
             val bindingManager = SonarLintUtils.getService(p, ProjectBindingManager::class.java)
             bindingManager.tryGetServerConnection()
-                .filter { obj: ServerConnection -> obj.isSonarCloud }
+                .filter { obj: ServerConnection -> obj.isCodeScanCloud }
                 .isPresent
         }
 

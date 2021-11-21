@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -100,7 +100,7 @@ class ProjectServerNotificationsSubscriber : Disposable {
     getService(project, ProjectBindingManager::class.java).tryGetServerConnection()
       .filter { !it.isDisableNotifications }
       .ifPresent {
-        eventListener = EventListener(it.isSonarCloud, it.name)
+        eventListener = EventListener(it.isCodeScanCloud, it.name)
         try {
           if (notificationsService.isSupported(it)) {
             getService(project, ProjectBindingManager::class.java).uniqueProjectKeys.forEach { projectKey ->

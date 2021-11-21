@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -56,7 +56,11 @@ import org.sonarsource.sonarlint.core.client.api.standalone.StandaloneSonarLintE
 
 public class SonarLintEngineFactory {
 
-  private static final Set<Language> STANDALONE_LANGUAGES = EnumSet.of(Language.HTML,
+  private static final Set<Language> STANDALONE_LANGUAGES = EnumSet.of(
+    Language.APEX,
+    Language.SF_META,
+    Language.VF,
+    Language.HTML,
     Language.JS,
     Language.KOTLIN,
     Language.PHP,

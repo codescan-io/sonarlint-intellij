@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -45,7 +45,7 @@ public class CheckNotificationsSupportedTask extends Task.Modal {
     indicator.setIndeterminate(false);
 
     try {
-      if (connection.isSonarCloud()) {
+      if (connection.isCodeScanCloud()) {
         notificationsSupported = true;
       } else {
         indicator.setText("Checking support of notifications");

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -161,7 +161,7 @@ class ServerHandler : SimpleChannelInboundHandler<Any?>() {
 
     companion object {
         fun isTrustedOrigin(origin: String?): Boolean {
-            return origin != null && (SonarLintUtils.isSonarCloudAlias(origin) || Settings.getGlobalSettings().serverConnections.any { it.hostUrl.startsWith(origin) })
+            return origin != null && (SonarLintUtils.isCodeScanCloudAlias(origin) || Settings.getGlobalSettings().serverConnections.any { it.hostUrl.startsWith(origin) })
         }
     }
 

@@ -31,14 +31,15 @@ plugins {
 buildscript {
     repositories {
         mavenCentral()
+        mavenLocal()
     }
     dependencies {
         "classpath"(group = "org.jetbrains.intellij", name = "blockmap", version = "1.0.5")
     }
 }
 
-group = "org.sonarsource.sonarlint.intellij"
-description = "SonarLint for IntelliJ IDEA"
+group = "com.villagechief.sonarlint.intellij"
+description = "CodeScan for IntelliJ IDEA"
 
 val sonarlintCoreVersion: String by project
 val protobufVersion: String by project
@@ -63,15 +64,16 @@ allprojects {
 
     repositories {
         mavenCentral()
-        maven("https://repox.jfrog.io/repox/sonarsource") {
-            content { excludeGroup("typescript") }
-            if (artifactoryUsername.isNotEmpty() && artifactoryPassword.isNotEmpty()) {
-                credentials {
-                    username = artifactoryUsername
-                    password = artifactoryPassword
-                }
-            }
-        }
+        mavenLocal()
+//        maven("https://repox.jfrog.io/repox/sonarsource") {
+//            content { excludeGroup("typescript") }
+//            if (artifactoryUsername.isNotEmpty() && artifactoryPassword.isNotEmpty()) {
+//                credentials {
+//                    username = artifactoryUsername
+//                    password = artifactoryPassword
+//                }
+//            }
+//        }
         ivy("https://repox.jfrog.io/repox/api/npm/npm") {
             patternLayout {
                 artifact("[organization]/-/[module]-[revision].[ext]")
@@ -97,7 +99,7 @@ allprojects {
 
 intellij {
     version.set(intellijBuildVersion)
-    pluginName.set("sonarlint-intellij")
+    pluginName.set("CodeScan")
     updateSinceUntilBuild.set(false)
     plugins.set(listOf("java"))
 }
@@ -172,6 +174,8 @@ dependencies {
     implementation("org.sonarsource.sonarlint.core:sonarlint-core:$sonarlintCoreVersion")
     implementation("commons-lang:commons-lang:2.6")
     compileOnly("com.google.code.findbugs:jsr305:2.0.2")
+    // Actual runtime dependency is shaded by sonarlint-core but seems invisible to IntelliJ
+    compileOnly("com.google.protobuf:protobuf-java:$protobufVersion")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.0.3") {
         exclude(module = "slf4j-api")
     }
@@ -184,19 +188,11 @@ dependencies {
     testImplementation("org.eclipse.jetty:jetty-server:$jettyVersion")
     testImplementation("org.eclipse.jetty:jetty-servlet:$jettyVersion")
     testImplementation("org.eclipse.jetty:jetty-proxy:$jettyVersion")
-    "sqplugins"("org.sonarsource.java:sonar-java-plugin:7.3.0.27589@jar")
-    "sqplugins"("org.sonarsource.javascript:sonar-javascript-plugin:8.4.0.16431@jar")
-    "sqplugins"("org.sonarsource.php:sonar-php-plugin:3.21.0.8193@jar")
-    "sqplugins"("org.sonarsource.python:sonar-python-plugin:3.6.0.8488@jar")
-    "sqplugins"("org.sonarsource.kotlin:sonar-kotlin-plugin:2.3.0.609@jar")
-    "sqplugins"("org.sonarsource.slang:sonar-ruby-plugin:1.8.3.2219@jar")
-    "sqplugins"("org.sonarsource.html:sonar-html-plugin:3.4.0.2754@jar")
     "sqplugins"("org.sonarsource.sonarlint.omnisharp:sonarlint-omnisharp-plugin:1.0.0.34628@jar")
     if (artifactoryUsername.isNotEmpty() && artifactoryPassword.isNotEmpty()) {
         "sqplugins"("com.sonarsource.cpp:sonar-cfamily-plugin:6.27.0.38122@jar")
         "sqplugins"("com.sonarsource.secrets:sonar-secrets-plugin:1.1.0.36766@jar")
     }
-    "typescript"("typescript:typescript:$typescriptVersion@tgz")
 }
 
 tasks {
@@ -217,19 +213,6 @@ tasks {
         src("https://github.com/OmniSharp/omnisharp-roslyn/releases/download/$omnisharpVersion/omnisharp-win-x64.zip")
         dest(File(buildDir, "omnisharp-$omnisharpVersion-win-x64.zip"))
         overwrite(false)
-    }
-
-    fun copyTypeScript(destinationDir: File, pluginName: Property<String>) {
-        val tsBundlePath = project.configurations.get("typescript").iterator().next()
-        copy {
-            from(tarTree(tsBundlePath))
-            exclude(
-                "**/loc/**",
-                "**/lib/*/diagnosticMessages.generated.json"
-            )
-            into(file("$destinationDir/${pluginName.get()}"))
-        }
-        file("$destinationDir/${pluginName.get()}/package").renameTo(file("$destinationDir/${pluginName.get()}/typescript"))
     }
 
     fun copyPlugins(destinationDir: File, pluginName: Property<String>) {
@@ -278,7 +261,6 @@ tasks {
         dependsOn(downloadOmnisharpLinuxZipFile, downloadOmnisharpOsxZipFile, downloadOmnisharpWindowsZipFile)
         doLast {
             copyPlugins(destinationDir, pluginName)
-            copyTypeScript(destinationDir, pluginName)
             copyOmnisharp(destinationDir, pluginName)
         }
     }
@@ -287,7 +269,6 @@ tasks {
         dependsOn(downloadOmnisharpLinuxZipFile, downloadOmnisharpOsxZipFile, downloadOmnisharpWindowsZipFile)
         doLast {
             copyPlugins(destinationDir, pluginName)
-            copyTypeScript(destinationDir, pluginName)
             copyOmnisharp(destinationDir, pluginName)
         }
     }
@@ -342,7 +323,7 @@ tasks {
 
 sonarqube {
     properties {
-        property("sonar.projectName", "SonarLint for IntelliJ IDEA")
+        property("sonar.projectName", "CodeScan for IntelliJ IDEA")
     }
 }
 
@@ -357,13 +338,13 @@ license {
 }
 
 artifactory {
-    clientConfig.info.setBuildName("sonarlint-intellij")
+    clientConfig.info.setBuildName("codescan-intellij")
     clientConfig.info.setBuildNumber(System.getenv("BUILD_BUILDID"))
     clientConfig.setIncludeEnvVars(true)
     clientConfig.setEnvVarsExcludePatterns("*password*,*PASSWORD*,*secret*,*MAVEN_CMD_LINE_ARGS*,sun.java.command,*token*,*TOKEN*,*LOGIN*,*login*,*key*,*KEY*,*PASSPHRASE*,*signing*")
     clientConfig.info.addEnvironmentProperty(
         "ARTIFACTS_TO_DOWNLOAD",
-        "org.sonarsource.sonarlint.intellij:sonarlint-intellij:zip"
+        "org.sonarsource.sonarlint.intellij:codescan-intellij:zip"
     )
     setContextUrl(System.getenv("ARTIFACTORY_URL"))
     publish(delegateClosureOf<PublisherConfig> {
@@ -378,7 +359,7 @@ artifactory {
                 "vcs.revision" to System.getenv("BUILD_SOURCEVERSION"),
                 "vcs.branch" to (System.getenv("SYSTEM_PULLREQUEST_TARGETBRANCH")
                     ?: System.getenv("BUILD_SOURCEBRANCHNAME")),
-                "build.name" to "sonarlint-intellij",
+                "build.name" to "codescan-intellij",
                 "build.number" to System.getenv("BUILD_BUILDID")
             )
             )

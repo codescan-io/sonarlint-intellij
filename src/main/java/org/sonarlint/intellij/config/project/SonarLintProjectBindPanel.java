@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -97,7 +97,7 @@ public class SonarLintProjectBindPanel {
     this.project = project;
     rootPanel = new JPanel(new BorderLayout());
     boolean pluralizeProject = ProjectAttachProcessor.canAttachToProject() && ModuleManager.getInstance(project).getModules().length > 1;
-    bindEnable = new JBCheckBox("Bind project"+ (pluralizeProject ? "s" : "") + " to SonarQube / SonarCloud", true);
+    bindEnable = new JBCheckBox("Bind project"+ (pluralizeProject ? "s" : "") + " to CodeScan / CodeScanCloud", true);
     bindEnable.addItemListener(new BindItemListener());
     createBindPanel();
 
@@ -250,7 +250,7 @@ public class SonarLintProjectBindPanel {
         }
         Map<String, ServerProject> map = downloadProjectList(selectedConnection);
         if (map != null) {
-          SearchProjectKeyDialog dialog = new SearchProjectKeyDialog(rootPanel, projectKeyTextField.getText(), map, selectedConnection.isSonarCloud());
+          SearchProjectKeyDialog dialog = new SearchProjectKeyDialog(rootPanel, projectKeyTextField.getText(), map, selectedConnection.isCodeScanCloud());
           if (dialog.showAndGet()) {
             projectKeyTextField.setText(dialog.getSelectedProjectKey() != null ? dialog.getSelectedProjectKey() : "");
           }
@@ -326,7 +326,7 @@ public class SonarLintProjectBindPanel {
   }
 
   /**
-   * Render a connection in combo box
+   * Render CodeScan server in combo box
    */
   private class ServerComboBoxRenderer extends ColoredListCellRenderer<ServerConnection> {
     @Override
@@ -352,8 +352,8 @@ public class SonarLintProjectBindPanel {
       }
 
       append(value.getName(), attrs, true);
-      setToolTipText("Bind project using this connection");
-      if (value.isSonarCloud()) {
+      setToolTipText("Connect to this CodeScan server");
+      if (value.isCodeScanCloud()) {
         setIcon(SonarLintIcons.ICON_SONARCLOUD_16);
       } else {
         setIcon(SonarLintIcons.ICON_SONARQUBE_16);

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -35,7 +35,7 @@ import org.sonarlint.intellij.tasks.GetOrganizationsTask;
 import org.sonarsource.sonarlint.core.serverapi.organization.ServerOrganization;
 
 public class WizardModel {
-  private static final String SONARCLOUD_URL = "https://sonarcloud.io";
+  private static final String SONARCLOUD_URL = "https://app.codescan.io";
   private ServerType serverType;
   private String serverUrl;
   private String token;
@@ -59,7 +59,7 @@ public class WizardModel {
   }
 
   public WizardModel(ServerConnection connectionToEdit) {
-    if (SonarLintUtils.isSonarCloudAlias(connectionToEdit.getHostUrl())) {
+    if (SonarLintUtils.isCodeScanCloudAlias(connectionToEdit.getHostUrl())) {
       serverType = ServerType.SONARCLOUD;
     } else {
       serverType = ServerType.SONARQUBE;
@@ -98,7 +98,7 @@ public class WizardModel {
 
   public void queryIfNotificationsSupported() throws Exception {
     final ServerConnection partialConnection = createConnectionWithoutOrganization();
-    if (partialConnection.isSonarCloud()) {
+    if (partialConnection.isCodeScanCloud()) {
       setNotificationsSupported(true);
     } else {
       CheckNotificationsSupportedTask task = new CheckNotificationsSupportedTask(partialConnection);
@@ -112,7 +112,7 @@ public class WizardModel {
 
   public void queryOrganizations() throws Exception {
     final ServerConnection partialConnection = createConnectionWithoutOrganization();
-    if (partialConnection.isSonarCloud()) {
+    if (partialConnection.isCodeScanCloud()) {
       GetOrganizationsTask task = new GetOrganizationsTask(partialConnection);
       ProgressManager.getInstance().run(task);
       if (task.getException() != null) {

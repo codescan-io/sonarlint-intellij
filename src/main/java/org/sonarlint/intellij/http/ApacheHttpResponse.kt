@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -32,7 +32,7 @@ internal class ApacheHttpResponse(
 
   override fun bodyAsString(): String = response.bodyText
 
-  override fun bodyAsStream() = ByteArrayInputStream(response.bodyBytes)
+  override fun bodyAsStream() = ByteArrayInputStream(response.bodyBytes ?: ByteArray(0))
 
   override fun close() {
     // nothing to do

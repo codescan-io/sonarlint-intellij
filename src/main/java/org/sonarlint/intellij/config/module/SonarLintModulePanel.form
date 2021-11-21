@@ -17,7 +17,7 @@
         <properties>
           <horizontalAlignment value="2"/>
           <horizontalTextPosition value="2"/>
-          <text value="&lt;html&gt;When bound to a SonarQube server, SonarLint attempts to match local files with files in SonarQube to synchronize issues.&lt;/html&gt;"/>
+          <text value="&lt;html&gt;When bound to a CodeScan server, CodeScan attempts to match local files with files in CodeScan to synchronize issues.&lt;/html&gt;"/>
           <verticalAlignment value="1"/>
           <verticalTextPosition value="1"/>
         </properties>
@@ -48,7 +48,7 @@
               <gridbag top="0" left="10" bottom="0" right="10" weightx="0.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value="SonarQube path prefix:"/>
+              <text value="CodeScan path prefix:"/>
               <verticalTextPosition value="0"/>
             </properties>
           </component>

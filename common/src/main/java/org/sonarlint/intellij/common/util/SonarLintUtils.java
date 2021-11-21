@@ -59,8 +59,7 @@ import org.jetbrains.jps.model.java.JavaSourceRootProperties;
 public class SonarLintUtils {
 
   private static final Logger LOG = Logger.getInstance(SonarLintUtils.class);
-  private static final String[] SONARCLOUD_ALIAS = {"https://sonarqube.com", "https://www.sonarqube.com",
-    "https://www.sonarcloud.io", "https://sonarcloud.io"};
+  private static final String[] SONARCLOUD_ALIAS = {"https://app.codescan.io"};
 
   private SonarLintUtils() {
     // Utility class
@@ -96,7 +95,7 @@ public class SonarLintUtils {
     return t;
   }
 
-  public static boolean isSonarCloudAlias(@Nullable String url) {
+  public static boolean isCodeScanCloudAlias(@Nullable String url) {
     return Arrays.asList(SONARCLOUD_ALIAS).contains(url);
   }
 

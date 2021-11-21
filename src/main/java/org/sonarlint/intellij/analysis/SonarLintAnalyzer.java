@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -39,11 +39,11 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.CheckForNull;
 import javax.annotation.Nullable;
-
 import org.jetbrains.annotations.NotNull;
 import org.sonarlint.intellij.common.analysis.AnalysisConfigurator;
 import org.sonarlint.intellij.common.ui.SonarLintConsole;
 import org.sonarlint.intellij.common.util.SonarLintUtils;
+import org.sonarlint.intellij.config.global.ServerConnection;
 import org.sonarlint.intellij.core.ProjectBindingManager;
 import org.sonarlint.intellij.core.SonarLintFacade;
 import org.sonarlint.intellij.exception.InvalidBindingException;
@@ -81,14 +81,25 @@ public class SonarLintAnalyzer {
     try {
       ProjectBindingManager projectBindingManager = SonarLintUtils.getService(myProject, ProjectBindingManager.class);
       SonarLintFacade facade = projectBindingManager.getFacade(module, true);
-
+      if (projectBindingManager.tryGetServerConnection().isPresent()) {
+        ServerConnection server = projectBindingManager.tryGetServerConnection().get();
+        //pass sonar host credentials in so that we can resolve license.
+        contributedProperties.put("sonar.host.url", server.getHostUrl());
+        contributedProperties.put("sonar.organization", server.getOrganizationKey());
+        if (server.getToken() != null) {
+          contributedProperties.put("sonar.login", server.getToken());
+          console.info(server.getToken());
+        } else {
+          contributedProperties.put("sonar.login", server.getLogin());
+          contributedProperties.put("sonar.password", server.getPassword());
+        }
+      }
       String what;
       if (filesToAnalyze.size() == 1) {
         what = "'" + filesToAnalyze.iterator().next().getName() + "'";
       } else {
         what = filesToAnalyze.size() + " files";
       }
-
       console.info("Analysing " + what + "...");
       AnalysisResults result = facade.startAnalysis(module, inputFiles, listener, contributedProperties, progressMonitor);
       console.debug("Done in " + (System.currentTimeMillis() - start) + "ms\n");
@@ -98,7 +109,6 @@ public class SonarLintAnalyzer {
       } else {
         telemetry.analysisDoneOnMultipleFiles();
       }
-
       return result;
     } catch (InvalidBindingException e) {
       // should not happen, as analysis should not have been submitted in this case.

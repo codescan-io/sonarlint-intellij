@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -67,7 +67,7 @@ public class WizardModelTest {
   }
 
   @Test
-  public void testExportSonarCloud() {
+  public void testExportCodeScanCloud() {
     WizardModel model = new WizardModel();
     model.setName("name");
     model.setOrganizationKey("org");
@@ -77,7 +77,7 @@ public class WizardModelTest {
     model.setServerType(WizardModel.ServerType.SONARCLOUD);
 
     ServerConnection server = model.createConnection();
-    assertThat(server.getHostUrl()).isEqualTo("https://sonarcloud.io");
+    assertThat(server.getHostUrl()).isEqualTo("https://app.codescan.io");
     assertThat(server.getLogin()).isNull();
     assertThat(server.getPassword()).isNull();
     assertThat(server.getToken()).isEqualTo("token");
@@ -85,18 +85,18 @@ public class WizardModelTest {
   }
 
   @Test
-  public void testMigrationSonarCloud() {
+  public void testMigrationCodeScanCloud() {
     ServerConnection server = ServerConnection.newBuilder()
       .setName("name")
       .setToken("token")
       .setOrganizationKey("org")
       .setEnableProxy(true)
-      .setHostUrl("https://www.sonarqube.com")
+      .setHostUrl("https://app.codescan.io")
       .build();
     WizardModel model = new WizardModel(server);
 
     server = model.createConnection();
     assertThat(server.enableProxy()).isTrue();
-    assertThat(server.getHostUrl()).isEqualTo("https://sonarcloud.io");
+    assertThat(server.getHostUrl()).isEqualTo("https://app.codescan.io");
   }
 }

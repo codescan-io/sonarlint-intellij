@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -33,6 +33,7 @@ import org.apache.hc.client5.http.impl.routing.SystemDefaultRoutePlanner
 import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder
 import org.apache.hc.core5.concurrent.FutureCallback
 import org.apache.hc.core5.http.ContentType
+import org.apache.hc.core5.http2.HttpVersionPolicy
 import org.apache.hc.core5.reactor.ssl.TlsDetails
 import org.apache.hc.core5.util.Timeout
 import org.sonarlint.intellij.SonarLintPlugin
@@ -121,7 +122,9 @@ class ApacheHttpClient private constructor(
                 .build())
             .build()
         )
-        .setUserAgent("SonarLint IntelliJ " + getService(SonarLintPlugin::class.java).version)
+        .setUserAgent("CodeScan IntelliJ " + getService(SonarLintPlugin::class.java).version)
+        // SLI-629 - Force HTTP/1
+        .setVersionPolicy(HttpVersionPolicy.FORCE_HTTP_1)
 
         // proxy settings
         .setRoutePlanner(SystemDefaultRoutePlanner(CommonProxy.getInstance()))

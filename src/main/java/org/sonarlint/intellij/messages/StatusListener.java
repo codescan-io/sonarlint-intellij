@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -24,7 +24,7 @@ import org.sonarlint.intellij.analysis.AnalysisStatus;
 
 @FunctionalInterface
 public interface StatusListener {
-  Topic<StatusListener> SONARLINT_STATUS_TOPIC = Topic.create("SonarLint Analyzer Status", StatusListener.class);
+  Topic<StatusListener> SONARLINT_STATUS_TOPIC = Topic.create("CodeScan Analyzer Status", StatusListener.class);
 
   /**
    * Called when the status of the user-initiated analysis changes.

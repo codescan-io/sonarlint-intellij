@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -147,7 +147,7 @@ class ModuleBindingPanel(private val project: Project, currentConnectionSupplier
                     rootPanel,
                     projectKeyTextField.text,
                     map,
-                    selectedConnection.isSonarCloud
+                    selectedConnection.isCodeScanCloud
                 )
                 if (dialog.showAndGet() && dialog.selectedProjectKey != null) {
                     projectKeyTextField.text = dialog.selectedProjectKey

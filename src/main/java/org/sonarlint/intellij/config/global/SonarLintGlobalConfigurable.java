@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -61,7 +61,7 @@ public class SonarLintGlobalConfigurable implements Configurable, Configurable.N
   @Nls
   @Override
   public String getDisplayName() {
-    return "SonarLint";
+    return "CodeScan";
   }
 
   @Nullable
@@ -171,10 +171,10 @@ public class SonarLintGlobalConfigurable implements Configurable, Configurable.N
 
       rootPanel = new JPanel(new BorderLayout());
       tabs = new JBTabbedPane();
-      tabs.insertTab("Settings", null, settingsPanel, "Configure SonarLint for all projects", SETTINGS_TAB_INDEX);
+      tabs.insertTab("Settings", null, settingsPanel, "Configure CodeScan for all projects", SETTINGS_TAB_INDEX);
       tabs.insertTab("File Exclusions", null, exclusions.getComponent(), "Configure which files should be excluded from analysis", FILE_EXCLUSIONS_TAB_INDEX);
-      tabs.insertTab("Rules", null, rules.getComponent(), "Choose which rules are enabled when not bound to SonarQube or SonarCloud", RULES_TAB_INDEX);
-      tabs.insertTab("About", null, about.getComponent(), "About SonarLint", ABOUT_TAB_INDEX);
+      tabs.insertTab("Rules", null, rules.getComponent(), "Choose which rules are enabled when not connected to CodeScan", RULES_TAB_INDEX);
+      tabs.insertTab("About", null, about.getComponent(), "About CodeScan", ABOUT_TAB_INDEX);
       rootPanel.add(tabs, BorderLayout.CENTER);
     }
 

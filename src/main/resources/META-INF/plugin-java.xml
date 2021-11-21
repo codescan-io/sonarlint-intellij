@@ -1,6 +1,6 @@
 <!--
 
-    SonarLint for IntelliJ IDEA
+    CodeScan for IntelliJ IDEA
     Copyright (C) 2015-2021 SonarSource
     sonarlint@sonarsource.com
 
@@ -20,7 +20,7 @@
 
 -->
 <idea-plugin>
-    <extensions defaultExtensionNs="org.sonarlint.idea">
+    <extensions defaultExtensionNs="com.code-scan.intellij">
         <analysisConfiguration implementation="org.sonarlint.intellij.java.JavaAnalysisConfigurator"/>
         <languageActivator implementation="org.sonarlint.intellij.java.JavaLanguageActivator"/>
     </extensions>

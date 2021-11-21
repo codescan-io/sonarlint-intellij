@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -28,7 +28,7 @@ import org.sonarsource.sonarlint.core.serverapi.ServerApiHelper
 import java.util.concurrent.CompletableFuture
 
 class ConnectionTestTask(private val server: ServerConnection) :
-    Task.WithResult<ValidationResult?, Exception>(null, "Test Connection to " + if (server.isSonarCloud) "SonarCloud" else "SonarQube", true) {
+    Task.WithResult<ValidationResult?, Exception>(null, "Test Connection to " + if (server.isCodeScanCloud) "CodeScanCloud" else "CodeScan", true) {
 
     private lateinit var futureResult: CompletableFuture<ValidationResult>
 

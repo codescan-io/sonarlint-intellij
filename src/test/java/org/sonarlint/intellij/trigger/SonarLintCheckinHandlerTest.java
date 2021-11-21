@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -95,7 +95,7 @@ public class SonarLintCheckinHandlerTest extends AbstractSonarLintLightTests {
     CheckinHandler.ReturnResult result = handler.beforeCheckin(null, null);
 
     assertThat(result).isEqualTo(CheckinHandler.ReturnResult.CLOSE_WINDOW);
-    assertThat(messages).containsExactly("SonarLint analysis on 1 file found 1 issue");
+    assertThat(messages).containsExactly("CodeScan analysis on 1 file found 1 issue");
     verify(issueStore).set(anyMap(), eq("SCM changed files"));
     verify(submitter).submitFilesModal(eq(Collections.singleton(file)), eq(TriggerType.CHECK_IN), any(AnalysisCallback.class));
   }
@@ -117,9 +117,9 @@ public class SonarLintCheckinHandlerTest extends AbstractSonarLintLightTests {
     CheckinHandler.ReturnResult result = handler.beforeCheckin(null, null);
 
     assertThat(result).isEqualTo(CheckinHandler.ReturnResult.CLOSE_WINDOW);
-    assertThat(messages).containsExactly("SonarLint analysis on 1 file found 1 issue\n" +
+    assertThat(messages).containsExactly("CodeScan analysis on 1 file found 1 issue\n" +
       "\n" +
-      "SonarLint analysis found 1 secret. Committed secrets may lead to unauthorized system access.");
+      "CodeScan analysis found 1 secret. Committed secrets may lead to unauthorized system access.");
     verify(issueStore).set(anyMap(), eq("SCM changed files"));
     verify(submitter).submitFilesModal(eq(Collections.singleton(file)), eq(TriggerType.CHECK_IN), any(AnalysisCallback.class));
   }

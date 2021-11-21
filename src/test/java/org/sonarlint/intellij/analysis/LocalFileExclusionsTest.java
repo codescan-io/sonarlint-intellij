@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -95,7 +95,7 @@ public class LocalFileExclusionsTest extends AbstractSonarLintLightTests {
     setProjectLevelExclusions(singletonList("GLOB:foo.php"));
 
     Map<Module, Collection<VirtualFile>> nonExcludedFilesByModule = underTest.retainNonExcludedFilesByModules(singletonList(file), false, excludeReasons::put);
-    assertIsExcluded(file, nonExcludedFilesByModule, "file matches exclusions defined in the SonarLint Project Settings");
+    assertIsExcluded(file, nonExcludedFilesByModule, "file matches exclusions defined in the CodeScan Project Settings");
   }
 
   @Test
@@ -115,7 +115,7 @@ public class LocalFileExclusionsTest extends AbstractSonarLintLightTests {
     setGlobalLevelExclusions(singletonList("foo.php"));
 
     Map<Module, Collection<VirtualFile>> nonExcludedFilesByModule = underTest.retainNonExcludedFilesByModules(singletonList(file), false, excludeReasons::put);
-    assertIsExcluded(file, nonExcludedFilesByModule, "file matches exclusions defined in the SonarLint Global Settings");
+    assertIsExcluded(file, nonExcludedFilesByModule, "file matches exclusions defined in the CodeScan Global Settings");
   }
 
   @Test

@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -212,7 +212,7 @@ public class SonarExternalAnnotator extends ExternalAnnotator<SonarExternalAnnot
       + "href=\"#sonarissue/" + issue.getRuleKey() + "\""
       + (UIUtil.isUnderDarcula() ? " color=\"7AB4C9\" " : "")
       + ">more...</a> " + shortcut;
-    return XmlStringUtil.wrapInHtml(XmlStringUtil.escapeString("SonarLint: " + issue.getMessage()) + issue.context().map(IssueContext::getSummaryDescription).orElse("") + link);
+    return XmlStringUtil.wrapInHtml(XmlStringUtil.escapeString("CodeScan: " + issue.getMessage()) + issue.context().map(IssueContext::getSummaryDescription).orElse("") + link);
   }
 
   private static String getHtmlMessage(LocalTaintVulnerability vulnerability) {
@@ -228,7 +228,7 @@ public class SonarExternalAnnotator extends ExternalAnnotator<SonarExternalAnnot
       + "href=\"#sonarissue/" + vulnerability.ruleKey() + "\""
       + (UIUtil.isUnderDarcula() ? " color=\"7AB4C9\" " : "")
       + ">more...</a> " + shortcut;
-    return XmlStringUtil.wrapInHtml(XmlStringUtil.escapeString("SonarLint: " + vulnerability.message()) + link);
+    return XmlStringUtil.wrapInHtml(XmlStringUtil.escapeString("CodeScan: " + vulnerability.message()) + link);
   }
 
   /**

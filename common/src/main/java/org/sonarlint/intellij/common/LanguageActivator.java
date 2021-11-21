@@ -1,5 +1,5 @@
 /*
- * SonarLint for IntelliJ IDEA
+ * CodeScan for IntelliJ IDEA
  * Copyright (C) 2015-2021 SonarSource
  * sonarlint@sonarsource.com
  *
@@ -24,7 +24,7 @@ import java.util.Set;
 
 public interface LanguageActivator {
   // Name is constructed from plugin-id.extension-point-name
-  ExtensionPointName<LanguageActivator> EP_NAME = ExtensionPointName.create("org.sonarlint.idea.languageActivator");
+  ExtensionPointName<LanguageActivator> EP_NAME = ExtensionPointName.create("com.code-scan.intellij.languageActivator");
 
   void amendLanguages(Set<org.sonarsource.sonarlint.core.client.api.common.Language> enabledLanguages);
 }
