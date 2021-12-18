@@ -30,6 +30,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class NotificationsStep extends AbstractWizardStepEx {
+  private static final String CODESCAN_US_URL = "https://app.codescan.io";
+  private static final String CODESCAN_EU_URL = "https://app-eu.codescan.io";
+
   private final WizardModel model;
   private final boolean onlyEditNotifications;
   private JPanel panel;
@@ -53,8 +56,7 @@ public class NotificationsStep extends AbstractWizardStepEx {
     final String sqOrSc = isSc ? "CodeScanCloud" : "CodeScan";
     notificationsCheckBox.setText("Receive notifications from " + sqOrSc);
     notificationsCheckBox.setSelected(!model.isNotificationsDisabled());
-    final String docUrl = isSc ? "https://sonarcloud.io/documentation/user-guide/sonarlint-notifications/" :
-      "https://docs.sonarqube.org/latest/user-guide/sonarlint-notifications/";
+    final String docUrl = "https://docs.sonarqube.org/latest/user-guide/sonarlint-notifications/";
     notificationsDetails.setText("You will receive <a href=\"" + docUrl + "\">notifications</a> from " + sqOrSc + " in situations like:\n" +
       "<ul>" +
       "<li>the Quality Gate status of a bound project changes</li>" +
@@ -84,7 +86,8 @@ public class NotificationsStep extends AbstractWizardStepEx {
     if (onlyEditNotifications) {
       return null;
     }
-    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD) {
+    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CODESCAN_US_URL.equalsIgnoreCase(model.getServerUrl())
+      || CODESCAN_EU_URL.equalsIgnoreCase(model.getServerUrl())) {
       return OrganizationStep.class;
     } else {
       return AuthStep.class;

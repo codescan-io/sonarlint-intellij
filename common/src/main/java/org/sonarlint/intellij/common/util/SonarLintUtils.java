@@ -59,7 +59,7 @@ import org.jetbrains.jps.model.java.JavaSourceRootProperties;
 public class SonarLintUtils {
 
   private static final Logger LOG = Logger.getInstance(SonarLintUtils.class);
-  private static final String[] SONARCLOUD_ALIAS = {"https://app.codescan.io"};
+  private static final String[] SONARCLOUD_ALIAS = {"https://app.codescan.io", "https://app-eu.codescan.io"};
 
   private SonarLintUtils() {
     // Utility class

@@ -48,6 +48,8 @@ import org.sonarsource.sonarlint.core.client.api.connected.ValidationResult;
 public class AuthStep extends AbstractWizardStepEx {
   private static final String LOGIN_ITEM = "Login / Password";
   private static final String TOKEN_ITEM = "Token";
+  private static final String CODESCAN_US_URL = "https://app.codescan.io";
+  private static final String CODESCAN_EU_URL = "https://app-eu.codescan.io";
   private final WizardModel model;
 
   private JPanel panel;
@@ -145,7 +147,8 @@ public class AuthStep extends AbstractWizardStepEx {
   @Nullable
   @Override
   public Object getNextStepId() {
-    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD) {
+    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CODESCAN_US_URL. equalsIgnoreCase(model.getServerUrl())
+      || CODESCAN_EU_URL.equalsIgnoreCase(model.getServerUrl())) {
       return OrganizationStep.class;
     }
     if (model.isNotificationsSupported()) {
