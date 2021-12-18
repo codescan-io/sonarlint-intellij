@@ -30,8 +30,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class NotificationsStep extends AbstractWizardStepEx {
-  private static final String CODESCAN_US_URL = "https://app.codescan.io";
-  private static final String CODESCAN_EU_URL = "https://app-eu.codescan.io";
 
   private final WizardModel model;
   private final boolean onlyEditNotifications;
@@ -86,8 +84,8 @@ public class NotificationsStep extends AbstractWizardStepEx {
     if (onlyEditNotifications) {
       return null;
     }
-    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CODESCAN_US_URL.equalsIgnoreCase(model.getServerUrl())
-      || CODESCAN_EU_URL.equalsIgnoreCase(model.getServerUrl())) {
+    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CodescanCloudConstants.CODESCAN_US_URL.equals(model.getServerUrl())
+      || CodescanCloudConstants.CODESCAN_EU_URL.equals(model.getServerUrl())) {
       return OrganizationStep.class;
     } else {
       return AuthStep.class;

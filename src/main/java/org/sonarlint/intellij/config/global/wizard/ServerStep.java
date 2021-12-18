@@ -209,10 +209,17 @@ public class ServerStep extends AbstractWizardStepEx {
   private void save() {
     if (radioCodeScanCloud.isSelected()) {
       model.setServerType(WizardModel.ServerType.SONARCLOUD);
-      model.setServerUrl("https://app.codescan.io");
+      model.setServerUrl(CodescanCloudConstants.CODESCAN_US_URL);
     } else {
       model.setServerType(WizardModel.ServerType.SONARQUBE);
-      model.setServerUrl(urlText.getText().trim());
+      String serverUrl = urlText.getText().trim();
+      if (serverUrl.contains(CodescanCloudConstants.CODESCAN_EU_DOMAIN)) {
+        model.setServerUrl(CodescanCloudConstants.CODESCAN_EU_URL);
+      } else if (serverUrl.contains(CodescanCloudConstants.CODESCAN_US_DOMAIN)) {
+        model.setServerUrl(CodescanCloudConstants.CODESCAN_US_URL);
+      } else {
+        model.setServerUrl(serverUrl);
+      }
     }
     model.setName(nameField.getText().trim());
   }
