@@ -90,7 +90,7 @@ public class AnalysisTask extends Task.Backgroundable {
    * @param background Whether it should start in the foreground or background.
    */
   public AnalysisTask(AnalysisRequest request, boolean modal, boolean background) {
-    super(request.project(), "SonarLint Analysis", true);
+    super(request.project(), "CodeScan Analysis", true);
     this.request = request;
     this.modal = modal;
     this.startInBackground = background;
@@ -337,14 +337,14 @@ public class AnalysisTask extends Task.Backgroundable {
   private void handleError(Throwable e, ProgressIndicator indicator) {
     // if cancelled, ignore any errors since they were most likely caused by the interrupt
     if (!isCancelled(indicator)) {
-      String msg = "Error running SonarLint analysis";
+      String msg = "Error running CodeScan analysis";
       SonarLintConsole console = SonarLintConsole.get(request.project());
       console.error(msg, e);
 
       if (indicator.isShowing()) {
-        String dialogMsg = "SonarLint analysis failed: " + e.getMessage();
+        String dialogMsg = "CodeScan analysis failed: " + e.getMessage();
         ApplicationManager.getApplication().invokeAndWait(
-          () -> Messages.showErrorDialog(dialogMsg, "Error Running SonarLint Analysis"), ModalityState.defaultModalityState());
+          () -> Messages.showErrorDialog(dialogMsg, "Error Running CodeScan Analysis"), ModalityState.defaultModalityState());
       }
 
       AnalysisCallback callback = request.callback();
@@ -375,9 +375,9 @@ public class AnalysisTask extends Task.Backgroundable {
     List<VirtualFile> allFilesToAnalyze = filesByModule.entrySet().stream().flatMap(e -> e.getValue().stream()).collect(toList());
     long numFiles = allFilesToAnalyze.size();
     if (numFiles > 1) {
-      indicator.setText("Running SonarLint Analysis for " + numFiles + " files" + suffix);
+      indicator.setText("Running CodeScan Analysis for " + numFiles + " files" + suffix);
     } else {
-      indicator.setText("Running SonarLint Analysis for '" + getFileName(allFilesToAnalyze.get(0)) + "'");
+      indicator.setText("Running CodeScan Analysis for '" + getFileName(allFilesToAnalyze.get(0)) + "'");
     }
 
     ProgressMonitor progressMonitor = new TaskProgressMonitor(indicator, myProject, () -> cancelled);
