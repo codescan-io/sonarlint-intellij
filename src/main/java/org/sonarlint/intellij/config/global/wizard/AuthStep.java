@@ -145,8 +145,7 @@ public class AuthStep extends AbstractWizardStepEx {
   @Nullable
   @Override
   public Object getNextStepId() {
-    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CodescanCloudConstants.CODESCAN_US_URL.equals(model.getServerUrl())
-      || CodescanCloudConstants.CODESCAN_EU_URL.equals(model.getServerUrl())) {
+    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CodescanCloudConstants.CODESCAN_EU_URL.equals(model.getServerUrl())) {
       return OrganizationStep.class;
     }
     if (model.isNotificationsSupported()) {

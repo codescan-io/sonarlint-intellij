@@ -61,6 +61,9 @@ public class WizardModel {
   public WizardModel(ServerConnection connectionToEdit) {
     if (SonarLintUtils.isCodeScanCloudAlias(connectionToEdit.getHostUrl())) {
       serverType = ServerType.SONARCLOUD;
+      if (CodescanCloudConstants.CODESCAN_EU_URL.contains(connectionToEdit.getHostUrl())) {
+        serverUrl = connectionToEdit.getHostUrl();
+      }
     } else {
       serverType = ServerType.SONARQUBE;
       serverUrl = connectionToEdit.getHostUrl();
@@ -245,7 +248,9 @@ public class WizardModel {
 
     if (serverType == ServerType.SONARCLOUD) {
       builder.setHostUrl(SONARCLOUD_URL);
-
+      if (serverUrl != null && CodescanCloudConstants.CODESCAN_EU_URL.equals(serverUrl)) {
+        builder.setHostUrl(CodescanCloudConstants.CODESCAN_EU_URL);
+      }
     } else {
       builder.setHostUrl(serverUrl);
     }
