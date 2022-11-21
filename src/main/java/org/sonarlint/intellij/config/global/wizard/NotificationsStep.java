@@ -84,7 +84,7 @@ public class NotificationsStep extends AbstractWizardStepEx {
     if (onlyEditNotifications) {
       return null;
     }
-    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD || CodescanCloudConstants.CODESCAN_EU_URL.equals(model.getServerUrl())) {
+    if (model.getServerType() == WizardModel.ServerType.SONARCLOUD) {
       return OrganizationStep.class;
     } else {
       return AuthStep.class;
