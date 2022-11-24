@@ -58,8 +58,8 @@ import org.jetbrains.jps.model.java.JavaSourceRootProperties;
 
 public class SonarLintUtils {
 
+  public static final String CODESCAN_DOMAIN = "codescan.io";
   private static final Logger LOG = Logger.getInstance(SonarLintUtils.class);
-  private static final String[] SONARCLOUD_ALIAS = {"https://app.codescan.io", "https://app-eu.codescan.io"};
 
   private SonarLintUtils() {
     // Utility class
@@ -96,7 +96,7 @@ public class SonarLintUtils {
   }
 
   public static boolean isCodeScanCloudAlias(@Nullable String url) {
-    return Arrays.asList(SONARCLOUD_ALIAS).contains(url);
+    return url != null && url.contains(CODESCAN_DOMAIN);
   }
 
   public static boolean isEmpty(@Nullable String str) {

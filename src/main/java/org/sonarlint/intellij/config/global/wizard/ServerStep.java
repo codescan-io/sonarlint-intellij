@@ -120,7 +120,8 @@ public class ServerStep extends AbstractWizardStepEx {
     Icon sqIcon = SonarLintIcons.ICON_CODESCAN;
     Icon clIcon = SonarLintIcons.ICON_CODESCAN;
 
-    if ((model.getServerType() == WizardModel.ServerType.SONARCLOUD && !CodescanCloudConstants.CODESCAN_EU_URL.equals(model.getServerUrl())) || model.getServerType() == null) {
+    if ((model.getServerType() == WizardModel.ServerType.SONARCLOUD &&
+            CodescanCloudConstants.CODESCAN_US_URL.equals(model.getServerUrl())) || model.getServerType() == null) {
       radioCodeScanCloud.setSelected(true);
       if (editing) {
         sqIcon = SonarLintIcons.toDisabled(sqIcon);
@@ -211,12 +212,12 @@ public class ServerStep extends AbstractWizardStepEx {
       model.setServerType(WizardModel.ServerType.SONARCLOUD);
       model.setServerUrl(CodescanCloudConstants.CODESCAN_US_URL);
     } else {
-      model.setServerType(WizardModel.ServerType.SONARQUBE);
       String serverUrl = urlText.getText().trim();
-      if (serverUrl.contains(CodescanCloudConstants.CODESCAN_EU_DOMAIN)) {
-        model.setServerUrl(CodescanCloudConstants.CODESCAN_EU_URL);
+      model.setServerUrl(serverUrl);
+      if (serverUrl.contains(CodescanCloudConstants.CODESCAN_DOMAIN)) {
+        model.setServerType(WizardModel.ServerType.SONARCLOUD);
       } else {
-        model.setServerUrl(serverUrl);
+        model.setServerType(WizardModel.ServerType.SONARQUBE);
       }
     }
     model.setName(nameField.getText().trim());

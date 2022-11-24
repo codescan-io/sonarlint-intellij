@@ -35,7 +35,6 @@ import org.sonarlint.intellij.tasks.GetOrganizationsTask;
 import org.sonarsource.sonarlint.core.serverapi.organization.ServerOrganization;
 
 public class WizardModel {
-  private static final String SONARCLOUD_URL = "https://app.codescan.io";
   private ServerType serverType;
   private String serverUrl;
   private String token;
@@ -61,13 +60,10 @@ public class WizardModel {
   public WizardModel(ServerConnection connectionToEdit) {
     if (SonarLintUtils.isCodeScanCloudAlias(connectionToEdit.getHostUrl())) {
       serverType = ServerType.SONARCLOUD;
-      if (CodescanCloudConstants.CODESCAN_EU_URL.contains(connectionToEdit.getHostUrl())) {
-        serverUrl = connectionToEdit.getHostUrl();
-      }
     } else {
       serverType = ServerType.SONARQUBE;
-      serverUrl = connectionToEdit.getHostUrl();
     }
+    serverUrl = connectionToEdit.getHostUrl();
     this.proxyEnabled = connectionToEdit.enableProxy();
     this.token = connectionToEdit.getToken();
     this.login = connectionToEdit.getLogin();
@@ -245,15 +241,7 @@ public class WizardModel {
       .setOrganizationKey(organizationKey)
       .setEnableProxy(proxyEnabled)
       .setName(name);
-
-    if (serverType == ServerType.SONARCLOUD) {
-      builder.setHostUrl(SONARCLOUD_URL);
-      if (serverUrl != null && CodescanCloudConstants.CODESCAN_EU_URL.equals(serverUrl)) {
-        builder.setHostUrl(CodescanCloudConstants.CODESCAN_EU_URL);
-      }
-    } else {
-      builder.setHostUrl(serverUrl);
-    }
+    builder.setHostUrl(serverUrl);
 
     if (token != null) {
       builder.setToken(token)
