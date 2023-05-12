@@ -61,7 +61,7 @@ import org.jetbrains.jps.model.java.JavaResourceRootProperties;
 import org.jetbrains.jps.model.java.JavaSourceRootProperties;
 
 public class SonarLintUtils {
-  public static final String CODESCAN_HEALTH_ENDPOINT = "/_codescan/actuator/health";
+  private static final String CODESCAN_HEALTH_ENDPOINT = "/_codescan/actuator/health";
   private static final String CODESCAN_HEALTH_JSON_RESPONSE = "{\"status\":\"UP\"}";
   private static final Logger LOG = Logger.getInstance(SonarLintUtils.class);
 
@@ -110,12 +110,12 @@ public class SonarLintUtils {
       if (statusCode == 200 && CODESCAN_HEALTH_JSON_RESPONSE.equals(httpResponse.body())) {
         return true;
       } else {
-        LOG.debug("isCodeScanCloudAlias health check request for host: {} failed with status code: {}", url,
+        LOG.debug("isCodeScanCloudAlias health check request for host: {} failed with status code: {}.", url,
                 statusCode);
         return false;
       }
     } catch (IOException | InterruptedException e) {
-      LOG.error("isCodeScanCloudAlias health check request for host: {} gave an exception", e, url);
+      LOG.error("isCodeScanCloudAlias health check request for host: {} gave an exception.", e, url);
       return false;
     }
   }
