@@ -45,7 +45,11 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.util.Arrays;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import javax.annotation.CheckForNull;
 import javax.annotation.Nullable;
 import javax.swing.Icon;
@@ -57,8 +61,8 @@ import org.jetbrains.jps.model.java.JavaResourceRootProperties;
 import org.jetbrains.jps.model.java.JavaSourceRootProperties;
 
 public class SonarLintUtils {
-
-  public static final String CODESCAN_DOMAIN = "codescan.io";
+  public static final String CODESCAN_HEALTH_ENDPOINT = "/_codescan/actuator/health";
+  private static final String CODESCAN_HEALTH_JSON_RESPONSE = "{\"status\":\"UP\"}";
   private static final Logger LOG = Logger.getInstance(SonarLintUtils.class);
 
   private SonarLintUtils() {
@@ -96,7 +100,24 @@ public class SonarLintUtils {
   }
 
   public static boolean isCodeScanCloudAlias(@Nullable String url) {
-    return url != null && url.contains(CODESCAN_DOMAIN);
+    HttpClient httpClient = HttpClient.newHttpClient();
+    HttpRequest httpRequest = HttpRequest.newBuilder()
+            .uri(URI.create(url + CODESCAN_HEALTH_ENDPOINT))
+            .build();
+    try {
+      HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+      int statusCode = httpResponse.statusCode();
+      if (statusCode == 200 && CODESCAN_HEALTH_JSON_RESPONSE.equals(httpResponse.body())) {
+        return true;
+      } else {
+        LOG.debug("isCodeScanCloudAlias health check request for host: {} failed with status code: {}", url,
+                statusCode);
+        return false;
+      }
+    } catch (IOException | InterruptedException e) {
+      LOG.error("isCodeScanCloudAlias health check request for host: {} gave an exception", e, url);
+      return false;
+    }
   }
 
   public static boolean isEmpty(@Nullable String str) {

@@ -93,7 +93,7 @@ public class ServerConnectionWizard {
 
     @Override
     protected void helpAction() {
-      BrowserUtil.browse("https://docs.codescan.io/hc/en-us/articles/360011899112-Installing-CodeScan-for-IntelliJ");
+      BrowserUtil.browse("https://knowledgebase.autorabit.com/codescan/docs/installing-codescan-for-intellij");
     }
 
     @Override

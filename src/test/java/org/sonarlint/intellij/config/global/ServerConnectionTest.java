@@ -20,6 +20,7 @@
 package org.sonarlint.intellij.config.global;
 
 import org.junit.Test;
+import org.sonarlint.intellij.config.global.wizard.CodescanCloudConstants;
 import org.sonarsource.sonarlint.core.serverapi.EndpointParams;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,7 +49,7 @@ public class ServerConnectionTest {
   @Test
   public void testCodeScanCloud() {
     ServerConnection server1 = ServerConnection.newBuilder()
-      .setHostUrl("https://app.codescan.io")
+      .setHostUrl(CodescanCloudConstants.CODESCAN_US_URL)
       .setPassword("pass")
       .setToken("token")
       .setName("name")

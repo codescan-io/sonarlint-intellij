@@ -21,7 +21,7 @@ package org.sonarlint.intellij.config.global.wizard;
 
 public class CodescanCloudConstants {
     public static final String CODESCAN_US_URL = "https://app.codescan.io";
-    public static final String CODESCAN_DOMAIN = "codescan.io";
+    public static final String CODESCAN_ERROR_ENDPOINT = CODESCAN_US_URL + "/_codescan/errors/intellij";
     private CodescanCloudConstants() {
     }
 }

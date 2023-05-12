@@ -10,7 +10,7 @@ Like a spell checker, CodeScan squiggles flaws so they can be fixed before commi
 Useful links
 ------------
 
-- [CodeScan website](https://www.app.codescan.io)
+- [CodeScan website](https://www.codescan.io)
 
 
 How to install

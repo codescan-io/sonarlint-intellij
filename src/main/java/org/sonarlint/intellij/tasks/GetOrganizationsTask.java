@@ -39,7 +39,7 @@ public class GetOrganizationsTask extends Task.Modal {
   private List<ServerOrganization> organizations;
 
   public GetOrganizationsTask(ServerConnection connection) {
-    super(null, "Fetch organizations from SonarCloud", true);
+    super(null, "Fetch organizations from CodeScanCloud", true);
     this.connection = connection;
   }
 

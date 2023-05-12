@@ -42,6 +42,7 @@ import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.MouseInputAdapter;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.sonarlint.intellij.common.util.SonarLintUtils;
@@ -81,11 +82,12 @@ public class ServerStep extends AbstractWizardStepEx {
 
     nameField.setToolTipText("Name of this configuration (mandatory field)");
 
-    String cloudText = "Connect to <a href=\"https://app.codescan.io\">the online service</a>";
+    String cloudText = "To connect to <a href=\"" + CodescanCloudConstants.CODESCAN_US_URL + "\">"
+            + CodescanCloudConstants.CODESCAN_US_URL + "</a>";
     sonarcloudText.setText(cloudText);
     sonarcloudText.addHyperlinkListener(new BrowserHyperlinkListener());
 
-    String sqText = "Connect to a server";
+    String sqText = "Connect to other CodeScan instances or a server";
     sonarqubeText.setText(sqText);
 
     if (!editing) {
@@ -213,8 +215,9 @@ public class ServerStep extends AbstractWizardStepEx {
       model.setServerUrl(CodescanCloudConstants.CODESCAN_US_URL);
     } else {
       String serverUrl = urlText.getText().trim();
+      serverUrl = StringUtils.removeEnd(serverUrl, "/");
       model.setServerUrl(serverUrl);
-      if (serverUrl.contains(CodescanCloudConstants.CODESCAN_DOMAIN)) {
+      if (SonarLintUtils.isCodeScanCloudAlias(serverUrl)) {
         model.setServerType(WizardModel.ServerType.SONARCLOUD);
       } else {
         model.setServerType(WizardModel.ServerType.SONARQUBE);
