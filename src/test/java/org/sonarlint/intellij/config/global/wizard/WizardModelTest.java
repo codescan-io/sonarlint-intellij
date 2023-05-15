@@ -77,7 +77,7 @@ public class WizardModelTest {
     model.setServerType(WizardModel.ServerType.SONARCLOUD);
 
     ServerConnection server = model.createConnection();
-    assertThat(server.getHostUrl()).isEqualTo("https://app.codescan.io");
+    assertThat(server.getHostUrl()).isEqualTo(CodescanCloudConstants.CODESCAN_US_URL);
     assertThat(server.getLogin()).isNull();
     assertThat(server.getPassword()).isNull();
     assertThat(server.getToken()).isEqualTo("token");
@@ -91,12 +91,12 @@ public class WizardModelTest {
       .setToken("token")
       .setOrganizationKey("org")
       .setEnableProxy(true)
-      .setHostUrl("https://app.codescan.io")
+      .setHostUrl(CodescanCloudConstants.CODESCAN_US_URL)
       .build();
     WizardModel model = new WizardModel(server);
 
     server = model.createConnection();
     assertThat(server.enableProxy()).isTrue();
-    assertThat(server.getHostUrl()).isEqualTo("https://app.codescan.io");
+    assertThat(server.getHostUrl()).isEqualTo(CodescanCloudConstants.CODESCAN_US_URL);
   }
 }

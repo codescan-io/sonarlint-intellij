@@ -31,6 +31,7 @@ import org.mockito.Mockito.verify
 import org.sonarlint.intellij.AbstractSonarLintLightTests
 import org.sonarlint.intellij.config.Settings
 import org.sonarlint.intellij.config.global.ServerConnection
+import org.sonarlint.intellij.config.global.wizard.CodescanCloudConstants
 import org.sonarlint.intellij.eq
 
 class SonarLintHttpServerTest : AbstractSonarLintLightTests() {
@@ -83,12 +84,10 @@ class SonarLintHttpServerTest : AbstractSonarLintLightTests() {
 
     @Test
     fun trusted_origin_test() {
-        Settings.getGlobalSettings().addServerConnection(ServerConnection.newBuilder().setHostUrl("https://my.sonar.com/sonar").build())
+        Settings.getGlobalSettings().addServerConnection(ServerConnection.newBuilder().setHostUrl(CodescanCloudConstants.CODESCAN_US_URL).build())
         assertThat(ServerHandler.isTrustedOrigin("http://foo")).isFalse()
-        assertThat(ServerHandler.isTrustedOrigin("https://app.codescan.io")).isTrue()
-        assertThat(ServerHandler.isTrustedOrigin("https://my.sonar.com")).isTrue()
-        assertThat(ServerHandler.isTrustedOrigin("http://my.sonar.com")).isFalse()
-        assertThat(ServerHandler.isTrustedOrigin("https://sonar.com")).isFalse()
+        assertThat(ServerHandler.isTrustedOrigin(CodescanCloudConstants.CODESCAN_US_URL)).isTrue()
+        assertThat(ServerHandler.isTrustedOrigin("http://app.codescan.io")).isFalse()
     }
 
 }

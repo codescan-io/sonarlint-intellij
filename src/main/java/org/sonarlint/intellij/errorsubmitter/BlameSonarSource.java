@@ -37,13 +37,12 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.sonarlint.intellij.SonarLintPlugin;
 import org.sonarlint.intellij.common.util.SonarLintUtils;
+import org.sonarlint.intellij.config.global.wizard.CodescanCloudConstants;
 import org.sonarlint.intellij.http.ApacheHttpClient;
 import org.sonarsource.sonarlint.core.serverapi.HttpClient;
 
 // Inspired from https://github.com/openclover/clover/blob/master/clover-idea/src/com/atlassian/clover/idea/util/BlameClover.java
 public class BlameSonarSource extends ErrorReportSubmitter {
-  private static final String COMMUNITY_ROOT_URL = "https://app.codescan.io/";
-  private static final String CODESCAN_SUPPORT_URL = COMMUNITY_ROOT_URL + "_codescan/errors/intellij";
 
   private static final Map<String, String> packageAbbreviation;
 
@@ -68,7 +67,8 @@ public class BlameSonarSource extends ErrorReportSubmitter {
     @NotNull Component parentComponent,
     @NotNull Consumer<SubmittedReportInfo> consumer) {
     String body = buildBody(events, additionalInfo);
-    HttpClient.Response response = ApacheHttpClient.getDefault().post(CODESCAN_SUPPORT_URL, "text/html", body);
+    HttpClient.Response response = ApacheHttpClient.getDefault()
+            .post(CodescanCloudConstants.CODESCAN_ERROR_ENDPOINT, "text/html", body);
     SubmissionStatus status = response.isSuccessful() ? SubmissionStatus.NEW_ISSUE : SubmissionStatus.FAILED;
     consumer.consume(new SubmittedReportInfo(status));
     return response.isSuccessful();
