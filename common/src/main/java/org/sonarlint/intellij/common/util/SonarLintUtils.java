@@ -100,6 +100,9 @@ public class SonarLintUtils {
   }
 
   public static boolean isCodeScanCloudAlias(@Nullable String url) {
+    if (url.contains("codescan.io")) {
+      return true;
+    }
     HttpClient httpClient = HttpClient.newHttpClient();
     HttpRequest httpRequest = HttpRequest.newBuilder()
             .uri(URI.create(url + CODESCAN_HEALTH_ENDPOINT))
