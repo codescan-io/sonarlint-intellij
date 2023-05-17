@@ -34,8 +34,8 @@ import org.sonarlint.intellij.issue.QuickFix
 import org.sonarlint.intellij.telemetry.SonarLintTelemetry
 
 class ApplyQuickFixIntentionAction(private val fix: QuickFix, private val ruleKey: String) : IntentionAction, PriorityAction, Iconable {
-    override fun getText() = "SonarLint: " + fix.message
-    override fun getFamilyName() = "SonarLint quick fix"
+    override fun getText() = "CodeScan: " + fix.message
+    override fun getFamilyName() = "CodeScan quick fix"
     override fun startInWriteAction() = true
     override fun getIcon(flags: Int) = AllIcons.Actions.IntentionBulb
     override fun getPriority() = PriorityAction.Priority.TOP

@@ -115,7 +115,7 @@ class TaintVulnerabilitiesPanel(private val project: Project) : SimpleToolWindow
     }
 
     init {
-        cards.add(centeredLabel("The project is not bound to SonarQube/SonarCloud", ActionLink("Configure Binding", SonarConfigureProject())), NO_BINDING_CARD_ID)
+        cards.add(centeredLabel("The project is not bound to CodeScan", ActionLink("Configure Binding", SonarConfigureProject())), NO_BINDING_CARD_ID)
         cards.add(centeredLabel("The project binding is invalid", ActionLink("Edit Binding", SonarConfigureProject())), INVALID_BINDING_CARD_ID)
         cards.add(centeredLabel(noVulnerabilitiesLabel), NO_ISSUES_CARD_ID)
         cards.add(createSplitter(project, this, this, ScrollPaneFactory.createScrollPane(createTree()), createRulePanel(), SPLIT_PROPORTION_PROPERTY, DEFAULT_SPLIT_PROPORTION),
@@ -141,7 +141,7 @@ class TaintVulnerabilitiesPanel(private val project: Project) : SimpleToolWindow
     }
 
     private fun createDisclaimer(): StripePanel {
-        val stripePanel = StripePanel("This tab displays taint vulnerabilities detected by SonarQube or SonarCloud. SonarLint does not detect those issues locally.", Information)
+        val stripePanel = StripePanel("This tab displays taint vulnerabilities detected by CodeScan. CodeScan does not detect those issues locally.", Information)
         stripePanel.addAction("Learn more", OpenTaintVulnerabilityDocumentationAction())
         stripePanel.addAction("Dismiss", object : AnAction() {
             override fun actionPerformed(e: AnActionEvent) {

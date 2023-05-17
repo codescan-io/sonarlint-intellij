@@ -238,7 +238,7 @@ public class SonarLintProjectBindPanel {
 
     projectKeyLabel = new JLabel("Project key:");
     projectKeyTextField = new JBTextField();
-    projectKeyTextField.getEmptyText().setText("Input SonarQube/SonarCloud project key or search one");
+    projectKeyTextField.getEmptyText().setText("Input CodeScan project key or search one");
 
     searchProjectButton = new JButton();
     searchProjectButton.setAction(new AbstractAction() {

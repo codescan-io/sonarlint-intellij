@@ -164,7 +164,7 @@ class ProjectServerNotificationsSubscriber : Disposable {
       val telemetry = getService(SonarLintTelemetry::class.java)
       val category = serverNotification.category()
       telemetry.devNotificationsReceived(category)
-      val label = if (isSonarCloud) "SonarCloud" else "SonarQube"
+      val label = "CodeScan"
       val notif = SERVER_NOTIFICATIONS_GROUP.createNotification(
         "<b>$label Notification</b>",
         serverNotification.message(),

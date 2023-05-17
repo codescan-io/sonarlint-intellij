@@ -72,7 +72,7 @@ class SonarLintHttpServer @NonInjectable constructor(private var nettyServer: Ne
         if (isStarted) {
             GlobalLogOutput.get().log("Server started on $port", LogOutput.Level.INFO)
         } else {
-            GlobalLogOutput.get().log("Cannot start the SonarLint server on $port", LogOutput.Level.ERROR)
+            GlobalLogOutput.get().log("Cannot start the CodeScan server on $port", LogOutput.Level.ERROR)
         }
     }
 

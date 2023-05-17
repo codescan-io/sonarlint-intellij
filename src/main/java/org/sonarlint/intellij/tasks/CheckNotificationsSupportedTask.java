@@ -35,7 +35,7 @@ public class CheckNotificationsSupportedTask extends Task.Modal {
   private boolean notificationsSupported = false;
 
   public CheckNotificationsSupportedTask(ServerConnection connection) {
-    super(null, "Check if smart notifications are available in the SonarQube edition", true);
+    super(null, "Check if smart notifications are available in the CodeScan edition", true);
     this.connection = connection;
   }
 

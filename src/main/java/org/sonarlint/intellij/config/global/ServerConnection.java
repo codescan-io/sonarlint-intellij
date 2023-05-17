@@ -144,7 +144,7 @@ public class ServerConnection {
   }
 
   public String getProductName() {
-    return isCodeScanCloud() ? "SonarCloud" : "SonarQube";
+    return "CodeScan";
   }
 
   public Icon getProductIcon() {

@@ -180,7 +180,7 @@ class SecurityHotspotShowRequestHandlerTest : AbstractSonarLintLightTests() {
       .containsExactly(
         tuple(
           "Error opening security hotspot",
-          "The local source code does not match the branch/revision analyzed by SonarQube"
+          "The local source code does not match the branch/revision analyzed by CodeScan"
         )
       )
   }

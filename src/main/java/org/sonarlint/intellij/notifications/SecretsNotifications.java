@@ -26,7 +26,7 @@ import com.intellij.openapi.project.Project;
 
 public class SecretsNotifications {
 
-  public static final NotificationGroup GROUP = NotificationGroup.balloonGroup("SonarLint: Secrets detection");
+  public static final NotificationGroup GROUP = NotificationGroup.balloonGroup("CodeScan: Secrets detection");
 
   private SecretsNotifications() {
     // utility class
@@ -34,10 +34,10 @@ public class SecretsNotifications {
 
   public static void sendNotification(Project project) {
     Notification notification = GROUP.createNotification(
-      "SonarLint: secret(s) detected",
-      "SonarLint detected some secrets in one of the open files. " +
+      "CodeScan: secret(s) detected",
+      "CodeScan detected some secrets in one of the open files. " +
         "We strongly advise you to review those secrets and ensure they are not committed into repositories. " +
-        "Please refer to the SonarLint tool window for more information.",
+        "Please refer to the CodeScan tool window for more information.",
       NotificationType.WARNING, null);
     notification.setImportant(true);
     notification.notify(project);
