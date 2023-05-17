@@ -25,7 +25,7 @@ import org.sonarlint.intellij.config.project.SonarLintProjectConfigurable;
 class OpenProjectSettingsAction extends OpenConfigurableAction {
 
   OpenProjectSettingsAction(Project project) {
-    super(project, "Open SonarLint Project Configuration", new SonarLintProjectConfigurable(project));
+    super(project, "Open CodeScan Project Configuration", new SonarLintProjectConfigurable(project));
   }
 
 }

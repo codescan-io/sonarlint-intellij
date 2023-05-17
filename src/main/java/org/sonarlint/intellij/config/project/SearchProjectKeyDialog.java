@@ -60,7 +60,7 @@ public class SearchProjectKeyDialog extends DialogWrapper {
     this.lastSelectedProjectKey = selectedProjectKey;
     this.projectsByKey = projectsByKey;
     this.isSonarCloud = isSonarCloud;
-    setTitle("Search Project in " + (isSonarCloud ? "SonarCloud" : "SonarQube"));
+    setTitle("Search Project in CodeScan");
     init();
   }
 
@@ -83,7 +83,7 @@ public class SearchProjectKeyDialog extends DialogWrapper {
 
   private void createProjectList() {
     projectList = new JBList<>();
-    projectList.setEmptyText("No projects found in " + (isSonarCloud ? "SonarCloud" : "SonarQube"));
+    projectList.setEmptyText("No projects found in CodeScan");
     projectList.setCellRenderer(new ProjectListRenderer());
     projectList.addListSelectionListener(new ProjectItemListener());
     projectList.addMouseListener(new ProjectMouseListener());

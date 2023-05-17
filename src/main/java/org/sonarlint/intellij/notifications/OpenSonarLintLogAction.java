@@ -34,7 +34,7 @@ class OpenSonarLintLogAction extends NotificationAction {
   private final Project project;
 
   OpenSonarLintLogAction(Project project) {
-    super("Open SonarLint Log");
+    super("Open CodeScan Log");
     this.project = project;
   }
 

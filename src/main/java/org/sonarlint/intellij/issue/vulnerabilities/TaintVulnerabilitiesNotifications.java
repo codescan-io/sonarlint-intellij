@@ -24,7 +24,7 @@ import com.intellij.notification.NotificationGroup;
 public class TaintVulnerabilitiesNotifications {
   // We need to call the balloonGroup method from Java
   // If we call it from Kotlin, the Companion will be used and it is not backward compatible
-  public static final NotificationGroup GROUP = NotificationGroup.balloonGroup("SonarLint: Taint vulnerabilities");
+  public static final NotificationGroup GROUP = NotificationGroup.balloonGroup("CodeScan: Taint vulnerabilities");
 
   private TaintVulnerabilitiesNotifications() {
     // utility class

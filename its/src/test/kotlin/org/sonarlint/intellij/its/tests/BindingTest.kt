@@ -110,9 +110,9 @@ class BindingTest : BaseUiTest() {
                 button("Finish").click()
             }
             tree {
-                clickPath("Tools", "SonarLint", "Project Settings")
+                clickPath("Tools", "CodeScan", "Project Settings")
             }
-            checkBox("Bind project to SonarQube / SonarCloud").select()
+            checkBox("Bind project to CodeScan").select()
             pressOk()
             errorMessage("Connection should not be empty")
 
@@ -131,7 +131,7 @@ class BindingTest : BaseUiTest() {
             pressOk()
             errorMessage("Project key for module 'sample-scala-module' should not be empty")
             buttons(byText("Search in list..."))[1].click()
-            dialog("Search Project in SonarQube") {
+            dialog("Search Project in CodeScan") {
                 jList {
                     clickItem(MODULE_PROJECT_KEY, false)
                 }

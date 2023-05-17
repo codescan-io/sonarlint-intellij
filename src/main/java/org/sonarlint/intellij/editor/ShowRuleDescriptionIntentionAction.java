@@ -49,12 +49,12 @@ public class ShowRuleDescriptionIntentionAction implements IntentionAction, Prio
 
   @Override
   public @Nls(capitalization = Nls.Capitalization.Sentence) @NotNull String getText() {
-    return "SonarLint: Show rule description '" + ruleKey + "'";
+    return "CodeScan: Show rule description '" + ruleKey + "'";
   }
 
   @Override
   public @NotNull @Nls(capitalization = Nls.Capitalization.Sentence) String getFamilyName() {
-    return "SonarLint show issue description";
+    return "CodeScan show issue description";
   }
 
   @Override

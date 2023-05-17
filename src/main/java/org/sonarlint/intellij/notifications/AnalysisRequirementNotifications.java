@@ -43,7 +43,7 @@ import static java.util.stream.Collectors.toSet;
 
 public class AnalysisRequirementNotifications {
 
-  private static final NotificationGroup ANALYZER_REQUIREMENT_GROUP = NotificationGroup.balloonGroup("SonarLint: Analyzer Requirement");
+  private static final NotificationGroup ANALYZER_REQUIREMENT_GROUP = NotificationGroup.balloonGroup("CodeScan: Analyzer Requirement");
 
   private static final Set<String> alreadyNotified = new HashSet<>();
 
@@ -65,21 +65,21 @@ public class AnalysisRequirementNotifications {
       correspondingPlugin.flatMap(PluginDetails::skipReason).ifPresent(skipReason -> {
         if (skipReason instanceof SkipReason.UnsatisfiedRuntimeRequirement) {
           final SkipReason.UnsatisfiedRuntimeRequirement runtimeRequirement = (SkipReason.UnsatisfiedRuntimeRequirement) skipReason;
-          final String title = "<b>SonarLint failed to analyze " + l.getLabel() + " code</b>";
+          final String title = "<b>CodeScan failed to analyze " + l.getLabel() + " code</b>";
           if (runtimeRequirement.getRuntime() == SkipReason.UnsatisfiedRuntimeRequirement.RuntimeRequirement.JRE) {
             String content = String.format(
-              "SonarLint requires Java runtime version %s or later to analyze %s code. Current version is %s.<br>" +
+              "CodeScan requires Java runtime version %s or later to analyze %s code. Current version is %s.<br>" +
                 "See <a href=\"https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under\">" +
                 "how to select the JDK version the IDE will run under</a>.",
               runtimeRequirement.getMinVersion(), l.getLabel(), runtimeRequirement.getCurrentVersion());
             createNotificationOnce(project, title, content, new NotificationListener.UrlOpeningListener(true));
           } else if (runtimeRequirement.getRuntime() == SkipReason.UnsatisfiedRuntimeRequirement.RuntimeRequirement.NODEJS) {
             StringBuilder content = new StringBuilder(
-              String.format("SonarLint requires Node.js runtime version %s or later to analyze %s code.", runtimeRequirement.getMinVersion(), l.getLabel()));
+              String.format("CodeScan requires Node.js runtime version %s or later to analyze %s code.", runtimeRequirement.getMinVersion(), l.getLabel()));
             if (runtimeRequirement.getCurrentVersion() != null) {
               content.append(String.format(" Current version is %s.", runtimeRequirement.getCurrentVersion()));
             }
-            content.append("<br>Please configure the Node.js path in the SonarLint settings.");
+            content.append("<br>Please configure the Node.js path in the CodeScan settings.");
             createNotificationOnce(project, title, content.toString(), null, new OpenGlobalSettingsAction(project));
           }
         }
@@ -105,8 +105,8 @@ public class AnalysisRequirementNotifications {
    */
   public static void notifyNodeCommandException(Project project) {
     Notification notification = ANALYZER_REQUIREMENT_GROUP.createNotification(
-      "<b>SonarLint - Node.js Required</b>",
-      "Node.js >= 8.x is required to perform JavaScript or TypeScript analysis. Check the SonarLint Log for details.",
+      "<b>CodeScan - Node.js Required</b>",
+      "Node.js >= 8.x is required to perform JavaScript or TypeScript analysis. Check the CodeScan Log for details.",
       NotificationType.WARNING, null);
     notification.setImportant(true);
     notification.notify(project);

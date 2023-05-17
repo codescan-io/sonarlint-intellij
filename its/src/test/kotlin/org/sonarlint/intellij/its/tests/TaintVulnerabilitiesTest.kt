@@ -63,7 +63,7 @@ class TaintVulnerabilitiesTest : BaseUiTest() {
 
         openExistingProject("sample-java-taint-vulnerability", true)
 
-        verifyTaintTabContainsMessages(this, "The project is not bound to SonarQube/SonarCloud")
+        verifyTaintTabContainsMessages(this, "The project is not bound to CodeScan")
     }
 
     @Test
@@ -94,7 +94,7 @@ class TaintVulnerabilitiesTest : BaseUiTest() {
                     }
                 }
                 dialog("Project Settings") {
-                    checkBox("Bind project to SonarQube / SonarCloud").select()
+                    checkBox("Bind project to CodeScan").select()
                     button("Configure the connection...").click()
                     dialog("SonarLint") {
                         actionButton(byTooltipText("Add")).clickWhenEnabled()

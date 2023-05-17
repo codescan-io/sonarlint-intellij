@@ -157,7 +157,7 @@ public class SonarLintCheckinHandler extends CheckinHandler {
     String warningAboutLeakedSecrets = "";
     if (numSecretsIssues > 0) {
       String secretWord = numSecretsIssues == 1 ? "secret" : "secrets";
-      warningAboutLeakedSecrets = String.format("\n\nSonarLint analysis found %d %s. " +
+      warningAboutLeakedSecrets = String.format("\n\nCodeScan analysis found %d %s. " +
         "Committed secrets may lead to unauthorized system access.", numSecretsIssues, secretWord);
     }
     StringBuilder message = new StringBuilder();

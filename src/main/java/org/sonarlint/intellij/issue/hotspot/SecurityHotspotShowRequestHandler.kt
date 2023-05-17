@@ -39,7 +39,7 @@ const val NOTIFICATION_TITLE = "Error opening security hotspot"
 
 const val FETCHING_HOTSPOT_ERROR_MESSAGE =
   "Cannot fetch hotspot details. Server is unreachable or credentials are invalid."
-const val NOT_MATCHING_CODE_MESSAGE = "The local source code does not match the branch/revision analyzed by SonarQube"
+const val NOT_MATCHING_CODE_MESSAGE = "The local source code does not match the branch/revision analyzed by CodeScan"
 const val FILE_NOT_FOUND_MESSAGE = "Cannot find hotspot file in the project."
 
 open class SecurityHotspotShowRequestHandler(

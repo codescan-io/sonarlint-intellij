@@ -88,7 +88,6 @@ public class SonarLintAnalyzer {
         contributedProperties.put("sonar.organization", server.getOrganizationKey());
         if (server.getToken() != null) {
           contributedProperties.put("sonar.login", server.getToken());
-          console.info(server.getToken());
         } else {
           contributedProperties.put("sonar.login", server.getLogin());
           contributedProperties.put("sonar.password", server.getPassword());

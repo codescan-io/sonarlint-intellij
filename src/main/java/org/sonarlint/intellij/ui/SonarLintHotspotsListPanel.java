@@ -50,7 +50,7 @@ public class SonarLintHotspotsListPanel {
     treeModel = new DefaultTreeModel(null);
     hotspotsTree = new Tree(treeModel);
     hotspotsTree.setCellRenderer(new HotspotCellRenderer());
-    hotspotsTree.getEmptyText().setText("No hotspots to display, open one from SonarQube");
+    hotspotsTree.getEmptyText().setText("No hotspots to display, open one from CodeScan");
     mainPanel = new JPanel(new BorderLayout());
     mainPanel.add(ScrollPaneFactory.createScrollPane(hotspotsTree), BorderLayout.CENTER);
     EditSourceOnDoubleClickHandler.install(hotspotsTree, this::navigateToLocation);

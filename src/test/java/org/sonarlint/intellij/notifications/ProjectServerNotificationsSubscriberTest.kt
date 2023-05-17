@@ -174,7 +174,7 @@ class ProjectServerNotificationsSubscriberTest : AbstractSonarLintLightTests() {
 
     assertThat(projectNotifications)
       .extracting("title", "content")
-      .containsExactly(tuple("<b>SonarQube Notification</b>", "message"))
+      .containsExactly(tuple("<b>CodeScan Notification</b>", "message"))
   }
 
   private fun connectProjectWithNotifications() {

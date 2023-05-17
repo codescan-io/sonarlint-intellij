@@ -47,7 +47,7 @@ public class ShowLocationsIntentionAction implements IntentionAction, PriorityAc
   }
 
   @Nls @NotNull @Override public String getText() {
-    return "SonarLint: Show " + (context.hasUniqueFlow() ? "issue locations" : "data flows");
+    return "CodeScan: Show " + (context.hasUniqueFlow() ? "issue locations" : "data flows");
   }
 
   @Nls @NotNull @Override public String getFamilyName() {

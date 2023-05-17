@@ -106,7 +106,7 @@ public class SonarLintEngineManager implements Disposable {
     while (it.hasNext()) {
       Map.Entry<String, ConnectedSonarLintEngine> e = it.next();
       if (!configuredStorageIds.contains(e.getKey())) {
-        doInBackground("Stop SonarLint engine '" + e.getKey() + "'", () -> e.getValue().stop(false));
+        doInBackground("Stop CodeScan engine '" + e.getKey() + "'", () -> e.getValue().stop(false));
         it.remove();
       }
     }
@@ -118,7 +118,7 @@ public class SonarLintEngineManager implements Disposable {
       if (async) {
         String key = e.getKey();
         ConnectedSonarLintEngine engine = e.getValue();
-        doInBackground("Stop SonarLint engine '" + key + "'", () -> engine.stop(false));
+        doInBackground("Stop CodeScan engine '" + key + "'", () -> engine.stop(false));
       } else {
         e.getValue().stop(false);
       }
@@ -127,7 +127,7 @@ public class SonarLintEngineManager implements Disposable {
     if (standalone != null) {
       if (async) {
         StandaloneSonarLintEngine standaloneCopy = this.standalone;
-        doInBackground("Stop standalone SonarLint engine", standaloneCopy::stop);
+        doInBackground("Stop standalone CodeScan engine", standaloneCopy::stop);
       } else {
         standalone.stop();
       }
