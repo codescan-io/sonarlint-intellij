@@ -12,15 +12,15 @@ description = "ITs for CodeScan IntelliJ"
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
-compileKotlin.kotlinOptions.jvmTarget = "1.8"
+compileKotlin.kotlinOptions.jvmTarget = "17"
 
 val compileTestKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
-compileTestKotlin.kotlinOptions.jvmTarget = "1.8"
+compileTestKotlin.kotlinOptions.jvmTarget = "17"
 
 repositories {
     mavenCentral()
@@ -28,7 +28,7 @@ repositories {
     maven("https://packages.jetbrains.team/maven/p/ij/intellij-dependencies")
 }
 
-val remoteRobotVersion = "0.11.4"
+val remoteRobotVersion = "0.11.18"
 
 dependencies {
     testImplementation("org.sonarsource.orchestrator:sonar-orchestrator:3.35.1.2719") {
